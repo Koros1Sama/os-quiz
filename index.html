@@ -84,6 +84,12 @@
         border-bottom: 1px solid var(--bg3);
         padding: 12px 20px;
         backdrop-filter: blur(12px);
+        transition: transform 0.35s ease, opacity 0.35s ease;
+      }
+      .header.auto-hidden {
+        transform: translateY(-100%);
+        opacity: 0;
+        pointer-events: none;
       }
       .header-top {
         display: flex;
@@ -163,7 +169,7 @@
       /* FILTER BAR */
       .filter-bar {
         position: sticky;
-        top: 72px;
+        top: var(--header-h, 72px);
         z-index: 90;
         background: var(--bg);
         padding: 10px 20px;
@@ -171,6 +177,12 @@
         gap: 6px;
         flex-wrap: wrap;
         border-bottom: 1px solid var(--bg3);
+        transition: transform 0.35s ease, opacity 0.35s ease;
+      }
+      .filter-bar.auto-hidden {
+        transform: translateY(-200%);
+        opacity: 0;
+        pointer-events: none;
       }
       .filter-bar .btn {
         font-size: 0.78rem;
@@ -628,9 +640,9 @@
         transform: scale(1.1);
       }
 
-      /* HEADER MODE TOGGLE (mobile only) */
+      /* HEADER MODE TOGGLE */
       .header-mode-toggle {
-        display: none;
+        display: flex;
         position: fixed;
         top: 12px;
         left: 16px;
@@ -693,16 +705,6 @@
           padding: 12px;
           padding-bottom: 80px;
         }
-        .header {
-          position: sticky;
-          top: 0;
-          transition: transform 0.35s ease, opacity 0.35s ease;
-        }
-        .header.auto-hidden {
-          transform: translateY(-100%);
-          opacity: 0;
-          pointer-events: none;
-        }
         .header h1 {
           font-size: 1rem;
         }
@@ -713,20 +715,10 @@
           font-size: 0.7rem;
           padding: 5px 8px;
         }
-        .header-mode-toggle {
-          display: flex;
-        }
         .filter-bar {
-          position: sticky;
           top: 0;
-          transition: transform 0.35s ease, opacity 0.35s ease;
           flex-wrap: wrap;
           gap: 4px;
-        }
-        .filter-bar.auto-hidden {
-          transform: translateY(-100%);
-          opacity: 0;
-          pointer-events: none;
         }
         .filter-bar .btn {
           font-size: 0.7rem;
@@ -5000,7 +4992,6 @@
       };
 
       function applyHeaderMode() {
-        if (window.innerWidth > 768) return;
         const header = document.getElementById("headerEl");
         const filter = document.getElementById("filterBar");
         const btn = document.getElementById("headerModeBtn");
@@ -5038,11 +5029,22 @@
         showToast(modeToasts[headerMode]);
       }
 
+      // ============ DYNAMIC HEADER HEIGHT ============
+      function updateHeaderHeight() {
+        const header = document.getElementById("headerEl");
+        if (header) {
+          const h = header.offsetHeight;
+          document.documentElement.style.setProperty("--header-h", h + "px");
+        }
+      }
+      window.addEventListener("load", updateHeaderHeight);
+      window.addEventListener("resize", updateHeaderHeight);
+
       // Scroll listener for auto-hide
       window.addEventListener(
         "scroll",
         function () {
-          if (window.innerWidth > 768) return;
+          // auto-hide works on all screen sizes
           const header = document.getElementById("headerEl");
           const filter = document.getElementById("filterBar");
           if (!header) return;
