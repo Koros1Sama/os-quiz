@@ -1,0 +1,974 @@
+الجمهورية اليمنية
+جامعة صنعاء
+مركز الاختبارات الالكترونية
+قائمة الاسئلة
+نظم تشغيل - المستوى الثاتي -قسم علوم حاسوب - - كلية الحاسوب وتكنولوجيا المعلومات - الفترة - درجة الامتحان (180)
+د مالك الجبري
+1) What is operating system
+1) - collection of programs that manages hardware resources<
+2) - system service provider to the application programs
+3) - link to interface the hardware and application programs
+4) + all of the mentioned
+2) Why is CPU scheduling done?
+1) - Decrease CPU Utilization
+2) - Decrease Cost
+3) + Increase CPU Utilization
+4) - None of the mentioned
+3) What is the ready state of a process?
+1) + when process is scheduled to runin the CPU
+2) - when process is wating in the Job Queue
+3) - when process is using the CPU
+4) - none of the mentioned
+4) A set of processes is deadlock if
+1) - each process is terminatedُ2) - all processes are trying to kill each other
+3) + each process is blocked and will remain so forever
+4) - none of the mentioned
+5) ? What is a long-term scheduler
+1) + It selects which process has to be brought into the ready queue
+2) - It selects which process has to be executed next and allocates CPU
+3) - It selects which process to remove from memory by swapping
+4) - None of these
+6) The primary purpose of a directory structure is to:
+1) - a) Store metadata about files
+2) - b) Allocate disk space efficiently
+3) + c) Organize files in a structured manner
+4) - d) Control process execution
+7) Which of the following file allocation methods suffers from external fragmentation
+1) + a) Contiguous Allocation
+2) - b) Linked Allocation
+3) - c) Indexed Allocation
+4) - d) None of the above
+8) The inode in a UNIX file system
+1) + a) Stores metadata about a file
+2) - b) Allocates CPU resources
+3) - c) Schedules processes
+4) - d) Handles file encryption
+9) The FAT (File Allocation Table) file system is mainly used in
+1) + a) Windows OS
+2) - b) Linux OS
+3) - c) macOS
+4) - d) UNIX-based systems
+ الصفحة 1 / 19
+الجمهورية اليمنية
+جامعة صنعاء
+مركز الاختبارات الالكترونية
+10) Which file system is used in Linux by default
+1) - a) NTFS
+2) - b) FAT32
+3) + c) ext4
+4) - d) HFS+
+11) A program in execution is called?
+1) - A Paging
+2) + A Process
+3) - A virtual memory
+4) - A Demand Page
+12) What is contained in the page table?
+1) + Base address of each frame and corresponding page number
+2) - Memory address and corresponding page number
+3) - File name and corresponding page number
+4) - None of Above
+13) Which of the following is NOT a memory allocation technique?
+1) - a) Paging
+2) - b) Segmentation
+3) - c) Swapping
+4) + d) Multiprogramming
+14) What is internal fragmentation?
+1) + a) Unused memory within allocated space
+2) - b) Unused memory between allocated blocks
+3) - c) Memory wasted due to page swapping
+4) - d) Memory lost due to deadlocks
+15) Which of the following algorithms is used to place processes in memory blocks?
+1) - a) First Fit
+2) - b) Best Fit
+3) - c) Worst Fit
+4) + d) All of the above
+16) What is the primary advantage of journaling file systems?
+1) + a) Prevents file corruption by recording changes before applying them
+2) - b) Increases file transfer speed
+3) - c) Reduces file size
+4) - d) Enhances disk defragmentation
+17) Which of the following file systems supports file encryption natively?
+1) - a) FAT32
+2) + b) NTFS
+3) - c) ext2
+4) - d) None of the above
+18) Components of Threads
+1) - Program counter
+2) - Register
+3) - Stack
+4) + all of the mentioned
+19) Which of the following are two types of atomic operations performed by semaphores?
+1) + Wait and signal
+2) - Wait and Stop
+3) - Signal and Stop
+ الصفحة 2 / 19
+الجمهورية اليمنية
+جامعة صنعاء
+مركز الاختبارات الالكترونية
+4) - Release and Wait
+20) Convoy effect in FCFS happens if
+1) + The burst time of the first job is the highest among all
+2) - The burst time of the first job is the smallest among all
+3) - The burst time of all processe is the same
+4) - none of the mentioned
+21) Which type of process spend more time doing computations
+1) - I/O bound process.
+2) + Cpu bound process.
+3) - Both I/O and CPU bounded processes
+4) - None of the above.
+22) Waiting time is amount of time to execute particular process
+1) - TRUE.
+2) + FALSE.
+23) Process control block (PCB) is information Associated with each process.
+1) + TRUE.
+2) - FALSE.
+24) Which function in POSIX threads (Pthreads) creates a new thread?
+1) + a) pthread_create()
+2) - b) thread_start()
+3) - c) create_thread()
+4) - d) init_thread()
+25) The main purpose of memory management is to:
+1) - a) Control process execution
+2) - b) Optimize disk access
+3) + c) Allocate and deallocate memory efficiently
+4) - d) Improve CPU scheduling
+26) Which one of the following is OS services:
+1) - user interface
+2) - program execution
+3) - I/O operations
+4) + All of the above
+27) Which type of multithreading allows multiple threads to run on multiple processors?
+1) - a) Single-threaded processing
+2) + b) Multicore processing
+3) - c) Multilevel queue processing
+4) - d) FIFO scheduling
+28) The main advantage of multithreading is:
+1) + a) Improved CPU utilization
+2) - b) Increased memory requirements
+3) - c) Reduced disk access time
+4) - d) Preventing deadlocks
+29) We want to keep the CPU as busy as possible, this criteria refers to as
+1) - Throughput
+2) + CPU utilization
+3) - Response time
+4) - waiting time
+30) The part of the program, in which race condition can occur, is called
+1) - Exit section.
+ الصفحة 3 / 19
+الجمهورية اليمنية
+جامعة صنعاء
+مركز الاختبارات الالكترونية
+2) + Critical section.
+3) - Remainder section.
+4) - Entry section.
+31) Which of the following are functions of an Operating System
+1) - a) Process Management
+2) - b) Memory Management
+3) - c) Compiler Execution
+4) + d) All above
+32) Which of the following is the core part of an Operating System?
+1) - a) Shell
+2) + b) Kernel
+3) - c) Command Line Interface
+4) - d) Device Driver
+33) Which of the following is an example of a real-time operating system?
+1) - a) Windows 10
+2) - b) Linux Ubuntu
+3) + c) RTOS (Real-Time Operating System)
+4) - d) macOS
+34) What is the main function of an Operating System?
+1) - a) Compiling code
+2) + b) Managing hardware and software resources
+3) - c) Editing documents
+4) - d) Running antivirus programs
+35) Which scheduling algorithm executes the process that arrives first
+1) - a) Round Robin
+2) - b) Shortest Job Next
+3) + c) First Come First Serve
+4) - d) Priority Scheduling
+36) Which memory management technique divides memory into fixed-sized blocks
+1) + a) Paging
+2) - b) Segmentation
+3) - c) Contiguous Allocation
+4) - d) Swapping
+37) What does a process control block (PCB) contain?
+1) + a) Process ID, Program Counter, Process State
+2) - b) Only the process ID
+3) - c) Only the memory allocation details
+4) - d) List of all system processes
+38) Which of the following is NOT a type of system call?
+1) - a) Process Control
+2) - b) Memory Management
+3) - c) File Manipulation
+4) + d) Web Browsing
+39) Which of the following causes thrashing in a system?
+1) - a) Low CPU utilization
+2) + b) Excessive paging
+3) - c) Low priority scheduling
+4) - d) Large time quantum
+40) What is the purpose of the fork() system call in UNIX?
+ الصفحة 4 / 19
+الجمهورية اليمنية
+جامعة صنعاء
+مركز الاختبارات الالكترونية
+1) + a) To create a new process
+2) - b) To terminate a process
+3) - c) To allocate memory
+4) - d) To switch between processes
+41) What is an Operating System?
+1) + a) A collection of software that manages hardware resources
+2) - b) A hardware component of a computer
+3) - c) A type of programming language
+4) - d) A database management system
+42) Which of the following is an example of an Operating System?
+1) - a) Microsoft Word
+2) + b) Windows 10
+3) - c) Google Chrome
+4) - d) Python
+43) Which component of an OS directly interacts with hardware?
+1) - a) Shell
+2) - b) Application Software
+3) + c) Kernel
+4) - d) File System
+44) Which of the following is NOT a function of an Operating System?
+1) - a) Memory Management
+2) - b) Process Management
+3) + c) Compiling Programs
+4) - d) File System Management
+45) Which type of Operating System is designed for real-time applications?
+1) - a) Time-Sharing OS
+2) - b) Distributed OS
+3) + c) Real-Time OS
+4) - d) Batch OS
+46) Which of the following is an advantage of multiprogramming?
+1) + a) Increases CPU utilization
+2) - b) Reduces the number of processes in memory
+3) - c) Requires less memory
+4) - d) Improves single-process execution time
+47) What is the primary goal of a time-sharing operating system?
+1) + a) Minimize response time
+2) - b) Maximize CPU utilization
+3) - c) Increase process priority
+4) - d) Prevent memory fragmentation
+48) Which type of OS allows multiple users to work on a system simultaneously?
+1) - a) Single-User OS
+2) + b) Multi-User OS
+3) - c) Real-Time OS
+4) - d) Embedded OS
+49) What is the function of a device driver?
+1) - a) Manages CPU scheduling
+2) + b) Controls hardware devices
+3) - c) Organizes files and directories
+4) - d) Allocates memory to processes
+ الصفحة 5 / 19
+الجمهورية اليمنية
+جامعة صنعاء
+مركز الاختبارات الالكترونية
+50) Which of the following OS is open-source?
+1) - a) Windows 11
+2) - b) macOS
+3) + c) Linux
+4) - d) iOS
+51) Which of the following is NOT a type of Operating System?
+1) - a) Batch OS
+2) - b) Real-Time OS
+3) - c) Network OS
+4) + d) Compiler OS
+52) Which part of the OS is responsible for process scheduling?
+1) - a) File System
+2) - b) Memory Manager
+3) + c) Process Scheduler
+4) - d) Device Driver
+53) In a time-sharing system, CPU scheduling is performed to provide
+1) - a) Large memory space
+2) + b) Quick response time
+3) - c) High throughput
+4) - d) Low power consumption
+54) Which of the following Operating Systems is NOT based on UNIX?
+1) - a) Linux
+2) + b) Windows
+3) - c) macOS
+4) - d) Android
+55) The OS component that manages processes is called:
+1) + a) Process Scheduler
+2) - b) Command Line Interface
+3) - c) Assembler
+4) - d) Linker
+56) Which of the following is a multi-user operating system?
+1) - a) MS-DOS
+2) - b) Windows XP
+3) + c) UNIX
+4) - d) Android
+57) What is the purpose of an Interrupt in an OS?
+1) - a) To increase CPU speed
+2) + b) To handle events like I/O completion
+3) - c) To improve disk access time
+4) - d) To allocate memory dynamically
+58) Which OS feature allows multiple programs to run at the same time?
+1) - a) Virtualization
+2) + b) Multiprogramming
+3) - c) Debugging
+4) - d) Encryption
+59) The part of the OS that interacts with the user is called:
+1) - a) Kernel
+2) + b) Shell
+3) - c) Memory Manager
+ الصفحة 6 / 19
+الجمهورية اليمنية
+جامعة صنعاء
+مركز الاختبارات الالكترونية
+4) - d) Process Table
+60) The purpose of the bootloader is to:
+1) + a) Load the operating system into memory
+2) - b) Manage processes in the system
+3) - c) Handle user input commands
+4) - d) Control file system access
+61) What is a process in an operating system?
+1) + a) A program in execution
+2) - b) A single instruction in a program
+3) - c) A system call request
+4) - d) A type of memory management technique
+62) Which of the following is NOT a process state?
+1) - a) Ready
+2) - b) Running
+3) - c) Terminated
+4) + d) Queued
+63) Which scheduling algorithm selects the process with the shortest execution time?
+1) - a) First Come First Serve (FCFS)
+2) + b) Shortest Job Next (SJN)
+3) - c) Round Robin (RR)
+4) - d) Priority Scheduling
+64) Which of the following scheduling algorithms prevents starvation?
+1) - a) Priority Scheduling
+2) - b) Shortest Job Next (SJN)
+3) + c) Round Robin (RR)
+4) - d) First Come First Serve (FCFS)
+65) The fork() system call in UNIX is used to
+1) - a) Terminate a process
+2) + b) Create a new process
+3) - c) Allocate memory to a process
+4) - d) Execute a new command
+66) Which memory management technique allows processes to be allocated non-contiguous memory?
+1) + a) Paging
+2) - b) Contiguous Memory Allocation
+3) - c) Swapping
+4) - d) Fragmentation
+67) What is the main problem caused by contiguous memory allocation?
+1) + a) External Fragmentation
+2) - b) Process starvation
+3) - c) Deadlock
+4) - d) Page faults
+68) Which of the following is NOT a memory management technique?
+1) - a) Paging
+2) - b) Segmentation
+3) + c) CPU Scheduling
+4) - d) Swapping
+69) What is the purpose of virtual memory?
+1) - a) Increases RAM size
+2) + b) Allows execution of programs larger than physical memory
+ الصفحة 7 / 19
+الجمهورية اليمنية
+جامعة صنعاء
+مركز الاختبارات الالكترونية
+3) - c) Reduces CPU load
+4) - d) Decreases disk usage
+70) Thrashing occurs when:-
+1) - a) CPU is underutilized
+2) + b) Page faults occur frequently
+3) - c) Processes execute without waiting
+4) - d) RAM size is increased
+71) Which of the following is a file system used in Windows?
+1) - a) ext4
+2) + b) NTFS
+3) - c) HFS+
+4) - d) ZFS
+72) A directory in an operating system is used to:
+1) - a) Manage user permissions
+2) + b) Store metadata about files
+3) - c) Control device drivers
+4) - d) Allocate memory to processes
+73) What is the purpose of a file extension (e.g., .txt, .exe)?
+1) - a) Determines the file name
+2) - b) Specifies the file size
+3) + c) Identifies the file type and associated programs
+4) - d) Allocates disk space
+74) Which file allocation method reduces fragmentation?
+1) - a) Contiguous Allocation
+2) - b) Linked Allocation
+3) + c) Indexed Allocation
+4) - d) Direct Mapping
+75) The purpose of the inode in a file system is to:
+1) + a) Store file permissions, size, and metadata
+2) - b) Increase file storage speed
+3) - c) Manage disk scheduling
+4) - d) Encrypt files for security
+76) Which of the following conditions must hold for a deadlock to occur?
+1) + a) Mutual Exclusion, Hold and Wait, No Preemption, Circular Wait
+2) - b) Race Condition, Paging, Thrashing, Segmentation
+3) - c) Scheduling, Virtual Memory, Swapping, Page Faults
+4) - d) Fragmentation, Deadlock Detection, Interrupts, Buffering
+77) Deadlock prevention can be achieved by:
+1) + a) Avoiding Circular Wait
+2) - b) Allowing multiple processes to hold resources
+3) - c) Increasing CPU scheduling priority
+4) - d) Implementing paging
+78) What is the role of a Resource Allocation Graph (RAG) in deadlock detection?
+1) + a) Helps identify circular waits
+2) - b) Improves file system efficiency
+3) - c) Schedules CPU processes
+4) - d) Allocates memory to processes
+79) Which technique is used to handle deadlocks?
+1) - a) Deadlock Prevention
+ الصفحة 8 / 19
+الجمهورية اليمنية
+جامعة صنعاء
+مركز الاختبارات الالكترونية
+2) - b) Deadlock Avoidance
+3) - c) Deadlock Detection and Recovery
+4) + d) All of the above
+80) The Banker's Algorithm is used for:
+1) + a) Deadlock Avoidance
+2) - b) CPU Scheduling
+3) - c) Disk Scheduling
+4) - d) Memory Allocation
+81) Which of the following is an example of a block device?
+1) - a) Keyboard
+2) - b) Printer
+3) + c) Hard Disk
+4) - d) Mouse
+82) Spooling is used to:
+1) + a) Increase the efficiency of I/O operations
+2) - b) Manage CPU scheduling
+3) - c) Reduce memory fragmentation
+4) - d) Prevent deadlocks
+83) Which disk scheduling algorithm minimizes seek time?
+1) - a) First Come First Serve (FCFS)
+2) + b) Shortest Seek Time First (SSTF)
+3) - c) Round Robin (RR)
+4) - d) Least Recently Used (LRU)
+84) Which of the following is a character-based device?
+1) - a) Hard Disk
+2) - b) SSD
+3) - c) Printer
+4) + d) Keyboard
+85) The purpose of DMA (Direct Memory Access) is to:
+1) + a) Allow devices to transfer data without CPU intervention
+2) - b) Improve CPU scheduling
+3) - c) Increase file system performance
+4) - d) Detect deadlocks
+86) What is the main goal of an Operating System’s security?
+1) + a) Preventing unauthorized access
+2) - b) Improving CPU performance
+3) - c) Reducing memory fragmentation
+4) - d) Increasing process scheduling efficiency
+87) What is the purpose of a firewall?
+1) + a) Blocks unauthorized network access
+2) - b) Schedules CPU processes
+3) - c) Prevents page faults
+4) - d) Allocates memory to programs
+88) Which of the following scheduling algorithms gives each process a fixed time slot before moving to the next
+process?
+1) - a) First Come First Serve (FCFS)
+2) - b) Shortest Job Next (SJN)
+3) + c) Round Robin (RR)
+4) - d) Priority Scheduling
+ الصفحة 9 / 19
+الجمهورية اليمنية
+جامعة صنعاء
+مركز الاختبارات الالكترونية
+89) In preemptive scheduling, a process can be:
+1) + a) Interrupted and moved to the ready queue
+2) - b) Completed before other processes start
+3) - c) Assigned a higher priority permanently
+4) - d) Prevented from using the CPU
+90) Which of the following algorithms is used for real-time systems?
+1) - a) Round Robin
+2) - b) Shortest Remaining Time First (SRTF)
+3) + c) Earliest Deadline First (EDF)
+4) - d) Multilevel Feedback Queue
+91) Virtual memory is:
+1) + a) Part of the hard disk used as an extension of RAM
+2) - b) A type of ROM storage
+3) - c) The cache memory of the CPU
+4) - d) A hardware feature in microprocessors
+92) Which of the following is a disadvantage of paging?
+1) - a) Increases memory fragmentation
+2) + b) Causes thrashing when overloaded
+3) - c) Requires contiguous memory allocation
+4) - d) Increases process execution time
+93) What is a page fault?
+1) + a) When a process tries to access a page that is not in memory
+2) - b) When memory runs out of space
+3) - c) When the CPU is overloaded
+4) - d) When disk scheduling fails
+94) Suppose that a process is waiting for some I/O service. When the service
+is completed, it goes to the
+1) - Running state
+2) + Ready State
+3) - Waiting State
+4) - Terminate State
+95) Several processes access and manipulate the same data concurrently and the outcome of the
+execution depends on the particular order in which the access takes place, is called a(n) ____.
+1) + Race condition
+2) - Shared Memory Segments
+3) - Entry Section
+4) - Process Synchronization
+96) Which one of the following is a synchronization tool?
+1) - Critical Section
+2) - pipe
+3) + semaphore
+4) - Deadlock
+97) Which one of the following is the address generated by CPU?
+1) - physical address
+2) - absolute address
+3) + logical address
+4) - none of the mentioned
+98) What are the requirements for the solution to critical section problem?
+1) - Mutual Exclusion
+ الصفحة 10 / 19
+الجمهورية اليمنية
+جامعة صنعاء
+مركز الاختبارات الالكترونية
+2) - Progress
+3) - Bounded Waiting
+4) + All of Above
+99) If graph of processes contains cycle, then there is a deadlock.
+1) - TRUE.
+2) + FALSE.
+100) Dual-mode operation does not allow OS to protect itself and other system component
+1) - TRUE.
+2) + FALSE.
+101) What is a thread?
+1) + a) A lightweight process
+2) - b) A unit of memory storage
+3) - c) A file system component
+4) - d) A type of virtual memory
+102) In a multithreading environment, multiple threads:
+1) + a) Share the same process resources
+2) - b) Run on different processors only
+3) - c) Cannot communicate with each other
+4) - d) Must have separate memory spaces
+103) Which of the following is an authentication method?
+1) + a) Passwords
+2) - b) File Fragmentation
+3) - c) Thrashing
+4) - d) Virtual Memory
+104) Access Control Lists (ACL) are used for:
+1) + a) File and data security
+2) - b) Deadlock detection
+3) - c) Process scheduling
+4) - d) Memory management
+105) Which scheduling algorithm suffers from the "convoy effect"?
+1) - a) Shortest Job Next (SJN)
+2) - b) Round Robin (RR)
+3) + c) First Come First Serve (FCFS)
+4) - d) Multilevel Queue Scheduling
+106) In which scheduling algorithm does the process with the smallest execution time execute first?
+1) - a) First Come First Serve (FCFS)
+2) + b) Shortest Job Next (SJN)
+3) - c) Round Robin (RR)
+4) - d) Priority Scheduling
+107) The page replacement algorithm used in most modern operating systems is:
+1) - a) First In First Out (FIFO)
+2) + b) Least Recently Used (LRU)
+3) - c) Optimal Page Replacement
+4) - d) Round Robin
+108) The purpose of demand paging is to:
+1) + a) Load pages only when needed
+2) - b) Allocate memory to processes in advance
+3) - c) Reduce CPU load
+4) - d) Store files in memory
+ الصفحة 11 / 19
+الجمهورية اليمنية
+جامعة صنعاء
+مركز الاختبارات الالكترونية
+109) A process generally also includes the process _____, which contains global variables
+1) - Heap
+2) - Stack
+3) + Data Section
+4) - text section
+110) Copying a process from memory to disk to allow space for other processes is called?
+1) + Swapping
+2) - Deadlock
+3) - Demand Paging
+4) - Page Fault
+111) Which one of the following is not true?
+1) - kernel remains in the memory during the entire computer session
+2) + kernel is made of various modules which can not be loaded in running operating system
+3) - kernel is the first part of the operating system to load into memory during booting
+4) - kernel is the program that constitutes the central core of the operating system
+112) What is a process control block (PCB)?
+1) + a) A data structure that stores information about a process
+2) - b) A mechanism for controlling I/O devices
+3) - c) A security feature in operating systems
+4) - d) A type of file management system
+113) What is the purpose of virtual memory in an operating system?.
+1) + a) To provide additional memory by using disk space
+2) - b) To store hardware configuration settings
+3) - c) To enhance the graphical user interface
+4) - d) To manage network operations
+114) It is necessary for threads in a process to have separate stacks
+1) + TRUE.
+2) - FALSE.
+115) Program running at all times on the computer called Kernel
+1) + TRUE.
+2) - FALSE.
+116) Which of the following is used to resolve external fragmentation?
+1) - a) Paging
+2) - b) Segmentation
+3) + c) Compaction
+4) - d) Swapping
+117) Page replacement algorithms are used to:
+1) - a) Manage memory allocation dynamically
+2) - b) Increase CPU speed
+3) + c) Reduce page faults
+4) - d) Store data permanently
+118) Which of the following page replacement algorithms is optimal but difficult to implement?
+1) - a) First In First Out (FIFO)
+2) - b) Least Recently Used (LRU)
+3) + c) Optimal Page Replacement (OPT)
+4) - d) Least Frequently Used (LFU)
+119) The page table is used to:
+1) + a) Keep track of pages in physical memory
+2) - b) Store process control information
+ الصفحة 12 / 19
+الجمهورية اليمنية
+جامعة صنعاء
+مركز الاختبارات الالكترونية
+3) - c) Allocate CPU resources
+4) - d) Manage I/O operations
+120) Thrashing occurs when:
+1) + a) A process spends more time swapping pages than executing
+2) - b) CPU scheduling is inefficient
+3) - c) Too many processes are in the system
+4) - d) Disk space runs out
+121) What is a Translation Lookaside Buffer (TLB)?
+1) + a) A cache for page table entries
+2) - b) A secondary storage device
+3) - c) A file system component
+4) - d) A disk scheduling algorithm
+122) A file system is responsible for:
+1) + a) Managing files and directories
+2) - b) Controlling CPU scheduling
+3) - c) Allocating memory dynamically
+4) - d) Handling process synchronization
+123) Which of the following security attacks involves pretending to be another user?
+1) - a) Phishing
+2) + b) Spoofing
+3) - c) DDoS Attack
+4) - d) Fragmentation Attack
+124) Which of the following is NOT a file attribute?
+1) - a) File Name
+2) - b) File Size
+3) + c) CPU Scheduling Priority
+4) - d) File Permissions
+125) The operating system service that allows a user to execute a program is
+1) - a) File Management
+2) + b) Program Execution
+3) - c) Security
+4) - d) I/O Operation
+126) Which operating system service is responsible for handling input and output operations
+1) - a) Process Management
+2) - b) Memory Management
+3) + c) I/O Operation
+4) - d) File System Management
+127) The service that protects unauthorized access to programs and data is:
+1) - a) File Management
+2) + b) Security
+3) - c) Process Scheduling
+4) - d) Deadlock Prevention
+128) Which operating system service keeps track of system and user files?
+1) - a) Process Control
+2) + b) File Management
+3) - c) Memory Management
+4) - d) I/O Operation
+129) The service responsible for preventing and resolving deadlocks in an operating system is called:
+1) + a) Deadlock Handling
+ الصفحة 13 / 19
+الجمهورية اليمنية
+جامعة صنعاء
+مركز الاختبارات الالكترونية
+2) - b) Process Scheduling
+3) - c) Memory Allocation
+4) - d) File Management
+130) Which operating system service allows multiple users to access files simultaneously?
+1) + a) File Sharing
+2) - b) I/O Management
+3) - c) Virtual Memory
+4) - d) Job Scheduling
+131) Which system program is responsible for translating source code into machine code?
+1) + a) Compiler
+2) - b) Linker
+3) - c) Loader
+4) - d) Interpreter
+132) The process of allocating CPU time to various processes is called:
+1) - a) I/O Scheduling
+2) + b) Process Scheduling
+3) - c) Memory Paging
+4) - d) Deadlock Prevention
+133) Which of the following OS services handles inter-process communication?
+1) - a) File Management
+2) + b) Process Synchronization
+3) - c) Networking
+4) - d) Program Execution
+134) The main role of the command interpreter is to:
+1) - a) Manage memory
+2) + b) Execute user commands
+3) - c) Allocate disk space
+4) - d) Handle network requests
+135) he operating system service that loads a program into memory for execution is called:
+1) - a) File Management
+2) - b) Memory Management
+3) + c) Program Loader
+4) - d) Device Management
+136) Which OS service is responsible for handling interrupts?
+1) - a) Memory Management
+2) + b) Interrupt Handling System
+3) - c) CPU Scheduling
+4) - d) File System Management
+137) The primary role of the OS service "Virtual Memory" is to:
+1) - a) Enable processes to run on multiple processors
+2) + b) Simulate more memory than physically available
+3) - c) Schedule CPU processes
+4) - d) Provide a graphical interface
+138) Which of the following is the main responsibility of the OS service "I/O Management"?
+1) - a) Allocating CPU time
+2) + b) Managing device communication and data transfer
+3) - c) Organizing files into directories
+4) - d) Handling virtual memory page
+139) The operating system service "File Management" includes:
+ الصفحة 14 / 19
+الجمهورية اليمنية
+جامعة صنعاء
+مركز الاختبارات الالكترونية
+1) + a) Access control, file storage, and directory structures
+2) - b) Process scheduling and memory allocation
+3) - c) Virtual memory management
+4) - d) I/O buffering and paging
+140) Which of the following OS services handles error detection and management?
+1) - a) Device Management
+2) - b) File Management
+3) - c) Process Management
+4) + d) Error Handling
+141) Which service is required for an operating system to handle system calls and user requests?
+1) - a) Interrupt Handling
+2) + b) Kernel Services
+3) - c) Memory Allocation
+4) - d) File Handling
+142) The operating system service that helps in managing the allocation and deallocation of resources to running
+processes is called:
+1) - a) Memory Management
+2) + b) Resource Allocation
+3) - c) Process Management
+4) - d) Device Management
+143) Which OS service is responsible for ensuring that no process exceeds its allocated resources?
+1) - a) Process Scheduling
+2) + b) Memory Protection
+3) - c) File Management
+4) - d) Deadlock Prevention
+144) Which service of the operating system is used to provide a user-friendly interface?
+1) + a) User Interface Management
+2) - b) File Management
+3) - c) Network Management
+4) - d) Process Synchronization
+145) Which service is responsible for tracking system resources, such as CPU usage and disk space?
+1) - a) Resource Allocation
+2) + b) Accounting
+3) - c) File Management
+4) - d) Process Scheduling
+146) The operating system service "Security" is responsible for:
+1) - a) Allocating CPU time to processes
+2) + b) Protecting the system and user data from unauthorized access
+3) - c) Scheduling the execution of user programs
+4) - d) Managing I/O devices and data transfers
+147) Which of the following is NOT a function of an operating system?
+1) - a) Managing hardware resources
+2) - b) Providing user interface
+3) - c) Executing user programs
+4) + d) Compiling application programs
+148) The operating system service that maintains detailed records of system usage for performance monitoring is:
+1) + a) Accounting
+2) - b) Logging
+3) - c) Security
+ الصفحة 15 / 19
+الجمهورية اليمنية
+جامعة صنعاء
+مركز الاختبارات الالكترونية
+4) - d) File Management
+149) Which of the following is NOT an operating system service?
+1) - a) Process Management
+2) - b) Memory Management
+3) + c) Network Browsing
+4) - d) File System Management
+150) In a file system, a hard link:
+1) + a) Points directly to the file’s inode
+2) - b) Creates a duplicate copy of a file
+3) - c) Stores metadata separately from the file
+4) - d) Provides network file access
+151) What does the OS use to manage concurrent processes effectively?
+1) + a) Thread Synchronization
+2) - b) Virtual Memory
+3) - c) I/O Buffering
+4) - d) Deadlock Detection
+152) The service that manages hardware communication and control is:
+1) + a) Device Management
+2) - b) File Management
+3) - c) Memory Allocation
+4) - d) CPU Scheduling
+153) The process of swapping data between RAM and disk storage when memory is full is called:
+1) + a) Virtual Memory
+2) - b) File Management
+3) - c) I/O Scheduling
+4) - d) Deadlock Prevention
+154) Which OS service is used for organizing files into directories?
+1) + a) File System Management
+2) - b) Process Scheduling
+3) - c) I/O Buffering
+4) - d) Memory Paging
+155) A user interface that allows typing commands for execution is called:
+1) - a) Graphical User Interface (GUI)
+2) + b) Command Line Interface (CLI)
+3) - c) Process Scheduler
+4) - d) File Manager
+156) Which operating system service manages the execution of system-level programs and software utilities?
+1) + a) Program Execution
+2) - b) System Resource Allocation
+3) - c) Network Management
+4) - d) Security
+157) The OS service that ensures that the system runs efficiently even with multiple programs running
+concurrently is called:
+1) + a) Process Scheduling
+2) - b) Memory Management
+3) - c) Virtual Memory
+4) - d) Device Management
+158) The OS service "Network Management" is responsible for:
+1) - a) Managing CPU resources
+ الصفحة 16 / 19
+الجمهورية اليمنية
+جامعة صنعاء
+مركز الاختبارات الالكترونية
+2) + b) Controlling access to networked resources
+3) - c) File storage and retrieval
+4) - d) Interrupt handling
+159) Which OS service is responsible for maintaining system logs and audit trails for security purposes?
+1) - a) Process Management
+2) - b) File Management
+3) + c) Security
+4) - d) Accounting
+160) The OS service responsible for allocating memory space for programs and managing the memory hierarchy
+is:
+1) - a) I/O Management
+2) + b) Memory Management
+3) - c) Process Management
+4) - d) File Management
+161) In a multithreaded environment, multiple threads within the same process:
+1) + a) Share the same memory space and resources
+2) - b) Have separate memory spaces
+3) - c) Cannot communicate with each other
+4) - d) Run on different processors exclusively
+162) Which of the following OS services prevents multiple users from interfering with each other’s activities on a
+shared system?
+1) - a) Memory Protection
+2) + b) Process Synchronization
+3) - c) Deadlock Prevention
+4) - d) Virtual Memory
+163) The primary purpose of synchronization in multithreading is to:
+1) + a) Prevent processes from interfering with each other
+2) - b) Increase the number of threads running concurrently
+3) - c) Allow multiple threads to access the same memory space without errors
+4) - d) Assign resources to threads in a round-robin fashion
+164) Which of the following is an advantage of multithreading?
+1) + a) Better resource utilization by sharing resources among multiple threads
+2) - b) Increased memory requirements for each thread
+3) - c) Less complexity in process scheduling
+4) - d) Slower execution due to thread synchronization
+165) What is a "thread pool"?
+1) + a) A collection of pre-created threads ready to execute tasks
+2) - b) A set of resources allocated for a single thread
+3) - c) A mechanism for controlling deadlocks
+4) - d) A way to increase the number of threads in a process
+166) What is the main disadvantage of using a large number of threads in a system?
+1) + a) Increased overhead due to context switching and synchronization
+2) - b) More efficient use of memory
+3) - c) Improved CPU utilization
+4) - d) Easier process management
+167) What is the function of the "join()" method in thread management?
+1) + a) It makes the calling thread wait for the completion of another thread
+2) - b) It starts the execution of a thread
+3) - c) It terminates a running thread
+ الصفحة 17 / 19
+الجمهورية اليمنية
+جامعة صنعاء
+مركز الاختبارات الالكترونية
+4) - d) It ensures that threads access shared resources in a safe manner
+168) Which of the following is true about "parallelism" in multithreading?
+1) + a) It refers to executing multiple threads concurrently on multiple processors
+2) - b) It is the same as concurrency
+3) - c) It is limited to single-core processors
+4) - d) It eliminates the need for synchronization
+169) Which thread scheduling algorithm prioritizes threads based on their importance and deadlines?
+1) - a) Round Robin
+2) + b) Priority Scheduling
+3) - c) First Come First Serve (FCFS)
+4) - d) Shortest Job First (SJF)
+170) Which of the following is a key advantage of multithreading in an operating system?
+1) - a) Reduced memory consumption
+2) + b) More efficient CPU usage
+3) - c) Increased disk space utilization
+4) - d) Easier process management
+171) In multithreading, what is "context switching"?
+1) - a) Switching between different tasks in a process
+2) + b) The process of switching between different threads of the same process
+3) - c) Changing the thread execution from one processor to another
+4) - d) Assigning new priorities to threads
+172) Which of the following is a disadvantage of using threads in an operating system?
+1) - a) Difficulty in sharing resources between threads
+2) + b) Increased complexity due to synchronization and context switching
+3) - c) Threads are unable to share data
+4) - d) Threads are unable to execute concurrently
+173) What is the primary role of an operating system?
+1) + a) Manage computer hardware and software resources
+2) - b) Provide entertainment features
+3) - c) Act as an antivirus program
+4) - d) Optimize internet speed
+174) Which of the following is an example of a multi-user operating system?
+1) - a) Windows 10
+2) + b) Linux
+3) - c) MS-DOS
+4) - d) macOS
+175) What is a "kernel" in an operating system?
+1) + a) A core part of the OS that manages system resources
+2) - b) A temporary storage unit in the CPU
+3) - c) A type of system software used for gaming
+4) - d) A utility software for disk management
+176) In which OS type does the user interact directly with the hardware?
+1) - a) Real-time OS
+2) - b) Network OS
+3) - c) Embedded OS
+4) + d) Bare-metal OS
+177) Which operating system component is responsible for process scheduling?
+1) - a) File Manager
+2) - b) Memory Manager
+ الصفحة 18 / 19
+الجمهورية اليمنية
+جامعة صنعاء
+مركز الاختبارات الالكترونية
+3) + c) CPU Scheduler
+4) - d) Device Driver
+178) The "Device Management" service in an OS is responsible for:
+1) - a) Allocating memory blocks for programs
+2) - b) Scheduling processes for execution
+3) + c) Controlling hardware devices and managing input/output operations
+4) - d) Keeping track of files and directories
+179) What does "multicore processing" allow in relation to multithreading?
+1) + a) It allows multiple threads to run on different cores concurrently, improving performance
+2) - b) It allows threads to run only on a single core
+3) - c) It reduces the number of threads created in an application
+4) - d) It prevents threads from accessing shared memory
+180) Which of the following is an example of a multithreaded application?
+1) + a) A web browser that loads different web pages simultaneously
+2) - b) A text editor that edits one document at a time
+3) - c) A database management system with no parallel queries
+4) - d) A compiler that compiles one source code file sequentially
+Powered by TCPDF (www.tcpdf.org)
+ الصفحة 19 / 19

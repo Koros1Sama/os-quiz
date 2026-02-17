@@ -1,0 +1,19 @@
+﻿================================================================================
+DETERMINISTIC ANSWER KEY
+python : Traceback (most recent call last):
+At line:1 char:1
++ python build_answer_key.py 2>&1 | Out-File -FilePath "answer_key_outp ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Traceback (most recent call last)::String) [], RemoteEx 
+   ception
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+  File "D:\\u0627\u0644\u062c\u0627\u0645\u0639\u0629\anti final\Operating 
+systems\build_answer_key.py", line 80, in <module>
+    print("For each question: scan options for the TRIGGER WORD \u2192 that's the answer")
+  File "C:\Users\KorosSama\AppData\Local\Programs\Python\Python311\Lib\encodings\cp1252.py", line 
+19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\u2192' in position 53: character maps 
+to <undefined>

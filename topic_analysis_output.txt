@@ -1,0 +1,421 @@
+TOPIC ANALYSIS RESULTS
+======================================================================
+
+======================================================================
+TOPIC: OS_BASICS (47 questions)
+======================================================================
+Most common words in correct answers:
+  'system': 6/47 (13%)
+  'the': 5/47 (11%)
+  'and': 5/47 (11%)
+  'resources': 5/47 (11%)
+  'hardware': 4/47 (9%)
+  'access': 4/47 (9%)
+  'file': 4/47 (9%)
+  'all': 3/47 (6%)
+  'software': 3/47 (6%)
+  'program': 3/47 (6%)
+  'execution': 3/47 (6%)
+  'management': 3/47 (6%)
+  'process': 3/47 (6%)
+  'above': 2/47 (4%)
+  'kernel': 2/47 (4%)
+
+Question-by-question patterns:
+  Q1: [ALL_OF] -> all of the mentioned
+  Q26: [LONGEST, ALL_OF, MOST_DETAILED] -> All of the above
+  Q31: [ALL_OF, MOST_DETAILED] -> All above
+  Q32: [NO_STRUCTURAL] -> Kernel
+  Q33: [LONGEST, HAS_PARENS, MOST_DETAILED] -> RTOS (Real-Time Operating System)
+  Q34: [LONGEST, MOST_DETAILED] -> Managing hardware and software resources
+  Q38: [MOST_DETAILED] -> Web Browsing
+  Q41: [LONGEST, MOST_DETAILED] -> A collection of software that manages hardware resources
+  Q42: [MOST_DETAILED] -> Windows 10
+  Q44: [NO_STRUCTURAL] -> Compiling Programs
+  Q45: [MOST_DETAILED] -> Real-Time OS
+  Q49: [NO_STRUCTURAL] -> Controls hardware devices
+  Q51: [MOST_DETAILED] -> Compiler OS
+  Q54: [MOST_DETAILED] -> Windows
+  Q56: [NO_STRUCTURAL] -> UNIX
+  Q57: [MOST_DETAILED] -> To handle events like I/O completion
+  Q60: [MOST_DETAILED] -> Load the operating system into memory
+  Q61: [NO_STRUCTURAL] -> A program in execution
+  Q86: [NO_STRUCTURAL] -> Preventing unauthorized access
+  Q100: [MOST_DETAILED] -> FALSE.
+  Q115: [MOST_DETAILED] -> TRUE.
+  Q125: [MOST_DETAILED] -> Program Execution
+  Q126: [NO_STRUCTURAL] -> I/O Operation
+  Q128: [MOST_DETAILED] -> File Management
+  Q130: [MOST_DETAILED] -> File Sharing
+  Q133: [MOST_DETAILED] -> Process Synchronization
+  Q136: [MOST_DETAILED] -> Interrupt Handling System
+  Q138: [LONGEST, MOST_DETAILED] -> Managing device communication and data transfer
+  Q139: [LONGEST, HAS_COMMAS, MOST_DETAILED] -> Access control, file storage, and directory structures
+  Q140: [MOST_DETAILED] -> Error Handling
+  Q141: [MOST_DETAILED] -> Kernel Services
+  Q142: [MOST_DETAILED] -> Resource Allocation
+  Q143: [MOST_DETAILED] -> Memory Protection
+  Q144: [MOST_DETAILED] -> User Interface Management
+  Q146: [LONGEST, MOST_DETAILED] -> Protecting the system and user data from unauthorized access
+  Q147: [MOST_DETAILED] -> Compiling application programs
+  Q148: [NO_STRUCTURAL] -> Accounting
+  Q149: [NO_STRUCTURAL] -> Network Browsing
+  Q154: [MOST_DETAILED] -> File System Management
+  Q156: [NO_STRUCTURAL] -> Program Execution
+  Q157: [MOST_DETAILED] -> Process Scheduling
+  Q158: [LONGEST, MOST_DETAILED] -> Controlling access to networked resources
+  Q159: [NO_STRUCTURAL] -> Security
+  Q162: [MOST_DETAILED] -> Process Synchronization
+  Q173: [LONGEST, MOST_DETAILED] -> Manage computer hardware and software resources
+  Q174: [NO_STRUCTURAL] -> Linux
+  Q175: [LONGEST, MOST_DETAILED] -> A core part of the OS that manages system resources
+
+======================================================================
+TOPIC: PROCESS (29 questions)
+======================================================================
+Most common words in correct answers:
+  'process': 9/29 (31%)
+  'the': 7/29 (24%)
+  'threads': 5/29 (17%)
+  'and': 4/29 (14%)
+  'multiple': 4/29 (14%)
+  'create': 3/29 (10%)
+  'same': 3/29 (10%)
+  'resources': 3/29 (10%)
+  'switching': 3/29 (10%)
+  'different': 3/29 (10%)
+  'all': 2/29 (7%)
+  'wait': 2/29 (7%)
+  'true': 2/29 (7%)
+  'cpu': 2/29 (7%)
+  'utilization': 2/29 (7%)
+
+Question-by-question patterns:
+  Q18: [LONGEST, ALL_OF, MOST_DETAILED] -> all of the mentioned
+  Q19: [MOST_DETAILED] -> Wait and signal
+  Q23: [MOST_DETAILED] -> TRUE.
+  Q24: [HAS_PARENS, MOST_DETAILED] -> pthread_create()
+  Q27: [NO_STRUCTURAL] -> Multicore processing
+  Q28: [NO_STRUCTURAL] -> Improved CPU utilization
+  Q30: [MOST_DETAILED] -> Critical section.
+  Q37: [HAS_COMMAS, MOST_DETAILED] -> Process ID, Program Counter, Process State
+  Q40: [MOST_DETAILED] -> To create a new process
+  Q62: [MOST_DETAILED] -> Queued
+  Q65: [NO_STRUCTURAL] -> Create a new process
+  Q96: [NO_STRUCTURAL] -> semaphore
+  Q98: [ALL_OF, MOST_DETAILED] -> All of Above
+  Q101: [NO_STRUCTURAL] -> A lightweight process
+  Q102: [MOST_DETAILED] -> Share the same process resources
+  Q112: [LONGEST, MOST_DETAILED] -> A data structure that stores information about a process
+  Q114: [MOST_DETAILED] -> TRUE.
+  Q161: [LONGEST, MOST_DETAILED] -> Share the same memory space and resources
+  Q163: [NO_STRUCTURAL] -> Prevent processes from interfering with each other
+  Q164: [LONGEST, MOST_DETAILED] -> Better resource utilization by sharing resources among multi
+  Q165: [NO_STRUCTURAL] -> A collection of pre-created threads ready to execute tasks
+  Q166: [LONGEST, MOST_DETAILED] -> Increased overhead due to context switching and synchronizat
+  Q167: [LONGEST, MOST_DETAILED] -> It makes the calling thread wait for the completion of anoth
+  Q168: [LONGEST, MOST_DETAILED] -> It refers to executing multiple threads concurrently on mult
+  Q170: [MOST_DETAILED] -> More efficient CPU usage
+  Q171: [LONGEST, MOST_DETAILED] -> The process of switching between different threads of the sa
+  Q172: [LONGEST, MOST_DETAILED] -> Increased complexity due to synchronization and context swit
+  Q179: [LONGEST, HAS_COMMAS, MOST_DETAILED] -> It allows multiple threads to run on different cores concurr
+  Q180: [NO_STRUCTURAL] -> A web browser that loads different web pages simultaneously
+
+======================================================================
+TOPIC: MEMORY (28 questions)
+======================================================================
+Most common words in correct answers:
+  'memory': 8/28 (29%)
+  'page': 6/28 (21%)
+  'paging': 3/28 (11%)
+  'than': 3/28 (11%)
+  'when': 3/28 (11%)
+  'pages': 3/28 (11%)
+  'and': 2/28 (7%)
+  'the': 2/28 (7%)
+  'cpu': 2/28 (7%)
+  'physical': 2/28 (7%)
+  'faults': 2/28 (7%)
+  'disk': 2/28 (7%)
+  'used': 2/28 (7%)
+  'process': 2/28 (7%)
+  'swapping': 2/28 (7%)
+
+Question-by-question patterns:
+  Q12: [LONGEST, MOST_DETAILED] -> Base address of each frame and corresponding page number
+  Q13: [MOST_DETAILED] -> Multiprogramming
+  Q15: [LONGEST, ALL_OF, MOST_DETAILED] -> All of the above
+  Q25: [LONGEST, MOST_DETAILED] -> Allocate and deallocate memory efficiently
+  Q36: [NO_STRUCTURAL] -> Paging
+  Q39: [NO_STRUCTURAL] -> Excessive paging
+  Q66: [NO_STRUCTURAL] -> Paging
+  Q67: [MOST_DETAILED] -> External Fragmentation
+  Q68: [MOST_DETAILED] -> CPU Scheduling
+  Q69: [LONGEST, MOST_DETAILED] -> Allows execution of programs larger than physical memory
+  Q70: [MOST_DETAILED] -> Page faults occur frequently
+  Q85: [LONGEST, MOST_DETAILED] -> Allow devices to transfer data without CPU intervention
+  Q91: [LONGEST, MOST_DETAILED] -> Part of the hard disk used as an extension of RAM
+  Q92: [MOST_DETAILED] -> Causes thrashing when overloaded
+  Q93: [LONGEST, MOST_DETAILED] -> When a process tries to access a page that is not in memory
+  Q107: [HAS_PARENS] -> Least Recently Used (LRU)
+  Q108: [NO_STRUCTURAL] -> Load pages only when needed
+  Q110: [NO_STRUCTURAL] -> Swapping
+  Q113: [LONGEST, MOST_DETAILED] -> To provide additional memory by using disk space
+  Q117: [NO_STRUCTURAL] -> Reduce page faults
+  Q118: [HAS_PARENS] -> Optimal Page Replacement (OPT)
+  Q119: [LONGEST, MOST_DETAILED] -> Keep track of pages in physical memory
+  Q120: [LONGEST, MOST_DETAILED] -> A process spends more time swapping pages than executing
+  Q121: [LONGEST, MOST_DETAILED] -> A cache for page table entries
+  Q135: [MOST_DETAILED] -> Program Loader
+  Q137: [NO_STRUCTURAL] -> Simulate more memory than physically available
+  Q153: [MOST_DETAILED] -> Virtual Memory
+  Q160: [MOST_DETAILED] -> Memory Management
+
+======================================================================
+TOPIC: OTHER (24 questions)
+======================================================================
+Most common words in correct answers:
+  'process': 4/24 (17%)
+  'cpu': 4/24 (17%)
+  'utilization': 2/24 (8%)
+  'kernel': 2/24 (8%)
+  'user': 2/24 (8%)
+
+Question-by-question patterns:
+  Q3: [LONGEST, MOST_DETAILED] -> when process is scheduled to runin the CPU
+  Q11: [NO_STRUCTURAL] -> A Process
+  Q21: [NO_STRUCTURAL] -> Cpu bound process.
+  Q22: [MOST_DETAILED] -> FALSE.
+  Q29: [MOST_DETAILED] -> CPU utilization
+  Q43: [NO_STRUCTURAL] -> Kernel
+  Q46: [NO_STRUCTURAL] -> Increases CPU utilization
+  Q48: [MOST_DETAILED] -> Multi-User OS
+  Q50: [NO_STRUCTURAL] -> Linux
+  Q55: [NO_STRUCTURAL] -> Process Scheduler
+  Q58: [MOST_DETAILED] -> Multiprogramming
+  Q59: [NO_STRUCTURAL] -> Shell
+  Q90: [HAS_PARENS] -> Earliest Deadline First (EDF)
+  Q95: [NO_STRUCTURAL] -> Race condition
+  Q97: [NO_STRUCTURAL] -> logical address
+  Q109: [MOST_DETAILED] -> Data Section
+  Q111: [LONGEST, MOST_DETAILED] -> kernel is made of various modules which can not be loaded in
+  Q131: [MOST_DETAILED] -> Compiler
+  Q134: [MOST_DETAILED] -> Execute user commands
+  Q145: [NO_STRUCTURAL] -> Accounting
+  Q151: [MOST_DETAILED] -> Thread Synchronization
+  Q152: [MOST_DETAILED] -> Device Management
+  Q155: [HAS_PARENS, MOST_DETAILED] -> Command Line Interface (CLI)
+  Q176: [MOST_DETAILED] -> Bare-metal OS
+
+======================================================================
+TOPIC: SCHEDULING (17 questions)
+======================================================================
+Most common words in correct answers:
+  'first': 6/17 (35%)
+  'the': 5/17 (29%)
+  'time': 4/17 (24%)
+  'process': 3/17 (18%)
+  'job': 3/17 (18%)
+  'shortest': 3/17 (18%)
+  'cpu': 2/17 (12%)
+  'ready': 2/17 (12%)
+  'queue': 2/17 (12%)
+  'come': 2/17 (12%)
+  'serve': 2/17 (12%)
+  'response': 2/17 (12%)
+  'scheduler': 2/17 (12%)
+  'next': 2/17 (12%)
+  'sjn': 2/17 (12%)
+
+Question-by-question patterns:
+  Q2: [NO_STRUCTURAL] -> Increase CPU Utilization
+  Q5: [LONGEST, MOST_DETAILED] -> It selects which process has to be brought into the ready qu
+  Q20: [LONGEST, MOST_DETAILED] -> The burst time of the first job is the highest among all
+  Q35: [MOST_DETAILED] -> First Come First Serve
+  Q47: [MOST_DETAILED] -> Minimize response time
+  Q52: [MOST_DETAILED] -> Process Scheduler
+  Q53: [MOST_DETAILED] -> Quick response time
+  Q63: [HAS_PARENS] -> Shortest Job Next (SJN)
+  Q64: [HAS_PARENS] -> Round Robin (RR)
+  Q83: [HAS_PARENS, MOST_DETAILED] -> Shortest Seek Time First (SSTF)
+  Q88: [HAS_PARENS] -> Round Robin (RR)
+  Q89: [LONGEST, MOST_DETAILED] -> Interrupted and moved to the ready queue
+  Q105: [HAS_PARENS, MOST_DETAILED] -> First Come First Serve (FCFS)
+  Q106: [HAS_PARENS] -> Shortest Job Next (SJN)
+  Q132: [MOST_DETAILED] -> Process Scheduling
+  Q169: [NO_STRUCTURAL] -> Priority Scheduling
+  Q177: [MOST_DETAILED] -> CPU Scheduler
+
+======================================================================
+TOPIC: FILE_SYSTEM (13 questions)
+======================================================================
+Most common words in correct answers:
+  'file': 5/13 (38%)
+  'files': 3/13 (23%)
+  'metadata': 3/13 (23%)
+  'and': 3/13 (23%)
+  'about': 2/13 (15%)
+  'ntfs': 2/13 (15%)
+  'store': 2/13 (15%)
+  'the': 2/13 (15%)
+
+Question-by-question patterns:
+  Q6: [LONGEST, MOST_DETAILED] -> Organize files in a structured manner
+  Q8: [LONGEST, MOST_DETAILED] -> Stores metadata about a file
+  Q9: [MOST_DETAILED] -> Windows OS
+  Q10: [MOST_DETAILED] -> ext4
+  Q16: [LONGEST, MOST_DETAILED] -> Prevents file corruption by recording changes before applyin
+  Q17: [NO_STRUCTURAL] -> NTFS
+  Q71: [MOST_DETAILED] -> NTFS
+  Q72: [MOST_DETAILED] -> Store metadata about files
+  Q73: [LONGEST, MOST_DETAILED] -> Identifies the file type and associated programs
+  Q75: [LONGEST, HAS_COMMAS, MOST_DETAILED] -> Store file permissions, size, and metadata
+  Q122: [MOST_DETAILED] -> Managing files and directories
+  Q124: [MOST_DETAILED] -> CPU Scheduling Priority
+  Q150: [NO_STRUCTURAL] -> Points directly to the file’s inode
+
+======================================================================
+TOPIC: DEADLOCK (12 questions)
+======================================================================
+Most common words in correct answers:
+  'wait': 3/12 (25%)
+  'circular': 3/12 (25%)
+  'and': 2/12 (17%)
+  'allocation': 2/12 (17%)
+  'deadlock': 2/12 (17%)
+
+Question-by-question patterns:
+  Q4: [LONGEST, MOST_DETAILED] -> each process is blocked and will remain so forever
+  Q7: [NO_STRUCTURAL] -> Contiguous Allocation
+  Q14: [NO_STRUCTURAL] -> Unused memory within allocated space
+  Q74: [MOST_DETAILED] -> Indexed Allocation
+  Q76: [LONGEST, MOST_DETAILED] -> Mutual Exclusion, Hold and Wait, No Preemption, Circular Wai
+  Q77: [NO_STRUCTURAL] -> Avoiding Circular Wait
+  Q78: [MOST_DETAILED] -> Helps identify circular waits
+  Q79: [ALL_OF, MOST_DETAILED] -> All of the above
+  Q80: [MOST_DETAILED] -> Deadlock Avoidance
+  Q99: [MOST_DETAILED] -> FALSE.
+  Q116: [MOST_DETAILED] -> Compaction
+  Q129: [MOST_DETAILED] -> Deadlock Handling
+
+======================================================================
+TOPIC: IO_DEVICE (5 questions)
+======================================================================
+Most common words in correct answers:
+  'operations': 2/5 (40%)
+
+Question-by-question patterns:
+  Q81: [MOST_DETAILED] -> Hard Disk
+  Q82: [LONGEST, MOST_DETAILED] -> Increase the efficiency of I/O operations
+  Q84: [NO_STRUCTURAL] -> Keyboard
+  Q94: [MOST_DETAILED] -> Ready State
+  Q178: [LONGEST, MOST_DETAILED] -> Controlling hardware devices and managing input/output opera
+
+======================================================================
+TOPIC: SECURITY (5 questions)
+======================================================================
+Most common words in correct answers:
+  'security': 2/5 (40%)
+
+Question-by-question patterns:
+  Q87: [MOST_DETAILED] -> Blocks unauthorized network access
+  Q103: [NO_STRUCTURAL] -> Passwords
+  Q104: [LONGEST, MOST_DETAILED] -> File and data security
+  Q123: [NO_STRUCTURAL] -> Spoofing
+  Q127: [NO_STRUCTURAL] -> Security
+
+======================================================================
+QUESTION->ANSWER KEYWORD MAPPING
+When question contains X, correct answer often contains Y
+======================================================================
+
+When question mentions 'NOT':
+  -> answer contains 'browsing': 2 times
+  -> answer contains 'compiling': 2 times
+  -> answer contains 'programs': 2 times
+  -> answer contains 'cpu': 2 times
+  -> answer contains 'scheduling': 2 times
+
+When question mentions 'advantage':
+  -> answer contains 'cpu': 3 times
+  -> answer contains 'utilization': 3 times
+  -> answer contains 'increased': 2 times
+  -> answer contains 'due': 2 times
+  -> answer contains 'context': 2 times
+  -> answer contains 'switching': 2 times
+  -> answer contains 'and': 2 times
+  -> answer contains 'synchronization': 2 times
+
+When question mentions 'deadlock':
+  -> answer contains 'wait': 3 times
+  -> answer contains 'circular': 3 times
+  -> answer contains 'and': 2 times
+
+When question mentions 'example':
+  -> answer contains 'web': 2 times
+
+When question mentions 'file system':
+  -> answer contains 'file': 4 times
+  -> answer contains 'allocation': 2 times
+  -> answer contains 'metadata': 2 times
+  -> answer contains 'ntfs': 2 times
+  -> answer contains 'and': 2 times
+
+When question mentions 'memory':
+  -> answer contains 'memory': 6 times
+  -> answer contains 'the': 2 times
+  -> answer contains 'paging': 2 times
+  -> answer contains 'cpu': 2 times
+  -> answer contains 'than': 2 times
+  -> answer contains 'disk': 2 times
+
+When question mentions 'os service':
+  -> answer contains 'file': 4 times
+  -> answer contains 'program': 3 times
+  -> answer contains 'management': 3 times
+  -> answer contains 'process': 3 times
+  -> answer contains 'system': 3 times
+  -> answer contains 'memory': 3 times
+  -> answer contains 'and': 3 times
+  -> answer contains 'access': 3 times
+
+When question mentions 'page':
+  -> answer contains 'page': 4 times
+  -> answer contains 'memory': 2 times
+
+When question mentions 'process state':
+
+When question mentions 'purpose':
+  -> answer contains 'memory': 4 times
+  -> answer contains 'and': 3 times
+  -> answer contains 'load': 2 times
+  -> answer contains 'the': 2 times
+  -> answer contains 'programs': 2 times
+  -> answer contains 'file': 2 times
+
+When question mentions 'scheduling':
+  -> answer contains 'first': 5 times
+  -> answer contains 'shortest': 3 times
+  -> answer contains 'cpu': 2 times
+  -> answer contains 'process': 2 times
+  -> answer contains 'the': 2 times
+  -> answer contains 'ready': 2 times
+  -> answer contains 'queue': 2 times
+  -> answer contains 'come': 2 times
+
+When question mentions 'thread':
+  -> answer contains 'the': 7 times
+  -> answer contains 'threads': 5 times
+  -> answer contains 'process': 4 times
+  -> answer contains 'multiple': 4 times
+  -> answer contains 'same': 3 times
+  -> answer contains 'resources': 3 times
+  -> answer contains 'and': 3 times
+  -> answer contains 'switching': 3 times
+
+======================================================================
+STRUCTURAL PATTERN ACCURACY
+======================================================================
+  longest: 86/180 = 47.8%
+  most_caps: 55/180 = 30.6%
+  unique_parens: 1/1 = 100.0%

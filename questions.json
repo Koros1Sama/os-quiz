@@ -1,0 +1,3914 @@
+[
+  {
+    "id": 1,
+    "text": "What is operating system",
+    "options": [
+      {
+        "text": "collection of programs that manages hardware resources<",
+        "correct": false
+      },
+      {
+        "text": "system service provider to the application programs",
+        "correct": false
+      },
+      {
+        "text": "link to interface the hardware and application programs",
+        "correct": false
+      },
+      {
+        "text": "all of the mentioned",
+        "correct": true
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "text": "Why is CPU scheduling done?",
+    "options": [
+      {
+        "text": "Decrease CPU Utilization",
+        "correct": false
+      },
+      {
+        "text": "Decrease Cost",
+        "correct": false
+      },
+      {
+        "text": "Increase CPU Utilization",
+        "correct": true
+      },
+      {
+        "text": "None of the mentioned",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "text": "What is the ready state of a process?",
+    "options": [
+      {
+        "text": "when process is scheduled to runin the CPU",
+        "correct": true
+      },
+      {
+        "text": "when process is wating in the Job Queue",
+        "correct": false
+      },
+      {
+        "text": "when process is using the CPU",
+        "correct": false
+      },
+      {
+        "text": "none of the mentioned",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "text": "A set of processes is deadlock if",
+    "options": [
+      {
+        "text": "each process is terminatedُ",
+        "correct": false
+      },
+      {
+        "text": "all processes are trying to kill each other",
+        "correct": false
+      },
+      {
+        "text": "each process is blocked and will remain so forever",
+        "correct": true
+      },
+      {
+        "text": "none of the mentioned",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "text": "What is a long-term scheduler",
+    "options": [
+      {
+        "text": "It selects which process has to be brought into the ready queue",
+        "correct": true
+      },
+      {
+        "text": "It selects which process has to be executed next and allocates CPU",
+        "correct": false
+      },
+      {
+        "text": "It selects which process to remove from memory by swapping",
+        "correct": false
+      },
+      {
+        "text": "None of these",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "text": "The primary purpose of a directory structure is to:",
+    "options": [
+      {
+        "text": "a) Store metadata about files",
+        "correct": false
+      },
+      {
+        "text": "b) Allocate disk space efficiently",
+        "correct": false
+      },
+      {
+        "text": "c) Organize files in a structured manner",
+        "correct": true
+      },
+      {
+        "text": "d) Control process execution",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "text": "Which of the following file allocation methods suffers from external fragmentation",
+    "options": [
+      {
+        "text": "a) Contiguous Allocation",
+        "correct": true
+      },
+      {
+        "text": "b) Linked Allocation",
+        "correct": false
+      },
+      {
+        "text": "c) Indexed Allocation",
+        "correct": false
+      },
+      {
+        "text": "d) None of the above",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "text": "The inode in a UNIX file system",
+    "options": [
+      {
+        "text": "a) Stores metadata about a file",
+        "correct": true
+      },
+      {
+        "text": "b) Allocates CPU resources",
+        "correct": false
+      },
+      {
+        "text": "c) Schedules processes",
+        "correct": false
+      },
+      {
+        "text": "d) Handles file encryption",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 9,
+    "text": "The FAT (File Allocation Table) file system is mainly used in",
+    "options": [
+      {
+        "text": "a) Windows OS",
+        "correct": true
+      },
+      {
+        "text": "b) Linux OS",
+        "correct": false
+      },
+      {
+        "text": "c) macOS",
+        "correct": false
+      },
+      {
+        "text": "d) UNIX-based systems",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 10,
+    "text": "Which file system is used in Linux by default",
+    "options": [
+      {
+        "text": "a) NTFS",
+        "correct": false
+      },
+      {
+        "text": "b) FAT32",
+        "correct": false
+      },
+      {
+        "text": "c) ext4",
+        "correct": true
+      },
+      {
+        "text": "d) HFS+",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 11,
+    "text": "A program in execution is called?",
+    "options": [
+      {
+        "text": "A Paging",
+        "correct": false
+      },
+      {
+        "text": "A Process",
+        "correct": true
+      },
+      {
+        "text": "A virtual memory",
+        "correct": false
+      },
+      {
+        "text": "A Demand Page",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 12,
+    "text": "What is contained in the page table?",
+    "options": [
+      {
+        "text": "Base address of each frame and corresponding page number",
+        "correct": true
+      },
+      {
+        "text": "Memory address and corresponding page number",
+        "correct": false
+      },
+      {
+        "text": "File name and corresponding page number",
+        "correct": false
+      },
+      {
+        "text": "None of Above",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 13,
+    "text": "Which of the following is NOT a memory allocation technique?",
+    "options": [
+      {
+        "text": "a) Paging",
+        "correct": false
+      },
+      {
+        "text": "b) Segmentation",
+        "correct": false
+      },
+      {
+        "text": "c) Swapping",
+        "correct": false
+      },
+      {
+        "text": "d) Multiprogramming",
+        "correct": true
+      }
+    ]
+  },
+  {
+    "id": 14,
+    "text": "What is internal fragmentation?",
+    "options": [
+      {
+        "text": "a) Unused memory within allocated space",
+        "correct": true
+      },
+      {
+        "text": "b) Unused memory between allocated blocks",
+        "correct": false
+      },
+      {
+        "text": "c) Memory wasted due to page swapping",
+        "correct": false
+      },
+      {
+        "text": "d) Memory lost due to deadlocks",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 15,
+    "text": "Which of the following algorithms is used to place processes in memory blocks?",
+    "options": [
+      {
+        "text": "a) First Fit",
+        "correct": false
+      },
+      {
+        "text": "b) Best Fit",
+        "correct": false
+      },
+      {
+        "text": "c) Worst Fit",
+        "correct": false
+      },
+      {
+        "text": "d) All of the above",
+        "correct": true
+      }
+    ]
+  },
+  {
+    "id": 16,
+    "text": "What is the primary advantage of journaling file systems?",
+    "options": [
+      {
+        "text": "a) Prevents file corruption by recording changes before applying them",
+        "correct": true
+      },
+      {
+        "text": "b) Increases file transfer speed",
+        "correct": false
+      },
+      {
+        "text": "c) Reduces file size",
+        "correct": false
+      },
+      {
+        "text": "d) Enhances disk defragmentation",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 17,
+    "text": "Which of the following file systems supports file encryption natively?",
+    "options": [
+      {
+        "text": "a) FAT32",
+        "correct": false
+      },
+      {
+        "text": "b) NTFS",
+        "correct": true
+      },
+      {
+        "text": "c) ext2",
+        "correct": false
+      },
+      {
+        "text": "d) None of the above",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 18,
+    "text": "Components of Threads",
+    "options": [
+      {
+        "text": "Program counter",
+        "correct": false
+      },
+      {
+        "text": "Register",
+        "correct": false
+      },
+      {
+        "text": "Stack",
+        "correct": false
+      },
+      {
+        "text": "all of the mentioned",
+        "correct": true
+      }
+    ]
+  },
+  {
+    "id": 19,
+    "text": "Which of the following are two types of atomic operations performed by semaphores?",
+    "options": [
+      {
+        "text": "Wait and signal",
+        "correct": true
+      },
+      {
+        "text": "Wait and Stop",
+        "correct": false
+      },
+      {
+        "text": "Signal and Stop",
+        "correct": false
+      },
+      {
+        "text": "Release and Wait",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 20,
+    "text": "Convoy effect in FCFS happens if",
+    "options": [
+      {
+        "text": "The burst time of the first job is the highest among all",
+        "correct": true
+      },
+      {
+        "text": "The burst time of the first job is the smallest among all",
+        "correct": false
+      },
+      {
+        "text": "The burst time of all processe is the same",
+        "correct": false
+      },
+      {
+        "text": "none of the mentioned",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 21,
+    "text": "Which type of process spend more time doing computations",
+    "options": [
+      {
+        "text": "I/O bound process.",
+        "correct": false
+      },
+      {
+        "text": "Cpu bound process.",
+        "correct": true
+      },
+      {
+        "text": "Both I/O and CPU bounded processes",
+        "correct": false
+      },
+      {
+        "text": "None of the above.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 22,
+    "text": "Waiting time is amount of time to execute particular process",
+    "options": [
+      {
+        "text": "TRUE.",
+        "correct": false
+      },
+      {
+        "text": "FALSE.",
+        "correct": true
+      }
+    ]
+  },
+  {
+    "id": 23,
+    "text": "Process control block (PCB) is information Associated with each process.",
+    "options": [
+      {
+        "text": "TRUE.",
+        "correct": true
+      },
+      {
+        "text": "FALSE.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 24,
+    "text": "Which function in POSIX threads (Pthreads) creates a new thread?",
+    "options": [
+      {
+        "text": "a) pthread_create()",
+        "correct": true
+      },
+      {
+        "text": "b) thread_start()",
+        "correct": false
+      },
+      {
+        "text": "c) create_thread()",
+        "correct": false
+      },
+      {
+        "text": "d) init_thread()",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 25,
+    "text": "The main purpose of memory management is to:",
+    "options": [
+      {
+        "text": "a) Control process execution",
+        "correct": false
+      },
+      {
+        "text": "b) Optimize disk access",
+        "correct": false
+      },
+      {
+        "text": "c) Allocate and deallocate memory efficiently",
+        "correct": true
+      },
+      {
+        "text": "d) Improve CPU scheduling",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 26,
+    "text": "Which one of the following is OS services:",
+    "options": [
+      {
+        "text": "user interface",
+        "correct": false
+      },
+      {
+        "text": "program execution",
+        "correct": false
+      },
+      {
+        "text": "I/O operations",
+        "correct": false
+      },
+      {
+        "text": "All of the above",
+        "correct": true
+      }
+    ]
+  },
+  {
+    "id": 27,
+    "text": "Which type of multithreading allows multiple threads to run on multiple processors?",
+    "options": [
+      {
+        "text": "a) Single-threaded processing",
+        "correct": false
+      },
+      {
+        "text": "b) Multicore processing",
+        "correct": true
+      },
+      {
+        "text": "c) Multilevel queue processing",
+        "correct": false
+      },
+      {
+        "text": "d) FIFO scheduling",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 28,
+    "text": "The main advantage of multithreading is:",
+    "options": [
+      {
+        "text": "a) Improved CPU utilization",
+        "correct": true
+      },
+      {
+        "text": "b) Increased memory requirements",
+        "correct": false
+      },
+      {
+        "text": "c) Reduced disk access time",
+        "correct": false
+      },
+      {
+        "text": "d) Preventing deadlocks",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 29,
+    "text": "We want to keep the CPU as busy as possible, this criteria refers to as",
+    "options": [
+      {
+        "text": "Throughput",
+        "correct": false
+      },
+      {
+        "text": "CPU utilization",
+        "correct": true
+      },
+      {
+        "text": "Response time",
+        "correct": false
+      },
+      {
+        "text": "waiting time",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 30,
+    "text": "The part of the program, in which race condition can occur, is called",
+    "options": [
+      {
+        "text": "Exit section.",
+        "correct": false
+      },
+      {
+        "text": "Critical section.",
+        "correct": true
+      },
+      {
+        "text": "Remainder section.",
+        "correct": false
+      },
+      {
+        "text": "Entry section.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 31,
+    "text": "Which of the following are functions of an Operating System",
+    "options": [
+      {
+        "text": "a) Process Management",
+        "correct": false
+      },
+      {
+        "text": "b) Memory Management",
+        "correct": false
+      },
+      {
+        "text": "c) Compiler Execution",
+        "correct": false
+      },
+      {
+        "text": "d) All above",
+        "correct": true
+      }
+    ]
+  },
+  {
+    "id": 32,
+    "text": "Which of the following is the core part of an Operating System?",
+    "options": [
+      {
+        "text": "a) Shell",
+        "correct": false
+      },
+      {
+        "text": "b) Kernel",
+        "correct": true
+      },
+      {
+        "text": "c) Command Line Interface",
+        "correct": false
+      },
+      {
+        "text": "d) Device Driver",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 33,
+    "text": "Which of the following is an example of a real-time operating system?",
+    "options": [
+      {
+        "text": "a) Windows 10",
+        "correct": false
+      },
+      {
+        "text": "b) Linux Ubuntu",
+        "correct": false
+      },
+      {
+        "text": "c) RTOS (Real-Time Operating System)",
+        "correct": true
+      },
+      {
+        "text": "d) macOS",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 34,
+    "text": "What is the main function of an Operating System?",
+    "options": [
+      {
+        "text": "a) Compiling code",
+        "correct": false
+      },
+      {
+        "text": "b) Managing hardware and software resources",
+        "correct": true
+      },
+      {
+        "text": "c) Editing documents",
+        "correct": false
+      },
+      {
+        "text": "d) Running antivirus programs",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 35,
+    "text": "Which scheduling algorithm executes the process that arrives first",
+    "options": [
+      {
+        "text": "a) Round Robin",
+        "correct": false
+      },
+      {
+        "text": "b) Shortest Job Next",
+        "correct": false
+      },
+      {
+        "text": "c) First Come First Serve",
+        "correct": true
+      },
+      {
+        "text": "d) Priority Scheduling",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 36,
+    "text": "Which memory management technique divides memory into fixed-sized blocks",
+    "options": [
+      {
+        "text": "a) Paging",
+        "correct": true
+      },
+      {
+        "text": "b) Segmentation",
+        "correct": false
+      },
+      {
+        "text": "c) Contiguous Allocation",
+        "correct": false
+      },
+      {
+        "text": "d) Swapping",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 37,
+    "text": "What does a process control block (PCB) contain?",
+    "options": [
+      {
+        "text": "a) Process ID, Program Counter, Process State",
+        "correct": true
+      },
+      {
+        "text": "b) Only the process ID",
+        "correct": false
+      },
+      {
+        "text": "c) Only the memory allocation details",
+        "correct": false
+      },
+      {
+        "text": "d) List of all system processes",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 38,
+    "text": "Which of the following is NOT a type of system call?",
+    "options": [
+      {
+        "text": "a) Process Control",
+        "correct": false
+      },
+      {
+        "text": "b) Memory Management",
+        "correct": false
+      },
+      {
+        "text": "c) File Manipulation",
+        "correct": false
+      },
+      {
+        "text": "d) Web Browsing",
+        "correct": true
+      }
+    ]
+  },
+  {
+    "id": 39,
+    "text": "Which of the following causes thrashing in a system?",
+    "options": [
+      {
+        "text": "a) Low CPU utilization",
+        "correct": false
+      },
+      {
+        "text": "b) Excessive paging",
+        "correct": true
+      },
+      {
+        "text": "c) Low priority scheduling",
+        "correct": false
+      },
+      {
+        "text": "d) Large time quantum",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 40,
+    "text": "What is the purpose of the fork() system call in UNIX?",
+    "options": [
+      {
+        "text": "a) To create a new process",
+        "correct": true
+      },
+      {
+        "text": "b) To terminate a process",
+        "correct": false
+      },
+      {
+        "text": "c) To allocate memory",
+        "correct": false
+      },
+      {
+        "text": "d) To switch between processes",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 41,
+    "text": "What is an Operating System?",
+    "options": [
+      {
+        "text": "a) A collection of software that manages hardware resources",
+        "correct": true
+      },
+      {
+        "text": "b) A hardware component of a computer",
+        "correct": false
+      },
+      {
+        "text": "c) A type of programming language",
+        "correct": false
+      },
+      {
+        "text": "d) A database management system",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 42,
+    "text": "Which of the following is an example of an Operating System?",
+    "options": [
+      {
+        "text": "a) Microsoft Word",
+        "correct": false
+      },
+      {
+        "text": "b) Windows 10",
+        "correct": true
+      },
+      {
+        "text": "c) Google Chrome",
+        "correct": false
+      },
+      {
+        "text": "d) Python",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 43,
+    "text": "Which component of an OS directly interacts with hardware?",
+    "options": [
+      {
+        "text": "a) Shell",
+        "correct": false
+      },
+      {
+        "text": "b) Application Software",
+        "correct": false
+      },
+      {
+        "text": "c) Kernel",
+        "correct": true
+      },
+      {
+        "text": "d) File System",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 44,
+    "text": "Which of the following is NOT a function of an Operating System?",
+    "options": [
+      {
+        "text": "a) Memory Management",
+        "correct": false
+      },
+      {
+        "text": "b) Process Management",
+        "correct": false
+      },
+      {
+        "text": "c) Compiling Programs",
+        "correct": true
+      },
+      {
+        "text": "d) File System Management",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 45,
+    "text": "Which type of Operating System is designed for real-time applications?",
+    "options": [
+      {
+        "text": "a) Time-Sharing OS",
+        "correct": false
+      },
+      {
+        "text": "b) Distributed OS",
+        "correct": false
+      },
+      {
+        "text": "c) Real-Time OS",
+        "correct": true
+      },
+      {
+        "text": "d) Batch OS",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 46,
+    "text": "Which of the following is an advantage of multiprogramming?",
+    "options": [
+      {
+        "text": "a) Increases CPU utilization",
+        "correct": true
+      },
+      {
+        "text": "b) Reduces the number of processes in memory",
+        "correct": false
+      },
+      {
+        "text": "c) Requires less memory",
+        "correct": false
+      },
+      {
+        "text": "d) Improves single-process execution time",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 47,
+    "text": "What is the primary goal of a time-sharing operating system?",
+    "options": [
+      {
+        "text": "a) Minimize response time",
+        "correct": true
+      },
+      {
+        "text": "b) Maximize CPU utilization",
+        "correct": false
+      },
+      {
+        "text": "c) Increase process priority",
+        "correct": false
+      },
+      {
+        "text": "d) Prevent memory fragmentation",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 48,
+    "text": "Which type of OS allows multiple users to work on a system simultaneously?",
+    "options": [
+      {
+        "text": "a) Single-User OS",
+        "correct": false
+      },
+      {
+        "text": "b) Multi-User OS",
+        "correct": true
+      },
+      {
+        "text": "c) Real-Time OS",
+        "correct": false
+      },
+      {
+        "text": "d) Embedded OS",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 49,
+    "text": "What is the function of a device driver?",
+    "options": [
+      {
+        "text": "a) Manages CPU scheduling",
+        "correct": false
+      },
+      {
+        "text": "b) Controls hardware devices",
+        "correct": true
+      },
+      {
+        "text": "c) Organizes files and directories",
+        "correct": false
+      },
+      {
+        "text": "d) Allocates memory to processes",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 50,
+    "text": "Which of the following OS is open-source?",
+    "options": [
+      {
+        "text": "a) Windows 11",
+        "correct": false
+      },
+      {
+        "text": "b) macOS",
+        "correct": false
+      },
+      {
+        "text": "c) Linux",
+        "correct": true
+      },
+      {
+        "text": "d) iOS",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 51,
+    "text": "Which of the following is NOT a type of Operating System?",
+    "options": [
+      {
+        "text": "a) Batch OS",
+        "correct": false
+      },
+      {
+        "text": "b) Real-Time OS",
+        "correct": false
+      },
+      {
+        "text": "c) Network OS",
+        "correct": false
+      },
+      {
+        "text": "d) Compiler OS",
+        "correct": true
+      }
+    ]
+  },
+  {
+    "id": 52,
+    "text": "Which part of the OS is responsible for process scheduling?",
+    "options": [
+      {
+        "text": "a) File System",
+        "correct": false
+      },
+      {
+        "text": "b) Memory Manager",
+        "correct": false
+      },
+      {
+        "text": "c) Process Scheduler",
+        "correct": true
+      },
+      {
+        "text": "d) Device Driver",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 53,
+    "text": "In a time-sharing system, CPU scheduling is performed to provide",
+    "options": [
+      {
+        "text": "a) Large memory space",
+        "correct": false
+      },
+      {
+        "text": "b) Quick response time",
+        "correct": true
+      },
+      {
+        "text": "c) High throughput",
+        "correct": false
+      },
+      {
+        "text": "d) Low power consumption",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 54,
+    "text": "Which of the following Operating Systems is NOT based on UNIX?",
+    "options": [
+      {
+        "text": "a) Linux",
+        "correct": false
+      },
+      {
+        "text": "b) Windows",
+        "correct": true
+      },
+      {
+        "text": "c) macOS",
+        "correct": false
+      },
+      {
+        "text": "d) Android",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 55,
+    "text": "The OS component that manages processes is called:",
+    "options": [
+      {
+        "text": "a) Process Scheduler",
+        "correct": true
+      },
+      {
+        "text": "b) Command Line Interface",
+        "correct": false
+      },
+      {
+        "text": "c) Assembler",
+        "correct": false
+      },
+      {
+        "text": "d) Linker",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 56,
+    "text": "Which of the following is a multi-user operating system?",
+    "options": [
+      {
+        "text": "a) MS-DOS",
+        "correct": false
+      },
+      {
+        "text": "b) Windows XP",
+        "correct": false
+      },
+      {
+        "text": "c) UNIX",
+        "correct": true
+      },
+      {
+        "text": "d) Android",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 57,
+    "text": "What is the purpose of an Interrupt in an OS?",
+    "options": [
+      {
+        "text": "a) To increase CPU speed",
+        "correct": false
+      },
+      {
+        "text": "b) To handle events like I/O completion",
+        "correct": true
+      },
+      {
+        "text": "c) To improve disk access time",
+        "correct": false
+      },
+      {
+        "text": "d) To allocate memory dynamically",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 58,
+    "text": "Which OS feature allows multiple programs to run at the same time?",
+    "options": [
+      {
+        "text": "a) Virtualization",
+        "correct": false
+      },
+      {
+        "text": "b) Multiprogramming",
+        "correct": true
+      },
+      {
+        "text": "c) Debugging",
+        "correct": false
+      },
+      {
+        "text": "d) Encryption",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 59,
+    "text": "The part of the OS that interacts with the user is called:",
+    "options": [
+      {
+        "text": "a) Kernel",
+        "correct": false
+      },
+      {
+        "text": "b) Shell",
+        "correct": true
+      },
+      {
+        "text": "c) Memory Manager",
+        "correct": false
+      },
+      {
+        "text": "d) Process Table",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 60,
+    "text": "The purpose of the bootloader is to:",
+    "options": [
+      {
+        "text": "a) Load the operating system into memory",
+        "correct": true
+      },
+      {
+        "text": "b) Manage processes in the system",
+        "correct": false
+      },
+      {
+        "text": "c) Handle user input commands",
+        "correct": false
+      },
+      {
+        "text": "d) Control file system access",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 61,
+    "text": "What is a process in an operating system?",
+    "options": [
+      {
+        "text": "a) A program in execution",
+        "correct": true
+      },
+      {
+        "text": "b) A single instruction in a program",
+        "correct": false
+      },
+      {
+        "text": "c) A system call request",
+        "correct": false
+      },
+      {
+        "text": "d) A type of memory management technique",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 62,
+    "text": "Which of the following is NOT a process state?",
+    "options": [
+      {
+        "text": "a) Ready",
+        "correct": false
+      },
+      {
+        "text": "b) Running",
+        "correct": false
+      },
+      {
+        "text": "c) Terminated",
+        "correct": false
+      },
+      {
+        "text": "d) Queued",
+        "correct": true
+      }
+    ]
+  },
+  {
+    "id": 63,
+    "text": "Which scheduling algorithm selects the process with the shortest execution time?",
+    "options": [
+      {
+        "text": "a) First Come First Serve (FCFS)",
+        "correct": false
+      },
+      {
+        "text": "b) Shortest Job Next (SJN)",
+        "correct": true
+      },
+      {
+        "text": "c) Round Robin (RR)",
+        "correct": false
+      },
+      {
+        "text": "d) Priority Scheduling",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 64,
+    "text": "Which of the following scheduling algorithms prevents starvation?",
+    "options": [
+      {
+        "text": "a) Priority Scheduling",
+        "correct": false
+      },
+      {
+        "text": "b) Shortest Job Next (SJN)",
+        "correct": false
+      },
+      {
+        "text": "c) Round Robin (RR)",
+        "correct": true
+      },
+      {
+        "text": "d) First Come First Serve (FCFS)",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 65,
+    "text": "The fork() system call in UNIX is used to",
+    "options": [
+      {
+        "text": "a) Terminate a process",
+        "correct": false
+      },
+      {
+        "text": "b) Create a new process",
+        "correct": true
+      },
+      {
+        "text": "c) Allocate memory to a process",
+        "correct": false
+      },
+      {
+        "text": "d) Execute a new command",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 66,
+    "text": "Which memory management technique allows processes to be allocated non-contiguous memory?",
+    "options": [
+      {
+        "text": "a) Paging",
+        "correct": true
+      },
+      {
+        "text": "b) Contiguous Memory Allocation",
+        "correct": false
+      },
+      {
+        "text": "c) Swapping",
+        "correct": false
+      },
+      {
+        "text": "d) Fragmentation",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 67,
+    "text": "What is the main problem caused by contiguous memory allocation?",
+    "options": [
+      {
+        "text": "a) External Fragmentation",
+        "correct": true
+      },
+      {
+        "text": "b) Process starvation",
+        "correct": false
+      },
+      {
+        "text": "c) Deadlock",
+        "correct": false
+      },
+      {
+        "text": "d) Page faults",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 68,
+    "text": "Which of the following is NOT a memory management technique?",
+    "options": [
+      {
+        "text": "a) Paging",
+        "correct": false
+      },
+      {
+        "text": "b) Segmentation",
+        "correct": false
+      },
+      {
+        "text": "c) CPU Scheduling",
+        "correct": true
+      },
+      {
+        "text": "d) Swapping",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 69,
+    "text": "What is the purpose of virtual memory?",
+    "options": [
+      {
+        "text": "a) Increases RAM size",
+        "correct": false
+      },
+      {
+        "text": "b) Allows execution of programs larger than physical memory",
+        "correct": true
+      },
+      {
+        "text": "c) Reduces CPU load",
+        "correct": false
+      },
+      {
+        "text": "d) Decreases disk usage",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 70,
+    "text": "Thrashing occurs when:-",
+    "options": [
+      {
+        "text": "a) CPU is underutilized",
+        "correct": false
+      },
+      {
+        "text": "b) Page faults occur frequently",
+        "correct": true
+      },
+      {
+        "text": "c) Processes execute without waiting",
+        "correct": false
+      },
+      {
+        "text": "d) RAM size is increased",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 71,
+    "text": "Which of the following is a file system used in Windows?",
+    "options": [
+      {
+        "text": "a) ext4",
+        "correct": false
+      },
+      {
+        "text": "b) NTFS",
+        "correct": true
+      },
+      {
+        "text": "c) HFS+",
+        "correct": false
+      },
+      {
+        "text": "d) ZFS",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 72,
+    "text": "A directory in an operating system is used to:",
+    "options": [
+      {
+        "text": "a) Manage user permissions",
+        "correct": false
+      },
+      {
+        "text": "b) Store metadata about files",
+        "correct": true
+      },
+      {
+        "text": "c) Control device drivers",
+        "correct": false
+      },
+      {
+        "text": "d) Allocate memory to processes",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 73,
+    "text": "What is the purpose of a file extension (e.g., .txt, .exe)?",
+    "options": [
+      {
+        "text": "a) Determines the file name",
+        "correct": false
+      },
+      {
+        "text": "b) Specifies the file size",
+        "correct": false
+      },
+      {
+        "text": "c) Identifies the file type and associated programs",
+        "correct": true
+      },
+      {
+        "text": "d) Allocates disk space",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 74,
+    "text": "Which file allocation method reduces fragmentation?",
+    "options": [
+      {
+        "text": "a) Contiguous Allocation",
+        "correct": false
+      },
+      {
+        "text": "b) Linked Allocation",
+        "correct": false
+      },
+      {
+        "text": "c) Indexed Allocation",
+        "correct": true
+      },
+      {
+        "text": "d) Direct Mapping",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 75,
+    "text": "The purpose of the inode in a file system is to:",
+    "options": [
+      {
+        "text": "a) Store file permissions, size, and metadata",
+        "correct": true
+      },
+      {
+        "text": "b) Increase file storage speed",
+        "correct": false
+      },
+      {
+        "text": "c) Manage disk scheduling",
+        "correct": false
+      },
+      {
+        "text": "d) Encrypt files for security",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 76,
+    "text": "Which of the following conditions must hold for a deadlock to occur?",
+    "options": [
+      {
+        "text": "a) Mutual Exclusion, Hold and Wait, No Preemption, Circular Wait",
+        "correct": true
+      },
+      {
+        "text": "b) Race Condition, Paging, Thrashing, Segmentation",
+        "correct": false
+      },
+      {
+        "text": "c) Scheduling, Virtual Memory, Swapping, Page Faults",
+        "correct": false
+      },
+      {
+        "text": "d) Fragmentation, Deadlock Detection, Interrupts, Buffering",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 77,
+    "text": "Deadlock prevention can be achieved by:",
+    "options": [
+      {
+        "text": "a) Avoiding Circular Wait",
+        "correct": true
+      },
+      {
+        "text": "b) Allowing multiple processes to hold resources",
+        "correct": false
+      },
+      {
+        "text": "c) Increasing CPU scheduling priority",
+        "correct": false
+      },
+      {
+        "text": "d) Implementing paging",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 78,
+    "text": "What is the role of a Resource Allocation Graph (RAG) in deadlock detection?",
+    "options": [
+      {
+        "text": "a) Helps identify circular waits",
+        "correct": true
+      },
+      {
+        "text": "b) Improves file system efficiency",
+        "correct": false
+      },
+      {
+        "text": "c) Schedules CPU processes",
+        "correct": false
+      },
+      {
+        "text": "d) Allocates memory to processes",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 79,
+    "text": "Which technique is used to handle deadlocks?",
+    "options": [
+      {
+        "text": "a) Deadlock Prevention",
+        "correct": false
+      },
+      {
+        "text": "b) Deadlock Avoidance",
+        "correct": false
+      },
+      {
+        "text": "c) Deadlock Detection and Recovery",
+        "correct": false
+      },
+      {
+        "text": "d) All of the above",
+        "correct": true
+      }
+    ]
+  },
+  {
+    "id": 80,
+    "text": "The Banker's Algorithm is used for:",
+    "options": [
+      {
+        "text": "a) Deadlock Avoidance",
+        "correct": true
+      },
+      {
+        "text": "b) CPU Scheduling",
+        "correct": false
+      },
+      {
+        "text": "c) Disk Scheduling",
+        "correct": false
+      },
+      {
+        "text": "d) Memory Allocation",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 81,
+    "text": "Which of the following is an example of a block device?",
+    "options": [
+      {
+        "text": "a) Keyboard",
+        "correct": false
+      },
+      {
+        "text": "b) Printer",
+        "correct": false
+      },
+      {
+        "text": "c) Hard Disk",
+        "correct": true
+      },
+      {
+        "text": "d) Mouse",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 82,
+    "text": "Spooling is used to:",
+    "options": [
+      {
+        "text": "a) Increase the efficiency of I/O operations",
+        "correct": true
+      },
+      {
+        "text": "b) Manage CPU scheduling",
+        "correct": false
+      },
+      {
+        "text": "c) Reduce memory fragmentation",
+        "correct": false
+      },
+      {
+        "text": "d) Prevent deadlocks",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 83,
+    "text": "Which disk scheduling algorithm minimizes seek time?",
+    "options": [
+      {
+        "text": "a) First Come First Serve (FCFS)",
+        "correct": false
+      },
+      {
+        "text": "b) Shortest Seek Time First (SSTF)",
+        "correct": true
+      },
+      {
+        "text": "c) Round Robin (RR)",
+        "correct": false
+      },
+      {
+        "text": "d) Least Recently Used (LRU)",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 84,
+    "text": "Which of the following is a character-based device?",
+    "options": [
+      {
+        "text": "a) Hard Disk",
+        "correct": false
+      },
+      {
+        "text": "b) SSD",
+        "correct": false
+      },
+      {
+        "text": "c) Printer",
+        "correct": false
+      },
+      {
+        "text": "d) Keyboard",
+        "correct": true
+      }
+    ]
+  },
+  {
+    "id": 85,
+    "text": "The purpose of DMA (Direct Memory Access) is to:",
+    "options": [
+      {
+        "text": "a) Allow devices to transfer data without CPU intervention",
+        "correct": true
+      },
+      {
+        "text": "b) Improve CPU scheduling",
+        "correct": false
+      },
+      {
+        "text": "c) Increase file system performance",
+        "correct": false
+      },
+      {
+        "text": "d) Detect deadlocks",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 86,
+    "text": "What is the main goal of an Operating System’s security?",
+    "options": [
+      {
+        "text": "a) Preventing unauthorized access",
+        "correct": true
+      },
+      {
+        "text": "b) Improving CPU performance",
+        "correct": false
+      },
+      {
+        "text": "c) Reducing memory fragmentation",
+        "correct": false
+      },
+      {
+        "text": "d) Increasing process scheduling efficiency",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 87,
+    "text": "What is the purpose of a firewall?",
+    "options": [
+      {
+        "text": "a) Blocks unauthorized network access",
+        "correct": true
+      },
+      {
+        "text": "b) Schedules CPU processes",
+        "correct": false
+      },
+      {
+        "text": "c) Prevents page faults",
+        "correct": false
+      },
+      {
+        "text": "d) Allocates memory to programs",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 88,
+    "text": "Which of the following scheduling algorithms gives each process a fixed time slot before moving to the next process?",
+    "options": [
+      {
+        "text": "a) First Come First Serve (FCFS)",
+        "correct": false
+      },
+      {
+        "text": "b) Shortest Job Next (SJN)",
+        "correct": false
+      },
+      {
+        "text": "c) Round Robin (RR)",
+        "correct": true
+      },
+      {
+        "text": "d) Priority Scheduling",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 89,
+    "text": "In preemptive scheduling, a process can be:",
+    "options": [
+      {
+        "text": "a) Interrupted and moved to the ready queue",
+        "correct": true
+      },
+      {
+        "text": "b) Completed before other processes start",
+        "correct": false
+      },
+      {
+        "text": "c) Assigned a higher priority permanently",
+        "correct": false
+      },
+      {
+        "text": "d) Prevented from using the CPU",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 90,
+    "text": "Which of the following algorithms is used for real-time systems?",
+    "options": [
+      {
+        "text": "a) Round Robin",
+        "correct": false
+      },
+      {
+        "text": "b) Shortest Remaining Time First (SRTF)",
+        "correct": false
+      },
+      {
+        "text": "c) Earliest Deadline First (EDF)",
+        "correct": true
+      },
+      {
+        "text": "d) Multilevel Feedback Queue",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 91,
+    "text": "Virtual memory is:",
+    "options": [
+      {
+        "text": "a) Part of the hard disk used as an extension of RAM",
+        "correct": true
+      },
+      {
+        "text": "b) A type of ROM storage",
+        "correct": false
+      },
+      {
+        "text": "c) The cache memory of the CPU",
+        "correct": false
+      },
+      {
+        "text": "d) A hardware feature in microprocessors",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 92,
+    "text": "Which of the following is a disadvantage of paging?",
+    "options": [
+      {
+        "text": "a) Increases memory fragmentation",
+        "correct": false
+      },
+      {
+        "text": "b) Causes thrashing when overloaded",
+        "correct": true
+      },
+      {
+        "text": "c) Requires contiguous memory allocation",
+        "correct": false
+      },
+      {
+        "text": "d) Increases process execution time",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 93,
+    "text": "What is a page fault?",
+    "options": [
+      {
+        "text": "a) When a process tries to access a page that is not in memory",
+        "correct": true
+      },
+      {
+        "text": "b) When memory runs out of space",
+        "correct": false
+      },
+      {
+        "text": "c) When the CPU is overloaded",
+        "correct": false
+      },
+      {
+        "text": "d) When disk scheduling fails",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 94,
+    "text": "Suppose that a process is waiting for some I/O service. When the service is completed, it goes to the",
+    "options": [
+      {
+        "text": "Running state",
+        "correct": false
+      },
+      {
+        "text": "Ready State",
+        "correct": true
+      },
+      {
+        "text": "Waiting State",
+        "correct": false
+      },
+      {
+        "text": "Terminate State",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 95,
+    "text": "Several processes access and manipulate the same data concurrently and the outcome of the execution depends on the particular order in which the access takes place, is called a(n) ____.",
+    "options": [
+      {
+        "text": "Race condition",
+        "correct": true
+      },
+      {
+        "text": "Shared Memory Segments",
+        "correct": false
+      },
+      {
+        "text": "Entry Section",
+        "correct": false
+      },
+      {
+        "text": "Process Synchronization",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 96,
+    "text": "Which one of the following is a synchronization tool?",
+    "options": [
+      {
+        "text": "Critical Section",
+        "correct": false
+      },
+      {
+        "text": "pipe",
+        "correct": false
+      },
+      {
+        "text": "semaphore",
+        "correct": true
+      },
+      {
+        "text": "Deadlock",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 97,
+    "text": "Which one of the following is the address generated by CPU?",
+    "options": [
+      {
+        "text": "physical address",
+        "correct": false
+      },
+      {
+        "text": "absolute address",
+        "correct": false
+      },
+      {
+        "text": "logical address",
+        "correct": true
+      },
+      {
+        "text": "none of the mentioned",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 98,
+    "text": "What are the requirements for the solution to critical section problem?",
+    "options": [
+      {
+        "text": "Mutual Exclusion",
+        "correct": false
+      },
+      {
+        "text": "Progress",
+        "correct": false
+      },
+      {
+        "text": "Bounded Waiting",
+        "correct": false
+      },
+      {
+        "text": "All of Above",
+        "correct": true
+      }
+    ]
+  },
+  {
+    "id": 99,
+    "text": "If graph of processes contains cycle, then there is a deadlock.",
+    "options": [
+      {
+        "text": "TRUE.",
+        "correct": false
+      },
+      {
+        "text": "FALSE.",
+        "correct": true
+      }
+    ]
+  },
+  {
+    "id": 100,
+    "text": "Dual-mode operation does not allow OS to protect itself and other system component",
+    "options": [
+      {
+        "text": "TRUE.",
+        "correct": false
+      },
+      {
+        "text": "FALSE.",
+        "correct": true
+      }
+    ]
+  },
+  {
+    "id": 101,
+    "text": "What is a thread?",
+    "options": [
+      {
+        "text": "a) A lightweight process",
+        "correct": true
+      },
+      {
+        "text": "b) A unit of memory storage",
+        "correct": false
+      },
+      {
+        "text": "c) A file system component",
+        "correct": false
+      },
+      {
+        "text": "d) A type of virtual memory",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 102,
+    "text": "In a multithreading environment, multiple threads:",
+    "options": [
+      {
+        "text": "a) Share the same process resources",
+        "correct": true
+      },
+      {
+        "text": "b) Run on different processors only",
+        "correct": false
+      },
+      {
+        "text": "c) Cannot communicate with each other",
+        "correct": false
+      },
+      {
+        "text": "d) Must have separate memory spaces",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 103,
+    "text": "Which of the following is an authentication method?",
+    "options": [
+      {
+        "text": "a) Passwords",
+        "correct": true
+      },
+      {
+        "text": "b) File Fragmentation",
+        "correct": false
+      },
+      {
+        "text": "c) Thrashing",
+        "correct": false
+      },
+      {
+        "text": "d) Virtual Memory",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 104,
+    "text": "Access Control Lists (ACL) are used for:",
+    "options": [
+      {
+        "text": "a) File and data security",
+        "correct": true
+      },
+      {
+        "text": "b) Deadlock detection",
+        "correct": false
+      },
+      {
+        "text": "c) Process scheduling",
+        "correct": false
+      },
+      {
+        "text": "d) Memory management",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 105,
+    "text": "Which scheduling algorithm suffers from the \"convoy effect\"?",
+    "options": [
+      {
+        "text": "a) Shortest Job Next (SJN)",
+        "correct": false
+      },
+      {
+        "text": "b) Round Robin (RR)",
+        "correct": false
+      },
+      {
+        "text": "c) First Come First Serve (FCFS)",
+        "correct": true
+      },
+      {
+        "text": "d) Multilevel Queue Scheduling",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 106,
+    "text": "In which scheduling algorithm does the process with the smallest execution time execute first?",
+    "options": [
+      {
+        "text": "a) First Come First Serve (FCFS)",
+        "correct": false
+      },
+      {
+        "text": "b) Shortest Job Next (SJN)",
+        "correct": true
+      },
+      {
+        "text": "c) Round Robin (RR)",
+        "correct": false
+      },
+      {
+        "text": "d) Priority Scheduling",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 107,
+    "text": "The page replacement algorithm used in most modern operating systems is:",
+    "options": [
+      {
+        "text": "a) First In First Out (FIFO)",
+        "correct": false
+      },
+      {
+        "text": "b) Least Recently Used (LRU)",
+        "correct": true
+      },
+      {
+        "text": "c) Optimal Page Replacement",
+        "correct": false
+      },
+      {
+        "text": "d) Round Robin",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 108,
+    "text": "The purpose of demand paging is to:",
+    "options": [
+      {
+        "text": "a) Load pages only when needed",
+        "correct": true
+      },
+      {
+        "text": "b) Allocate memory to processes in advance",
+        "correct": false
+      },
+      {
+        "text": "c) Reduce CPU load",
+        "correct": false
+      },
+      {
+        "text": "d) Store files in memory",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 109,
+    "text": "A process generally also includes the process _____, which contains global variables",
+    "options": [
+      {
+        "text": "Heap",
+        "correct": false
+      },
+      {
+        "text": "Stack",
+        "correct": false
+      },
+      {
+        "text": "Data Section",
+        "correct": true
+      },
+      {
+        "text": "text section",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 110,
+    "text": "Copying a process from memory to disk to allow space for other processes is called?",
+    "options": [
+      {
+        "text": "Swapping",
+        "correct": true
+      },
+      {
+        "text": "Deadlock",
+        "correct": false
+      },
+      {
+        "text": "Demand Paging",
+        "correct": false
+      },
+      {
+        "text": "Page Fault",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 111,
+    "text": "Which one of the following is not true?",
+    "options": [
+      {
+        "text": "kernel remains in the memory during the entire computer session",
+        "correct": false
+      },
+      {
+        "text": "kernel is made of various modules which can not be loaded in running operating system",
+        "correct": true
+      },
+      {
+        "text": "kernel is the first part of the operating system to load into memory during booting",
+        "correct": false
+      },
+      {
+        "text": "kernel is the program that constitutes the central core of the operating system",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 112,
+    "text": "What is a process control block (PCB)?",
+    "options": [
+      {
+        "text": "a) A data structure that stores information about a process",
+        "correct": true
+      },
+      {
+        "text": "b) A mechanism for controlling I/O devices",
+        "correct": false
+      },
+      {
+        "text": "c) A security feature in operating systems",
+        "correct": false
+      },
+      {
+        "text": "d) A type of file management system",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 113,
+    "text": "What is the purpose of virtual memory in an operating system?.",
+    "options": [
+      {
+        "text": "a) To provide additional memory by using disk space",
+        "correct": true
+      },
+      {
+        "text": "b) To store hardware configuration settings",
+        "correct": false
+      },
+      {
+        "text": "c) To enhance the graphical user interface",
+        "correct": false
+      },
+      {
+        "text": "d) To manage network operations",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 114,
+    "text": "It is necessary for threads in a process to have separate stacks",
+    "options": [
+      {
+        "text": "TRUE.",
+        "correct": true
+      },
+      {
+        "text": "FALSE.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 115,
+    "text": "Program running at all times on the computer called Kernel",
+    "options": [
+      {
+        "text": "TRUE.",
+        "correct": true
+      },
+      {
+        "text": "FALSE.",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 116,
+    "text": "Which of the following is used to resolve external fragmentation?",
+    "options": [
+      {
+        "text": "a) Paging",
+        "correct": false
+      },
+      {
+        "text": "b) Segmentation",
+        "correct": false
+      },
+      {
+        "text": "c) Compaction",
+        "correct": true
+      },
+      {
+        "text": "d) Swapping",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 117,
+    "text": "Page replacement algorithms are used to:",
+    "options": [
+      {
+        "text": "a) Manage memory allocation dynamically",
+        "correct": false
+      },
+      {
+        "text": "b) Increase CPU speed",
+        "correct": false
+      },
+      {
+        "text": "c) Reduce page faults",
+        "correct": true
+      },
+      {
+        "text": "d) Store data permanently",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 118,
+    "text": "Which of the following page replacement algorithms is optimal but difficult to implement?",
+    "options": [
+      {
+        "text": "a) First In First Out (FIFO)",
+        "correct": false
+      },
+      {
+        "text": "b) Least Recently Used (LRU)",
+        "correct": false
+      },
+      {
+        "text": "c) Optimal Page Replacement (OPT)",
+        "correct": true
+      },
+      {
+        "text": "d) Least Frequently Used (LFU)",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 119,
+    "text": "The page table is used to:",
+    "options": [
+      {
+        "text": "a) Keep track of pages in physical memory",
+        "correct": true
+      },
+      {
+        "text": "b) Store process control information",
+        "correct": false
+      },
+      {
+        "text": "c) Allocate CPU resources",
+        "correct": false
+      },
+      {
+        "text": "d) Manage I/O operations",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 120,
+    "text": "Thrashing occurs when:",
+    "options": [
+      {
+        "text": "a) A process spends more time swapping pages than executing",
+        "correct": true
+      },
+      {
+        "text": "b) CPU scheduling is inefficient",
+        "correct": false
+      },
+      {
+        "text": "c) Too many processes are in the system",
+        "correct": false
+      },
+      {
+        "text": "d) Disk space runs out",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 121,
+    "text": "What is a Translation Lookaside Buffer (TLB)?",
+    "options": [
+      {
+        "text": "a) A cache for page table entries",
+        "correct": true
+      },
+      {
+        "text": "b) A secondary storage device",
+        "correct": false
+      },
+      {
+        "text": "c) A file system component",
+        "correct": false
+      },
+      {
+        "text": "d) A disk scheduling algorithm",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 122,
+    "text": "A file system is responsible for:",
+    "options": [
+      {
+        "text": "a) Managing files and directories",
+        "correct": true
+      },
+      {
+        "text": "b) Controlling CPU scheduling",
+        "correct": false
+      },
+      {
+        "text": "c) Allocating memory dynamically",
+        "correct": false
+      },
+      {
+        "text": "d) Handling process synchronization",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 123,
+    "text": "Which of the following security attacks involves pretending to be another user?",
+    "options": [
+      {
+        "text": "a) Phishing",
+        "correct": false
+      },
+      {
+        "text": "b) Spoofing",
+        "correct": true
+      },
+      {
+        "text": "c) DDoS Attack",
+        "correct": false
+      },
+      {
+        "text": "d) Fragmentation Attack",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 124,
+    "text": "Which of the following is NOT a file attribute?",
+    "options": [
+      {
+        "text": "a) File Name",
+        "correct": false
+      },
+      {
+        "text": "b) File Size",
+        "correct": false
+      },
+      {
+        "text": "c) CPU Scheduling Priority",
+        "correct": true
+      },
+      {
+        "text": "d) File Permissions",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 125,
+    "text": "The operating system service that allows a user to execute a program is",
+    "options": [
+      {
+        "text": "a) File Management",
+        "correct": false
+      },
+      {
+        "text": "b) Program Execution",
+        "correct": true
+      },
+      {
+        "text": "c) Security",
+        "correct": false
+      },
+      {
+        "text": "d) I/O Operation",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 126,
+    "text": "Which operating system service is responsible for handling input and output operations",
+    "options": [
+      {
+        "text": "a) Process Management",
+        "correct": false
+      },
+      {
+        "text": "b) Memory Management",
+        "correct": false
+      },
+      {
+        "text": "c) I/O Operation",
+        "correct": true
+      },
+      {
+        "text": "d) File System Management",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 127,
+    "text": "The service that protects unauthorized access to programs and data is:",
+    "options": [
+      {
+        "text": "a) File Management",
+        "correct": false
+      },
+      {
+        "text": "b) Security",
+        "correct": true
+      },
+      {
+        "text": "c) Process Scheduling",
+        "correct": false
+      },
+      {
+        "text": "d) Deadlock Prevention",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 128,
+    "text": "Which operating system service keeps track of system and user files?",
+    "options": [
+      {
+        "text": "a) Process Control",
+        "correct": false
+      },
+      {
+        "text": "b) File Management",
+        "correct": true
+      },
+      {
+        "text": "c) Memory Management",
+        "correct": false
+      },
+      {
+        "text": "d) I/O Operation",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 129,
+    "text": "The service responsible for preventing and resolving deadlocks in an operating system is called:",
+    "options": [
+      {
+        "text": "a) Deadlock Handling",
+        "correct": true
+      },
+      {
+        "text": "b) Process Scheduling",
+        "correct": false
+      },
+      {
+        "text": "c) Memory Allocation",
+        "correct": false
+      },
+      {
+        "text": "d) File Management",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 130,
+    "text": "Which operating system service allows multiple users to access files simultaneously?",
+    "options": [
+      {
+        "text": "a) File Sharing",
+        "correct": true
+      },
+      {
+        "text": "b) I/O Management",
+        "correct": false
+      },
+      {
+        "text": "c) Virtual Memory",
+        "correct": false
+      },
+      {
+        "text": "d) Job Scheduling",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 131,
+    "text": "Which system program is responsible for translating source code into machine code?",
+    "options": [
+      {
+        "text": "a) Compiler",
+        "correct": true
+      },
+      {
+        "text": "b) Linker",
+        "correct": false
+      },
+      {
+        "text": "c) Loader",
+        "correct": false
+      },
+      {
+        "text": "d) Interpreter",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 132,
+    "text": "The process of allocating CPU time to various processes is called:",
+    "options": [
+      {
+        "text": "a) I/O Scheduling",
+        "correct": false
+      },
+      {
+        "text": "b) Process Scheduling",
+        "correct": true
+      },
+      {
+        "text": "c) Memory Paging",
+        "correct": false
+      },
+      {
+        "text": "d) Deadlock Prevention",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 133,
+    "text": "Which of the following OS services handles inter-process communication?",
+    "options": [
+      {
+        "text": "a) File Management",
+        "correct": false
+      },
+      {
+        "text": "b) Process Synchronization",
+        "correct": true
+      },
+      {
+        "text": "c) Networking",
+        "correct": false
+      },
+      {
+        "text": "d) Program Execution",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 134,
+    "text": "The main role of the command interpreter is to:",
+    "options": [
+      {
+        "text": "a) Manage memory",
+        "correct": false
+      },
+      {
+        "text": "b) Execute user commands",
+        "correct": true
+      },
+      {
+        "text": "c) Allocate disk space",
+        "correct": false
+      },
+      {
+        "text": "d) Handle network requests",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 135,
+    "text": "he operating system service that loads a program into memory for execution is called:",
+    "options": [
+      {
+        "text": "a) File Management",
+        "correct": false
+      },
+      {
+        "text": "b) Memory Management",
+        "correct": false
+      },
+      {
+        "text": "c) Program Loader",
+        "correct": true
+      },
+      {
+        "text": "d) Device Management",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 136,
+    "text": "Which OS service is responsible for handling interrupts?",
+    "options": [
+      {
+        "text": "a) Memory Management",
+        "correct": false
+      },
+      {
+        "text": "b) Interrupt Handling System",
+        "correct": true
+      },
+      {
+        "text": "c) CPU Scheduling",
+        "correct": false
+      },
+      {
+        "text": "d) File System Management",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 137,
+    "text": "The primary role of the OS service \"Virtual Memory\" is to:",
+    "options": [
+      {
+        "text": "a) Enable processes to run on multiple processors",
+        "correct": false
+      },
+      {
+        "text": "b) Simulate more memory than physically available",
+        "correct": true
+      },
+      {
+        "text": "c) Schedule CPU processes",
+        "correct": false
+      },
+      {
+        "text": "d) Provide a graphical interface",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 138,
+    "text": "Which of the following is the main responsibility of the OS service \"I/O Management\"?",
+    "options": [
+      {
+        "text": "a) Allocating CPU time",
+        "correct": false
+      },
+      {
+        "text": "b) Managing device communication and data transfer",
+        "correct": true
+      },
+      {
+        "text": "c) Organizing files into directories",
+        "correct": false
+      },
+      {
+        "text": "d) Handling virtual memory page",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 139,
+    "text": "The operating system service \"File Management\" includes:",
+    "options": [
+      {
+        "text": "a) Access control, file storage, and directory structures",
+        "correct": true
+      },
+      {
+        "text": "b) Process scheduling and memory allocation",
+        "correct": false
+      },
+      {
+        "text": "c) Virtual memory management",
+        "correct": false
+      },
+      {
+        "text": "d) I/O buffering and paging",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 140,
+    "text": "Which of the following OS services handles error detection and management?",
+    "options": [
+      {
+        "text": "a) Device Management",
+        "correct": false
+      },
+      {
+        "text": "b) File Management",
+        "correct": false
+      },
+      {
+        "text": "c) Process Management",
+        "correct": false
+      },
+      {
+        "text": "d) Error Handling",
+        "correct": true
+      }
+    ]
+  },
+  {
+    "id": 141,
+    "text": "Which service is required for an operating system to handle system calls and user requests?",
+    "options": [
+      {
+        "text": "a) Interrupt Handling",
+        "correct": false
+      },
+      {
+        "text": "b) Kernel Services",
+        "correct": true
+      },
+      {
+        "text": "c) Memory Allocation",
+        "correct": false
+      },
+      {
+        "text": "d) File Handling",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 142,
+    "text": "The operating system service that helps in managing the allocation and deallocation of resources to running processes is called:",
+    "options": [
+      {
+        "text": "a) Memory Management",
+        "correct": false
+      },
+      {
+        "text": "b) Resource Allocation",
+        "correct": true
+      },
+      {
+        "text": "c) Process Management",
+        "correct": false
+      },
+      {
+        "text": "d) Device Management",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 143,
+    "text": "Which OS service is responsible for ensuring that no process exceeds its allocated resources?",
+    "options": [
+      {
+        "text": "a) Process Scheduling",
+        "correct": false
+      },
+      {
+        "text": "b) Memory Protection",
+        "correct": true
+      },
+      {
+        "text": "c) File Management",
+        "correct": false
+      },
+      {
+        "text": "d) Deadlock Prevention",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 144,
+    "text": "Which service of the operating system is used to provide a user-friendly interface?",
+    "options": [
+      {
+        "text": "a) User Interface Management",
+        "correct": true
+      },
+      {
+        "text": "b) File Management",
+        "correct": false
+      },
+      {
+        "text": "c) Network Management",
+        "correct": false
+      },
+      {
+        "text": "d) Process Synchronization",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 145,
+    "text": "Which service is responsible for tracking system resources, such as CPU usage and disk space?",
+    "options": [
+      {
+        "text": "a) Resource Allocation",
+        "correct": false
+      },
+      {
+        "text": "b) Accounting",
+        "correct": true
+      },
+      {
+        "text": "c) File Management",
+        "correct": false
+      },
+      {
+        "text": "d) Process Scheduling",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 146,
+    "text": "The operating system service \"Security\" is responsible for:",
+    "options": [
+      {
+        "text": "a) Allocating CPU time to processes",
+        "correct": false
+      },
+      {
+        "text": "b) Protecting the system and user data from unauthorized access",
+        "correct": true
+      },
+      {
+        "text": "c) Scheduling the execution of user programs",
+        "correct": false
+      },
+      {
+        "text": "d) Managing I/O devices and data transfers",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 147,
+    "text": "Which of the following is NOT a function of an operating system?",
+    "options": [
+      {
+        "text": "a) Managing hardware resources",
+        "correct": false
+      },
+      {
+        "text": "b) Providing user interface",
+        "correct": false
+      },
+      {
+        "text": "c) Executing user programs",
+        "correct": false
+      },
+      {
+        "text": "d) Compiling application programs",
+        "correct": true
+      }
+    ]
+  },
+  {
+    "id": 148,
+    "text": "The operating system service that maintains detailed records of system usage for performance monitoring is:",
+    "options": [
+      {
+        "text": "a) Accounting",
+        "correct": true
+      },
+      {
+        "text": "b) Logging",
+        "correct": false
+      },
+      {
+        "text": "c) Security",
+        "correct": false
+      },
+      {
+        "text": "d) File Management",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 149,
+    "text": "Which of the following is NOT an operating system service?",
+    "options": [
+      {
+        "text": "a) Process Management",
+        "correct": false
+      },
+      {
+        "text": "b) Memory Management",
+        "correct": false
+      },
+      {
+        "text": "c) Network Browsing",
+        "correct": true
+      },
+      {
+        "text": "d) File System Management",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 150,
+    "text": "In a file system, a hard link:",
+    "options": [
+      {
+        "text": "a) Points directly to the file’s inode",
+        "correct": true
+      },
+      {
+        "text": "b) Creates a duplicate copy of a file",
+        "correct": false
+      },
+      {
+        "text": "c) Stores metadata separately from the file",
+        "correct": false
+      },
+      {
+        "text": "d) Provides network file access",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 151,
+    "text": "What does the OS use to manage concurrent processes effectively?",
+    "options": [
+      {
+        "text": "a) Thread Synchronization",
+        "correct": true
+      },
+      {
+        "text": "b) Virtual Memory",
+        "correct": false
+      },
+      {
+        "text": "c) I/O Buffering",
+        "correct": false
+      },
+      {
+        "text": "d) Deadlock Detection",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 152,
+    "text": "The service that manages hardware communication and control is:",
+    "options": [
+      {
+        "text": "a) Device Management",
+        "correct": true
+      },
+      {
+        "text": "b) File Management",
+        "correct": false
+      },
+      {
+        "text": "c) Memory Allocation",
+        "correct": false
+      },
+      {
+        "text": "d) CPU Scheduling",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 153,
+    "text": "The process of swapping data between RAM and disk storage when memory is full is called:",
+    "options": [
+      {
+        "text": "a) Virtual Memory",
+        "correct": true
+      },
+      {
+        "text": "b) File Management",
+        "correct": false
+      },
+      {
+        "text": "c) I/O Scheduling",
+        "correct": false
+      },
+      {
+        "text": "d) Deadlock Prevention",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 154,
+    "text": "Which OS service is used for organizing files into directories?",
+    "options": [
+      {
+        "text": "a) File System Management",
+        "correct": true
+      },
+      {
+        "text": "b) Process Scheduling",
+        "correct": false
+      },
+      {
+        "text": "c) I/O Buffering",
+        "correct": false
+      },
+      {
+        "text": "d) Memory Paging",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 155,
+    "text": "A user interface that allows typing commands for execution is called:",
+    "options": [
+      {
+        "text": "a) Graphical User Interface (GUI)",
+        "correct": false
+      },
+      {
+        "text": "b) Command Line Interface (CLI)",
+        "correct": true
+      },
+      {
+        "text": "c) Process Scheduler",
+        "correct": false
+      },
+      {
+        "text": "d) File Manager",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 156,
+    "text": "Which operating system service manages the execution of system-level programs and software utilities?",
+    "options": [
+      {
+        "text": "a) Program Execution",
+        "correct": true
+      },
+      {
+        "text": "b) System Resource Allocation",
+        "correct": false
+      },
+      {
+        "text": "c) Network Management",
+        "correct": false
+      },
+      {
+        "text": "d) Security",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 157,
+    "text": "The OS service that ensures that the system runs efficiently even with multiple programs running concurrently is called:",
+    "options": [
+      {
+        "text": "a) Process Scheduling",
+        "correct": true
+      },
+      {
+        "text": "b) Memory Management",
+        "correct": false
+      },
+      {
+        "text": "c) Virtual Memory",
+        "correct": false
+      },
+      {
+        "text": "d) Device Management",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 158,
+    "text": "The OS service \"Network Management\" is responsible for:",
+    "options": [
+      {
+        "text": "a) Managing CPU resources",
+        "correct": false
+      },
+      {
+        "text": "b) Controlling access to networked resources",
+        "correct": true
+      },
+      {
+        "text": "c) File storage and retrieval",
+        "correct": false
+      },
+      {
+        "text": "d) Interrupt handling",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 159,
+    "text": "Which OS service is responsible for maintaining system logs and audit trails for security purposes?",
+    "options": [
+      {
+        "text": "a) Process Management",
+        "correct": false
+      },
+      {
+        "text": "b) File Management",
+        "correct": false
+      },
+      {
+        "text": "c) Security",
+        "correct": true
+      },
+      {
+        "text": "d) Accounting",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 160,
+    "text": "The OS service responsible for allocating memory space for programs and managing the memory hierarchy is:",
+    "options": [
+      {
+        "text": "a) I/O Management",
+        "correct": false
+      },
+      {
+        "text": "b) Memory Management",
+        "correct": true
+      },
+      {
+        "text": "c) Process Management",
+        "correct": false
+      },
+      {
+        "text": "d) File Management",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 161,
+    "text": "In a multithreaded environment, multiple threads within the same process:",
+    "options": [
+      {
+        "text": "a) Share the same memory space and resources",
+        "correct": true
+      },
+      {
+        "text": "b) Have separate memory spaces",
+        "correct": false
+      },
+      {
+        "text": "c) Cannot communicate with each other",
+        "correct": false
+      },
+      {
+        "text": "d) Run on different processors exclusively",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 162,
+    "text": "Which of the following OS services prevents multiple users from interfering with each other’s activities on a shared system?",
+    "options": [
+      {
+        "text": "a) Memory Protection",
+        "correct": false
+      },
+      {
+        "text": "b) Process Synchronization",
+        "correct": true
+      },
+      {
+        "text": "c) Deadlock Prevention",
+        "correct": false
+      },
+      {
+        "text": "d) Virtual Memory",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 163,
+    "text": "The primary purpose of synchronization in multithreading is to:",
+    "options": [
+      {
+        "text": "a) Prevent processes from interfering with each other",
+        "correct": true
+      },
+      {
+        "text": "b) Increase the number of threads running concurrently",
+        "correct": false
+      },
+      {
+        "text": "c) Allow multiple threads to access the same memory space without errors",
+        "correct": false
+      },
+      {
+        "text": "d) Assign resources to threads in a round-robin fashion",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 164,
+    "text": "Which of the following is an advantage of multithreading?",
+    "options": [
+      {
+        "text": "a) Better resource utilization by sharing resources among multiple threads",
+        "correct": true
+      },
+      {
+        "text": "b) Increased memory requirements for each thread",
+        "correct": false
+      },
+      {
+        "text": "c) Less complexity in process scheduling",
+        "correct": false
+      },
+      {
+        "text": "d) Slower execution due to thread synchronization",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 165,
+    "text": "What is a \"thread pool\"?",
+    "options": [
+      {
+        "text": "a) A collection of pre-created threads ready to execute tasks",
+        "correct": true
+      },
+      {
+        "text": "b) A set of resources allocated for a single thread",
+        "correct": false
+      },
+      {
+        "text": "c) A mechanism for controlling deadlocks",
+        "correct": false
+      },
+      {
+        "text": "d) A way to increase the number of threads in a process",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 166,
+    "text": "What is the main disadvantage of using a large number of threads in a system?",
+    "options": [
+      {
+        "text": "a) Increased overhead due to context switching and synchronization",
+        "correct": true
+      },
+      {
+        "text": "b) More efficient use of memory",
+        "correct": false
+      },
+      {
+        "text": "c) Improved CPU utilization",
+        "correct": false
+      },
+      {
+        "text": "d) Easier process management",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 167,
+    "text": "What is the function of the \"join()\" method in thread management?",
+    "options": [
+      {
+        "text": "a) It makes the calling thread wait for the completion of another thread",
+        "correct": true
+      },
+      {
+        "text": "b) It starts the execution of a thread",
+        "correct": false
+      },
+      {
+        "text": "c) It terminates a running thread",
+        "correct": false
+      },
+      {
+        "text": "d) It ensures that threads access shared resources in a safe manner",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 168,
+    "text": "Which of the following is true about \"parallelism\" in multithreading?",
+    "options": [
+      {
+        "text": "a) It refers to executing multiple threads concurrently on multiple processors",
+        "correct": true
+      },
+      {
+        "text": "b) It is the same as concurrency",
+        "correct": false
+      },
+      {
+        "text": "c) It is limited to single-core processors",
+        "correct": false
+      },
+      {
+        "text": "d) It eliminates the need for synchronization",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 169,
+    "text": "Which thread scheduling algorithm prioritizes threads based on their importance and deadlines?",
+    "options": [
+      {
+        "text": "a) Round Robin",
+        "correct": false
+      },
+      {
+        "text": "b) Priority Scheduling",
+        "correct": true
+      },
+      {
+        "text": "c) First Come First Serve (FCFS)",
+        "correct": false
+      },
+      {
+        "text": "d) Shortest Job First (SJF)",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 170,
+    "text": "Which of the following is a key advantage of multithreading in an operating system?",
+    "options": [
+      {
+        "text": "a) Reduced memory consumption",
+        "correct": false
+      },
+      {
+        "text": "b) More efficient CPU usage",
+        "correct": true
+      },
+      {
+        "text": "c) Increased disk space utilization",
+        "correct": false
+      },
+      {
+        "text": "d) Easier process management",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 171,
+    "text": "In multithreading, what is \"context switching\"?",
+    "options": [
+      {
+        "text": "a) Switching between different tasks in a process",
+        "correct": false
+      },
+      {
+        "text": "b) The process of switching between different threads of the same process",
+        "correct": true
+      },
+      {
+        "text": "c) Changing the thread execution from one processor to another",
+        "correct": false
+      },
+      {
+        "text": "d) Assigning new priorities to threads",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 172,
+    "text": "Which of the following is a disadvantage of using threads in an operating system?",
+    "options": [
+      {
+        "text": "a) Difficulty in sharing resources between threads",
+        "correct": false
+      },
+      {
+        "text": "b) Increased complexity due to synchronization and context switching",
+        "correct": true
+      },
+      {
+        "text": "c) Threads are unable to share data",
+        "correct": false
+      },
+      {
+        "text": "d) Threads are unable to execute concurrently",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 173,
+    "text": "What is the primary role of an operating system?",
+    "options": [
+      {
+        "text": "a) Manage computer hardware and software resources",
+        "correct": true
+      },
+      {
+        "text": "b) Provide entertainment features",
+        "correct": false
+      },
+      {
+        "text": "c) Act as an antivirus program",
+        "correct": false
+      },
+      {
+        "text": "d) Optimize internet speed",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 174,
+    "text": "Which of the following is an example of a multi-user operating system?",
+    "options": [
+      {
+        "text": "a) Windows 10",
+        "correct": false
+      },
+      {
+        "text": "b) Linux",
+        "correct": true
+      },
+      {
+        "text": "c) MS-DOS",
+        "correct": false
+      },
+      {
+        "text": "d) macOS",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 175,
+    "text": "What is a \"kernel\" in an operating system?",
+    "options": [
+      {
+        "text": "a) A core part of the OS that manages system resources",
+        "correct": true
+      },
+      {
+        "text": "b) A temporary storage unit in the CPU",
+        "correct": false
+      },
+      {
+        "text": "c) A type of system software used for gaming",
+        "correct": false
+      },
+      {
+        "text": "d) A utility software for disk management",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 176,
+    "text": "In which OS type does the user interact directly with the hardware?",
+    "options": [
+      {
+        "text": "a) Real-time OS",
+        "correct": false
+      },
+      {
+        "text": "b) Network OS",
+        "correct": false
+      },
+      {
+        "text": "c) Embedded OS",
+        "correct": false
+      },
+      {
+        "text": "d) Bare-metal OS",
+        "correct": true
+      }
+    ]
+  },
+  {
+    "id": 177,
+    "text": "Which operating system component is responsible for process scheduling?",
+    "options": [
+      {
+        "text": "a) File Manager",
+        "correct": false
+      },
+      {
+        "text": "b) Memory Manager",
+        "correct": false
+      },
+      {
+        "text": "c) CPU Scheduler",
+        "correct": true
+      },
+      {
+        "text": "d) Device Driver",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 178,
+    "text": "The \"Device Management\" service in an OS is responsible for:",
+    "options": [
+      {
+        "text": "a) Allocating memory blocks for programs",
+        "correct": false
+      },
+      {
+        "text": "b) Scheduling processes for execution",
+        "correct": false
+      },
+      {
+        "text": "c) Controlling hardware devices and managing input/output operations",
+        "correct": true
+      },
+      {
+        "text": "d) Keeping track of files and directories",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 179,
+    "text": "What does \"multicore processing\" allow in relation to multithreading?",
+    "options": [
+      {
+        "text": "a) It allows multiple threads to run on different cores concurrently, improving performance",
+        "correct": true
+      },
+      {
+        "text": "b) It allows threads to run only on a single core",
+        "correct": false
+      },
+      {
+        "text": "c) It reduces the number of threads created in an application",
+        "correct": false
+      },
+      {
+        "text": "d) It prevents threads from accessing shared memory",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "id": 180,
+    "text": "Which of the following is an example of a multithreaded application?",
+    "options": [
+      {
+        "text": "a) A web browser that loads different web pages simultaneously",
+        "correct": true
+      },
+      {
+        "text": "b) A text editor that edits one document at a time",
+        "correct": false
+      },
+      {
+        "text": "c) A database management system with no parallel queries",
+        "correct": false
+      },
+      {
+        "text": "d) A compiler that compiles one source code file sequentially",
+        "correct": false
+      }
+    ]
+  }
+]

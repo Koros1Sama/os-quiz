@@ -865,20 +865,6 @@
         ><span class="bm-label-blue">أزرق</span>
       </button>
       <span style="border-left: 1px solid var(--bg3); margin: 0 4px"></span>
-      <button
-        class="btn"
-        data-filter="needs-study"
-        onclick="setFilter('needs-study',this)"
-        style="
-          background: linear-gradient(135deg, #7c5cfc33, #a78bfa33);
-          border-color: #7c5cfc55;
-          color: #a78bfa;
-          font-weight: 700;
-        "
-      >
-        📚 ذاكر هذي (68)
-      </button>
-      <span style="border-left: 1px solid var(--bg3); margin: 0 4px"></span>
       <button class="btn btn-danger" onclick="undoBookmarkGroup()">
         ↩️ تراجع علامة
       </button>
@@ -4739,9 +4725,6 @@
                 if (state.answers[qid] === ci) show = false;
               }
             }
-            if (f === "needs-study") {
-              if (!ALGO_UNSOLVABLE.has(qid)) show = false;
-            }
             if (f.startsWith("bm-")) {
               const color = f.replace("bm-", "");
               const bms = state.bookmarks[qid] || new Set();
@@ -5304,15 +5287,6 @@
           .querySelectorAll(".bm-menu")
           .forEach((m) => m.classList.remove("show"));
       });
-
-      // 68 questions the algorithm CANNOT solve — study these!
-      const ALGO_UNSOLVABLE = new Set([
-        2, 4, 10, 11, 13, 14, 16, 21, 27, 30, 32, 34, 36, 39, 42, 43, 44, 46,
-        48, 49, 50, 51, 54, 55, 56, 58, 59, 61, 62, 63, 64, 66, 68, 74, 84, 88,
-        90, 95, 96, 97, 101, 103, 105, 106, 107, 110, 111, 116, 117, 123, 124,
-        126, 127, 128, 132, 133, 135, 140, 141, 147, 148, 150, 155, 157, 162,
-        169, 174, 176,
-      ]);
 
       // ============ INIT ============
       renderAll();

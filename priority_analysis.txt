@@ -1,0 +1,142 @@
+======================================================================
+ANALYSIS 1: Golden keywords in NOT questions
+======================================================================
+Total NOT questions: 12
+  Q38: KEYWORD CORRECT in NOT! Keywords=['web'] -> 'Web Browsing'
+  Q44: KEYWORD CORRECT in NOT! Keywords=['compiling'] -> 'Compiling Programs'
+  Q147: KEYWORD CORRECT in NOT! Keywords=['compiling'] -> 'Compiling application programs'
+
+In NOT questions: golden keywords correct=3, wrong=4
+GOLDEN KEYWORDS WRONG IN NOT: 4/7 = 57%
+  Tier1: correct=1, wrong=0 (0% wrong)
+  Tier2: correct=2, wrong=3 (60% wrong)
+  Tier3: correct=0, wrong=1 (100% wrong)
+
+======================================================================
+ANALYSIS 2: LONGEST option vs GOLDEN KEYWORDS - conflicts
+======================================================================
+Both agree (same option): 40
+KEYWORD wins over LONGEST: 20 at Q[17, 31, 38, 44, 52, 53, 55, 65, 71, 77, 79, 86, 94, 108, 137, 145, 148, 165, 177, 180]
+LONGEST wins over KEYWORD: 7 at Q[4, 6, 29, 34, 37, 111, 158]
+Neither correct: 7
+  Tier1 vs Longest: Tier1 wins 7x, Longest wins 0x
+  Tier2 vs Longest: Tier2 wins 4x, Longest wins 2x
+  Tier3 vs Longest: Tier3 wins 13x, Longest wins 7x
+
+======================================================================
+ANALYSIS 3: Q117 - Why 'data' lost
+======================================================================
+Q: Page replacement algorithms are used to:
+  WRONG: 'Manage memory allocation dynamically' | golden=[] | longest=True
+  WRONG: 'Increase CPU speed' | golden=[] | longest=False
+  CORRECT: 'Reduce page faults' | golden=[] | longest=False
+  WRONG: 'Store data permanently' | golden=['data'] | longest=False
+
+======================================================================
+SIMULATION: Full algorithm accuracy with priority rules
+======================================================================
+
+Total correct: 98/180 = 54.4%
+Wrong: 82
+
+Wrong questions:
+  Q2 (rule: LONGEST): correct='Increase CPU Utilization'
+  Q10 (rule: LONGEST): correct='ext4'
+  Q11 (rule: LONGEST): correct='A Process'
+  Q13 (rule: LONGEST): correct='Multiprogramming'
+  Q14 (rule: LONGEST): correct='Unused memory within allocated space'
+  Q17 (rule: LONGEST): correct='NTFS'
+  Q21 (rule: LONGEST): correct='Cpu bound process.'
+  Q22 (rule: LONGEST): correct='FALSE.'
+  Q27 (rule: LONGEST): correct='Multicore processing'
+  Q28 (rule: LONGEST): correct='Improved CPU utilization'
+  Q30 (rule: LONGEST): correct='Critical section.'
+  Q32 (rule: LONGEST): correct='Kernel'
+  Q34 (rule: TIER2:compiling): correct='Managing hardware and software resources'
+  Q36 (rule: LONGEST): correct='Paging'
+  Q38 (rule: LONGEST): correct='Web Browsing'
+  Q39 (rule: LONGEST): correct='Excessive paging'
+  Q42 (rule: LONGEST): correct='Windows 10'
+  Q43 (rule: LONGEST): correct='Kernel'
+  Q44 (rule: LONGEST): correct='Compiling Programs'
+  Q45 (rule: LONGEST): correct='Real-Time OS'
+  Q46 (rule: LONGEST): correct='Increases CPU utilization'
+  Q48 (rule: LONGEST): correct='Multi-User OS'
+  Q49 (rule: LONGEST): correct='Controls hardware devices'
+  Q50 (rule: LONGEST): correct='Linux'
+  Q51 (rule: LONGEST): correct='Compiler OS'
+  Q52 (rule: LONGEST): correct='Process Scheduler'
+  Q53 (rule: LONGEST): correct='Quick response time'
+  Q54 (rule: LONGEST): correct='Windows'
+  Q55 (rule: LONGEST): correct='Process Scheduler'
+  Q56 (rule: LONGEST): correct='UNIX'
+  Q58 (rule: LONGEST): correct='Multiprogramming'
+  Q59 (rule: LONGEST): correct='Shell'
+  Q61 (rule: LONGEST): correct='A program in execution'
+  Q62 (rule: LONGEST): correct='Queued'
+  Q63 (rule: PARENS): correct='Shortest Job Next (SJN)'
+  Q64 (rule: LONGEST): correct='Round Robin (RR)'
+  Q66 (rule: LONGEST): correct='Paging'
+  Q71 (rule: LONGEST): correct='NTFS'
+  Q74 (rule: LONGEST): correct='Indexed Allocation'
+  Q83 (rule: LONGEST): correct='Shortest Seek Time First (SSTF)'
+  Q84 (rule: LONGEST): correct='Keyboard'
+  Q88 (rule: LONGEST): correct='Round Robin (RR)'
+  Q90 (rule: PARENS): correct='Earliest Deadline First (EDF)'
+  Q95 (rule: LONGEST): correct='Race condition'
+  Q96 (rule: LONGEST): correct='semaphore'
+  Q97 (rule: LONGEST): correct='logical address'
+  Q99 (rule: LONGEST): correct='FALSE.'
+  Q100 (rule: LONGEST): correct='FALSE.'
+  Q101 (rule: LONGEST): correct='A lightweight process'
+  Q103 (rule: LONGEST): correct='Passwords'
+  Q106 (rule: PARENS): correct='Shortest Job Next (SJN)'
+  Q107 (rule: PARENS): correct='Least Recently Used (LRU)'
+  Q110 (rule: LONGEST): correct='Swapping'
+  Q116 (rule: LONGEST): correct='Compaction'
+  Q117 (rule: LONGEST): correct='Reduce page faults'
+  Q118 (rule: LONGEST): correct='Optimal Page Replacement (OPT)'
+  Q123 (rule: LONGEST): correct='Spoofing'
+  Q125 (rule: LONGEST): correct='Program Execution'
+  Q126 (rule: LONGEST): correct='I/O Operation'
+  Q127 (rule: LONGEST): correct='Security'
+  Q128 (rule: LONGEST): correct='File Management'
+  Q132 (rule: LONGEST): correct='Process Scheduling'
+  Q133 (rule: LONGEST): correct='Process Synchronization'
+  Q135 (rule: LONGEST): correct='Program Loader'
+  Q140 (rule: LONGEST): correct='Error Handling'
+  Q141 (rule: LONGEST): correct='Kernel Services'
+  Q142 (rule: LONGEST): correct='Resource Allocation'
+  Q145 (rule: LONGEST): correct='Accounting'
+  Q147 (rule: LONGEST): correct='Compiling application programs'
+  Q148 (rule: LONGEST): correct='Accounting'
+  Q149 (rule: LONGEST): correct='Network Browsing'
+  Q150 (rule: LONGEST): correct='Points directly to the file’s inode'
+  Q155 (rule: PARENS): correct='Command Line Interface (CLI)'
+  Q156 (rule: LONGEST): correct='Program Execution'
+  Q157 (rule: LONGEST): correct='Process Scheduling'
+  Q159 (rule: LONGEST): correct='Security'
+  Q160 (rule: LONGEST): correct='Memory Management'
+  Q162 (rule: LONGEST): correct='Process Synchronization'
+  Q163 (rule: LONGEST): correct='Prevent processes from interfering with each other'
+  Q169 (rule: PARENS): correct='Priority Scheduling'
+  Q174 (rule: LONGEST): correct='Linux'
+  Q176 (rule: LONGEST): correct='Bare-metal OS'
+
+Rule breakdown:
+  LONGEST: 63/138 = 46%
+  PARENS: 2/8 = 25%
+  ALL_OF: 7/7 = 100%
+  TIER2:ready: 4/4 = 100%
+  TIER1:pages: 4/4 = 100%
+  TIER1:circular: 3/3 = 100%
+  TIER1:unauthorized: 3/3 = 100%
+  TIER1:create: 2/2 = 100%
+  TIER1:than: 2/2 = 100%
+  TIER2:part: 2/2 = 100%
+  TIER1:switching: 2/2 = 100%
+  TIER2:compiling: 0/1 = 0%
+  TIER1:among: 1/1 = 100%
+  TIER1:wait: 1/1 = 100%
+  TIER2:executing: 1/1 = 100%
+  TIER1:allows: 1/1 = 100%

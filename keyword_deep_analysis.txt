@@ -1,0 +1,345 @@
+DEEP KEYWORD ANALYSIS - Finding patterns in exceptions
+======================================================================
+
+======================================================================
+KEYWORD: 'wait' - 4/4 correct (100%)
+======================================================================
+  CORRECT in Q: [19, 76, 77, 167]
+  NO EXCEPTIONS - 100% accurate!
+
+======================================================================
+KEYWORD: 'pages' - 4/4 correct (100%)
+======================================================================
+  CORRECT in Q: [108, 119, 120, 180]
+  NO EXCEPTIONS - 100% accurate!
+
+======================================================================
+KEYWORD: 'than' - 3/3 correct (100%)
+======================================================================
+  CORRECT in Q: [69, 120, 137]
+  NO EXCEPTIONS - 100% accurate!
+
+======================================================================
+KEYWORD: 'circular' - 3/3 correct (100%)
+======================================================================
+  CORRECT in Q: [76, 77, 78]
+  NO EXCEPTIONS - 100% accurate!
+
+======================================================================
+KEYWORD: 'unauthorized' - 3/3 correct (100%)
+======================================================================
+  CORRECT in Q: [86, 87, 146]
+  NO EXCEPTIONS - 100% accurate!
+
+======================================================================
+KEYWORD: 'switching' - 3/3 correct (100%)
+======================================================================
+  CORRECT in Q: [166, 171, 172]
+  NO EXCEPTIONS - 100% accurate!
+
+======================================================================
+KEYWORD: 'create' - 2/2 correct (100%)
+======================================================================
+  CORRECT in Q: [40, 65]
+  NO EXCEPTIONS - 100% accurate!
+
+======================================================================
+KEYWORD: 'web' - 2/2 correct (100%)
+======================================================================
+  CORRECT in Q: [38, 180]
+  NO EXCEPTIONS - 100% accurate!
+
+======================================================================
+KEYWORD: 'among' - 2/2 correct (100%)
+======================================================================
+  CORRECT in Q: [20, 164]
+  NO EXCEPTIONS - 100% accurate!
+
+======================================================================
+KEYWORD: 'allows' - 2/2 correct (100%)
+======================================================================
+  CORRECT in Q: [69, 179]
+  NO EXCEPTIONS - 100% accurate!
+
+======================================================================
+KEYWORD: 'all' - 8/10 correct (80%)
+======================================================================
+  CORRECT in Q: [1, 15, 18, 20, 26, 31, 79, 98]
+  WRONG in Q: [4, 37]
+  --- EXCEPTION ANALYSIS ---
+    Q4: Correct was: 'each process is blocked and will remain so forever'
+      Options with 'all': [('all processes are trying to kill each other', 'W')]
+    Q37: Correct was: 'Process ID, Program Counter, Process State'
+      Options with 'all': [('List of all system processes', 'W')]
+
+======================================================================
+KEYWORD: 'ready' - 4/5 correct (80%)
+======================================================================
+  CORRECT in Q: [5, 89, 94, 165]
+  WRONG in Q: [62]
+  --- EXCEPTION ANALYSIS ---
+    Q62 [NOT Q]: Correct was: 'Queued'
+      Options with 'ready': [('Ready', 'W')]
+      Patterns: NOT_QUESTION
+
+======================================================================
+KEYWORD: 'data' - 6/8 correct (75%)
+======================================================================
+  CORRECT in Q: [85, 104, 109, 112, 138, 146]
+  WRONG in Q: [117, 172]
+  --- EXCEPTION ANALYSIS ---
+    Q117: Correct was: 'Reduce page faults'
+      Options with 'data': [('Store data permanently', 'W')]
+    Q172: Correct was: 'Increased complexity due to synchronization and context swit'
+      Options with 'data': [('Threads are unable to share data', 'W')]
+
+======================================================================
+KEYWORD: 'about' - 3/4 correct (75%)
+======================================================================
+  CORRECT in Q: [8, 72, 112]
+  WRONG in Q: [6]
+  --- EXCEPTION ANALYSIS ---
+    Q6: Correct was: 'Organize files in a structured manner'
+      Options with 'about': [('Store metadata about files', 'W')]
+
+======================================================================
+KEYWORD: 'scheduler' - 3/4 correct (75%)
+======================================================================
+  CORRECT in Q: [52, 55, 177]
+  WRONG in Q: [155]
+  --- EXCEPTION ANALYSIS ---
+    Q155: Correct was: 'Command Line Interface (CLI)'
+      Options with 'scheduler': [('Process Scheduler', 'W')]
+
+======================================================================
+KEYWORD: 'more' - 3/4 correct (75%)
+======================================================================
+  CORRECT in Q: [120, 137, 170]
+  WRONG in Q: [166]
+  --- EXCEPTION ANALYSIS ---
+    Q166: Correct was: 'Increased overhead due to context switching and synchronizat'
+      Options with 'more': [('More efficient use of memory', 'W')]
+      Patterns: COMPETING_KW: ['switching']
+
+======================================================================
+KEYWORD: 'stores' - 2/3 correct (67%)
+======================================================================
+  CORRECT in Q: [8, 112]
+  WRONG in Q: [150]
+  --- EXCEPTION ANALYSIS ---
+    Q150: Correct was: 'Points directly to the file’s inode'
+      Options with 'stores': [('Stores metadata separately from the file', 'W')]
+
+======================================================================
+KEYWORD: 'ntfs' - 2/3 correct (67%)
+======================================================================
+  CORRECT in Q: [17, 71]
+  WRONG in Q: [10]
+  --- EXCEPTION ANALYSIS ---
+    Q10: Correct was: 'ext4'
+      Options with 'ntfs': [('NTFS', 'W')]
+
+======================================================================
+KEYWORD: 'collection' - 2/3 correct (67%)
+======================================================================
+  CORRECT in Q: [41, 165]
+  WRONG in Q: [1]
+  --- EXCEPTION ANALYSIS ---
+    Q1: Correct was: 'all of the mentioned'
+      Options with 'collection': [('collection of programs that manages hardware resou', 'W')]
+      Patterns: COMPETING_KW: ['all']
+
+======================================================================
+KEYWORD: 'compiling' - 2/3 correct (67%)
+======================================================================
+  CORRECT in Q: [44, 147]
+  WRONG in Q: [34]
+  --- EXCEPTION ANALYSIS ---
+    Q34: Correct was: 'Managing hardware and software resources'
+      Options with 'compiling': [('Compiling code', 'W')]
+      Patterns: COMPETING_KW: ['managing']
+
+======================================================================
+KEYWORD: 'response' - 2/3 correct (67%)
+======================================================================
+  CORRECT in Q: [47, 53]
+  WRONG in Q: [29]
+  --- EXCEPTION ANALYSIS ---
+    Q29: Correct was: 'CPU utilization'
+      Options with 'response': [('Response time', 'W')]
+
+======================================================================
+KEYWORD: 'physical' - 2/3 correct (67%)
+======================================================================
+  CORRECT in Q: [69, 119]
+  WRONG in Q: [97]
+  --- EXCEPTION ANALYSIS ---
+    Q97: Correct was: 'logical address'
+      Options with 'physical': [('physical address', 'W')]
+
+======================================================================
+KEYWORD: 'hard' - 2/3 correct (67%)
+======================================================================
+  CORRECT in Q: [81, 91]
+  WRONG in Q: [84]
+  --- EXCEPTION ANALYSIS ---
+    Q84: Correct was: 'Keyboard'
+      Options with 'hard': [('Hard Disk', 'W')]
+
+======================================================================
+KEYWORD: 'transfer' - 2/3 correct (67%)
+======================================================================
+  CORRECT in Q: [85, 138]
+  WRONG in Q: [16]
+  --- EXCEPTION ANALYSIS ---
+    Q16: Correct was: 'Prevents file corruption by recording changes before applyin'
+      Options with 'transfer': [('Increases file transfer speed', 'W')]
+
+======================================================================
+KEYWORD: 'part' - 2/3 correct (67%)
+======================================================================
+  CORRECT in Q: [91, 175]
+  WRONG in Q: [111]
+  --- EXCEPTION ANALYSIS ---
+    Q111 [NOT Q]: Correct was: 'kernel is made of various modules which can not be loaded in'
+      Options with 'part': [('kernel is the first part of the operating system t', 'W')]
+      Patterns: NOT_QUESTION
+
+======================================================================
+KEYWORD: 'share' - 2/3 correct (67%)
+======================================================================
+  CORRECT in Q: [102, 161]
+  WRONG in Q: [172]
+  --- EXCEPTION ANALYSIS ---
+    Q172: Correct was: 'Increased complexity due to synchronization and context swit'
+      Options with 'share': [('Threads are unable to share data', 'W')]
+
+======================================================================
+KEYWORD: 'executing' - 2/3 correct (67%)
+======================================================================
+  CORRECT in Q: [120, 168]
+  WRONG in Q: [147]
+  --- EXCEPTION ANALYSIS ---
+    Q147 [NOT Q]: Correct was: 'Compiling application programs'
+      Options with 'executing': [('Executing user programs', 'W')]
+      Patterns: NOT_QUESTION, COMPETING_KW: ['compiling']
+
+======================================================================
+KEYWORD: 'accounting' - 2/3 correct (67%)
+======================================================================
+  CORRECT in Q: [145, 148]
+  WRONG in Q: [159]
+  --- EXCEPTION ANALYSIS ---
+    Q159: Correct was: 'Security'
+      Options with 'accounting': [('Accounting', 'W')]
+
+======================================================================
+KEYWORD: 'above' - 5/8 correct (62%)
+======================================================================
+  CORRECT in Q: [15, 26, 31, 79, 98]
+  WRONG in Q: [7, 12, 17]
+  --- EXCEPTION ANALYSIS ---
+    Q7: Correct was: 'Contiguous Allocation'
+      Options with 'above': [('None of the above', 'W')]
+    Q12: Correct was: 'Base address of each frame and corresponding page number'
+      Options with 'above': [('None of Above', 'W')]
+    Q17: Correct was: 'NTFS'
+      Options with 'above': [('None of the above', 'W')]
+      Patterns: COMPETING_KW: ['ntfs']
+
+======================================================================
+KEYWORD: 'metadata' - 3/5 correct (60%)
+======================================================================
+  CORRECT in Q: [8, 72, 75]
+  WRONG in Q: [6, 150]
+  --- EXCEPTION ANALYSIS ---
+    Q6: Correct was: 'Organize files in a structured manner'
+      Options with 'metadata': [('Store metadata about files', 'W')]
+    Q150: Correct was: 'Points directly to the file’s inode'
+      Options with 'metadata': [('Stores metadata separately from the file', 'W')]
+
+======================================================================
+KEYWORD: 'devices' - 3/5 correct (60%)
+======================================================================
+  CORRECT in Q: [49, 85, 178]
+  WRONG in Q: [112, 146]
+  --- EXCEPTION ANALYSIS ---
+    Q112: Correct was: 'A data structure that stores information about a process'
+      Options with 'devices': [('A mechanism for controlling I/O devices', 'W')]
+      Patterns: COMPETING_KW: ['data', 'about', 'stores']
+    Q146: Correct was: 'Protecting the system and user data from unauthorized access'
+      Options with 'devices': [('Managing I/O devices and data transfers', 'W')]
+      Patterns: COMPETING_KW: ['data', 'unauthorized']
+
+======================================================================
+KEYWORD: 'managing' - 4/7 correct (57%)
+======================================================================
+  CORRECT in Q: [34, 122, 138, 178]
+  WRONG in Q: [146, 147, 158]
+  --- EXCEPTION ANALYSIS ---
+    Q146: Correct was: 'Protecting the system and user data from unauthorized access'
+      Options with 'managing': [('Managing I/O devices and data transfers', 'W')]
+      Patterns: COMPETING_KW: ['data', 'unauthorized']
+    Q147 [NOT Q]: Correct was: 'Compiling application programs'
+      Options with 'managing': [('Managing hardware resources', 'W')]
+      Patterns: NOT_QUESTION, COMPETING_KW: ['compiling']
+    Q158: Correct was: 'Controlling access to networked resources'
+      Options with 'managing': [('Managing CPU resources', 'W')]
+
+======================================================================
+KEYWORD: 'multiple' - 3/6 correct (50%)
+======================================================================
+  CORRECT in Q: [164, 168, 179]
+  WRONG in Q: [77, 137, 163]
+  --- EXCEPTION ANALYSIS ---
+    Q77: Correct was: 'Avoiding Circular Wait'
+      Options with 'multiple': [('Allowing multiple processes to hold resources', 'W')]
+      Patterns: COMPETING_KW: ['wait', 'circular']
+    Q137: Correct was: 'Simulate more memory than physically available'
+      Options with 'multiple': [('Enable processes to run on multiple processors', 'W')]
+      Patterns: COMPETING_KW: ['than', 'more']
+    Q163: Correct was: 'Prevent processes from interfering with each other'
+      Options with 'multiple': [('Allow multiple threads to access the same memory s', 'W')]
+
+
+======================================================================
+KEYWORD CONFLICTS - When 2 golden keywords are in different options
+======================================================================
+
+Winner beats Loser in these questions:
+
+
+======================================================================
+SINGLE-OPTION: Keyword in exactly 1 option (most reliable)
+======================================================================
+  'wait': 3/3 = 100%
+  'pages': 4/4 = 100%
+  'than': 3/3 = 100%
+  'circular': 3/3 = 100%
+  'unauthorized': 3/3 = 100%
+  'switching': 2/2 = 100%
+  'create': 2/2 = 100%
+  'web': 2/2 = 100%
+  'all': 7/9 = 78% (wrong at Q[4, 37])
+  'ready': 4/5 = 80% (wrong at Q[62])
+  'data': 5/7 = 71% (wrong at Q[117, 172])
+  'about': 3/4 = 75% (wrong at Q[6])
+  'scheduler': 3/4 = 75% (wrong at Q[155])
+  'more': 3/4 = 75% (wrong at Q[166])
+  'stores': 2/3 = 67% (wrong at Q[150])
+  'ntfs': 2/3 = 67% (wrong at Q[10])
+  'collection': 2/3 = 67% (wrong at Q[1])
+  'compiling': 2/3 = 67% (wrong at Q[34])
+  'response': 2/3 = 67% (wrong at Q[29])
+  'physical': 2/3 = 67% (wrong at Q[97])
+  'hard': 2/3 = 67% (wrong at Q[84])
+  'transfer': 2/3 = 67% (wrong at Q[16])
+  'part': 2/3 = 67% (wrong at Q[111])
+  'share': 2/3 = 67% (wrong at Q[172])
+  'executing': 2/3 = 67% (wrong at Q[147])
+  'accounting': 2/3 = 67% (wrong at Q[159])
+  'above': 5/8 = 62% (wrong at Q[7, 12, 17])
+  'metadata': 3/5 = 60% (wrong at Q[6, 150])
+  'devices': 3/5 = 60% (wrong at Q[112, 146])
+  'managing': 4/7 = 57% (wrong at Q[146, 147, 158])
+  'multiple': 3/6 = 50% (wrong at Q[77, 137, 163])

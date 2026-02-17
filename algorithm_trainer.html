@@ -1,0 +1,1436 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <title>🎯 مدرّب الخوارزمية — OS</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Tajawal:wght@400;500;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      :root {
+        --bg: #0f0f1a;
+        --bg2: #1a1a2e;
+        --bg3: #25253d;
+        --card: #1e1e35;
+        --card-hover: #252545;
+        --text: #e8e8f0;
+        --text2: #a0a0c0;
+        --text3: #707090;
+        --accent: #7c5cfc;
+        --accent2: #a78bfa;
+        --accent-glow: rgba(124, 92, 252, 0.3);
+        --correct: #10b981;
+        --correct-bg: rgba(16, 185, 129, 0.15);
+        --correct-border: rgba(16, 185, 129, 0.4);
+        --wrong: #ef4444;
+        --wrong-bg: rgba(239, 68, 68, 0.15);
+        --wrong-border: rgba(239, 68, 68, 0.4);
+        --gold: #f59e0b;
+        --gold-bg: rgba(245, 158, 11, 0.15);
+        --gold-border: rgba(245, 158, 11, 0.4);
+        --trap: #ef4444;
+        --echo: #3b82f6;
+        --longest-c: #8b5cf6;
+        --radius: 12px;
+        --radius-sm: 8px;
+        --shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
+        --font-ar: "Tajawal", sans-serif;
+        --font-en: "Inter", sans-serif;
+      }
+      [data-theme="light"] {
+        --bg: #f0f0f8;
+        --bg2: #e8e8f2;
+        --bg3: #dddde8;
+        --card: #ffffff;
+        --card-hover: #f5f5ff;
+        --text: #1a1a2e;
+        --text2: #4a4a6a;
+        --text3: #8a8aa0;
+        --shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        font-family: var(--font-ar);
+        background: var(--bg);
+        color: var(--text);
+        line-height: 1.7;
+      }
+      .en {
+        font-family: var(--font-en);
+        direction: ltr;
+        text-align: left;
+      }
+
+      /* LAYOUT */
+      .app {
+        display: flex;
+        min-height: 100vh;
+      }
+      .sidebar {
+        width: 340px;
+        min-width: 340px;
+        background: var(--bg2);
+        border-left: 1px solid var(--bg3);
+        padding: 20px;
+        overflow-y: auto;
+        position: sticky;
+        top: 0;
+        height: 100vh;
+        scrollbar-width: thin;
+      }
+      .sidebar::-webkit-scrollbar {
+        width: 4px;
+      }
+      .sidebar::-webkit-scrollbar-thumb {
+        background: var(--bg3);
+        border-radius: 9px;
+      }
+      .main-content {
+        flex: 1;
+        padding: 20px;
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      /* HEADER */
+      .page-header {
+        text-align: center;
+        padding: 30px 20px 20px;
+        margin-bottom: 20px;
+      }
+      .page-header h1 {
+        font-size: 1.8rem;
+        font-weight: 800;
+        background: linear-gradient(135deg, var(--accent), var(--accent2));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      .page-header p {
+        color: var(--text2);
+        font-size: 0.9rem;
+        margin-top: 4px;
+      }
+
+      /* STATS BAR */
+      .stats-bar {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px;
+        margin-bottom: 20px;
+      }
+      .stat-card {
+        background: var(--card);
+        border: 1px solid var(--bg3);
+        border-radius: var(--radius);
+        padding: 14px;
+        text-align: center;
+      }
+      .stat-card .num {
+        font-size: 1.6rem;
+        font-weight: 800;
+      }
+      .stat-card .label {
+        font-size: 0.75rem;
+        color: var(--text2);
+      }
+      .stat-card.correct-stat .num {
+        color: var(--correct);
+      }
+      .stat-card.wrong-stat .num {
+        color: var(--wrong);
+      }
+      .stat-card.algo-stat .num {
+        color: var(--accent);
+      }
+      .stat-card.total-stat .num {
+        background: linear-gradient(135deg, var(--accent), var(--accent2));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      /* PROGRESS */
+      .progress-bar {
+        height: 8px;
+        background: var(--bg3);
+        border-radius: 99px;
+        overflow: hidden;
+        margin-bottom: 20px;
+      }
+      .progress-fill {
+        height: 100%;
+        background: linear-gradient(90deg, var(--accent), var(--accent2));
+        border-radius: 99px;
+        transition: width 0.4s;
+        width: 0%;
+      }
+
+      /* QUESTION CARD */
+      .q-card {
+        background: var(--card);
+        border: 1px solid var(--bg3);
+        border-radius: var(--radius);
+        padding: 24px;
+        margin-bottom: 16px;
+        transition: all 0.3s;
+        position: relative;
+      }
+      .q-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 4px 12px;
+        border-radius: 99px;
+        font-size: 0.75rem;
+        font-weight: 700;
+        margin-bottom: 12px;
+      }
+      .q-badge.not-badge {
+        background: var(--wrong-bg);
+        color: var(--wrong);
+        border: 1px solid var(--wrong-border);
+      }
+      .q-badge.tf-badge {
+        background: var(--gold-bg);
+        color: var(--gold);
+        border: 1px solid var(--gold-border);
+      }
+      .q-badge.none-badge {
+        background: rgba(239, 68, 68, 0.1);
+        color: #f87171;
+        border: 1px solid rgba(239, 68, 68, 0.3);
+      }
+      .q-badge.all-badge {
+        background: var(--correct-bg);
+        color: var(--correct);
+        border: 1px solid var(--correct-border);
+      }
+
+      .q-text {
+        font-size: 1.05rem;
+        font-weight: 600;
+        line-height: 1.9;
+        margin-bottom: 16px;
+      }
+      .q-text .en {
+        display: block;
+        font-size: 1rem;
+      }
+
+      /* OPTIONS */
+      .opts {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+      .opt-btn {
+        padding: 14px 16px;
+        border: 2px solid var(--bg3);
+        border-radius: var(--radius-sm);
+        background: var(--bg);
+        color: var(--text);
+        cursor: pointer;
+        text-align: right;
+        font-family: var(--font-ar);
+        font-size: 0.9rem;
+        transition: all 0.2s;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        position: relative;
+      }
+      .opt-btn .en {
+        font-family: var(--font-en);
+        direction: ltr;
+        flex: 1;
+      }
+      .opt-btn:hover:not(.disabled) {
+        border-color: var(--accent);
+        background: var(--accent-glow);
+      }
+      .opt-btn.correct {
+        border-color: var(--correct-border) !important;
+        background: var(--correct-bg) !important;
+      }
+      .opt-btn.wrong {
+        border-color: var(--wrong-border) !important;
+        background: var(--wrong-bg) !important;
+      }
+      .opt-btn.algo-pick {
+        border-color: var(--accent) !important;
+        box-shadow: 0 0 12px var(--accent-glow);
+      }
+      .opt-btn.disabled {
+        cursor: default;
+        opacity: 0.85;
+      }
+      .opt-btn .opt-letter {
+        min-width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        background: var(--bg3);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+        font-size: 0.8rem;
+        flex-shrink: 0;
+        transition: all 0.2s;
+      }
+      .opt-btn.correct .opt-letter {
+        background: var(--correct);
+        color: #fff;
+      }
+      .opt-btn.wrong .opt-letter {
+        background: var(--wrong);
+        color: #fff;
+      }
+      .opt-icon {
+        margin-inline-start: auto;
+        font-size: 1.1rem;
+      }
+
+      /* KEYWORD HIGHLIGHTS */
+      .kw-trap {
+        background: rgba(239, 68, 68, 0.25);
+        color: #fca5a5;
+        padding: 1px 4px;
+        border-radius: 3px;
+        font-weight: 700;
+        text-decoration: line-through;
+      }
+      .kw-gold1 {
+        background: rgba(245, 158, 11, 0.25);
+        color: #fbbf24;
+        padding: 1px 4px;
+        border-radius: 3px;
+        font-weight: 700;
+      }
+      .kw-gold2 {
+        background: rgba(59, 130, 246, 0.2);
+        color: #93c5fd;
+        padding: 1px 4px;
+        border-radius: 3px;
+        font-weight: 700;
+      }
+      .kw-echo {
+        background: rgba(139, 92, 246, 0.2);
+        color: #c4b5fd;
+        padding: 1px 4px;
+        border-radius: 3px;
+        text-decoration: underline;
+      }
+      .kw-longest {
+        border-bottom: 2px dashed var(--accent2);
+      }
+      .kw-none {
+        background: rgba(239, 68, 68, 0.2);
+        color: #fca5a5;
+        padding: 1px 4px;
+        border-radius: 3px;
+        text-decoration: line-through;
+      }
+
+      /* ANALYSIS BOX */
+      .analysis-box {
+        margin-top: 16px;
+        padding: 16px;
+        background: var(--bg);
+        border: 1px solid var(--bg3);
+        border-radius: var(--radius-sm);
+        display: none;
+        animation: fadeIn 0.3s;
+      }
+      .analysis-box.show {
+        display: block;
+      }
+      .analysis-box h4 {
+        color: var(--accent2);
+        margin-bottom: 10px;
+        font-size: 0.9rem;
+      }
+      .rule-step {
+        padding: 8px 12px;
+        margin-bottom: 6px;
+        border-radius: 6px;
+        font-size: 0.82rem;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .rule-step.active {
+        background: var(--correct-bg);
+        border-right: 3px solid var(--correct);
+      }
+      .rule-step.skipped {
+        background: var(--bg2);
+        color: var(--text3);
+        border-right: 3px solid var(--bg3);
+      }
+      .rule-step.failed {
+        background: var(--wrong-bg);
+        border-right: 3px solid var(--wrong);
+      }
+      .rule-step .step-icon {
+        font-size: 1rem;
+        min-width: 24px;
+        text-align: center;
+      }
+      .rule-step .step-text {
+        flex: 1;
+      }
+
+      /* SIDEBAR CHEAT SHEET */
+      .cheat-title {
+        font-size: 1.1rem;
+        font-weight: 800;
+        margin-bottom: 12px;
+        background: linear-gradient(135deg, var(--accent), var(--accent2));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      .cheat-section {
+        background: var(--bg);
+        border: 1px solid var(--bg3);
+        border-radius: var(--radius-sm);
+        padding: 12px;
+        margin-bottom: 10px;
+        font-size: 0.78rem;
+        line-height: 1.8;
+      }
+      .cheat-section h5 {
+        color: var(--accent2);
+        margin-bottom: 6px;
+        font-size: 0.82rem;
+      }
+      .cheat-section .tag {
+        display: inline-block;
+        padding: 2px 8px;
+        border-radius: 4px;
+        font-size: 0.72rem;
+        margin: 2px;
+        font-weight: 600;
+      }
+      .tag-trap {
+        background: rgba(239, 68, 68, 0.2);
+        color: #fca5a5;
+      }
+      .tag-gold1 {
+        background: rgba(245, 158, 11, 0.2);
+        color: #fbbf24;
+      }
+      .tag-gold2 {
+        background: rgba(59, 130, 246, 0.2);
+        color: #93c5fd;
+      }
+      .tag-gold3 {
+        background: rgba(139, 92, 246, 0.15);
+        color: #c4b5fd;
+      }
+
+      /* BUTTONS */
+      .btn {
+        padding: 8px 18px;
+        border: 1px solid var(--bg3);
+        border-radius: var(--radius-sm);
+        background: var(--bg3);
+        color: var(--text);
+        cursor: pointer;
+        font-family: var(--font-ar);
+        font-size: 0.85rem;
+        transition: all 0.2s;
+        white-space: nowrap;
+      }
+      .btn:hover {
+        background: var(--accent);
+        border-color: var(--accent);
+        color: #fff;
+      }
+      .btn.active {
+        background: var(--accent);
+        border-color: var(--accent);
+        color: #fff;
+      }
+      .btn-primary {
+        background: var(--accent);
+        border-color: var(--accent);
+        color: #fff;
+      }
+      .btn-primary:hover {
+        background: var(--accent2);
+      }
+      .btn-row {
+        display: flex;
+        gap: 8px;
+        margin-bottom: 16px;
+        flex-wrap: wrap;
+      }
+
+      /* LEGEND */
+      .legend {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+        margin-bottom: 16px;
+        padding: 10px 14px;
+        background: var(--card);
+        border: 1px solid var(--bg3);
+        border-radius: var(--radius-sm);
+        font-size: 0.75rem;
+      }
+      .legend-item {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+      }
+
+      /* MOBILE SIDEBAR TOGGLE */
+      .sidebar-toggle {
+        display: none;
+        position: fixed;
+        bottom: 16px;
+        left: 16px;
+        z-index: 150;
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        background: var(--accent);
+        color: #fff;
+        border: none;
+        font-size: 1.3rem;
+        cursor: pointer;
+        box-shadow: 0 4px 16px rgba(124, 92, 252, 0.5);
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(6px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* BACK LINK */
+      .back-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        color: var(--accent2);
+        text-decoration: none;
+        font-size: 0.85rem;
+        margin-bottom: 16px;
+        transition: all 0.2s;
+      }
+      .back-link:hover {
+        color: var(--accent);
+      }
+
+      /* FOOTER */
+      .footer {
+        text-align: center;
+        font-size: 1.5rem;
+        font-weight: 900;
+        margin-top: 40px;
+        padding-bottom: 30px;
+        font-family: var(--font-en);
+        background: linear-gradient(135deg, var(--accent), var(--accent2));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        letter-spacing: 4px;
+        text-transform: uppercase;
+      }
+
+      @media (max-width: 900px) {
+        .app {
+          flex-direction: column;
+        }
+        .sidebar {
+          width: 100%;
+          min-width: 100%;
+          position: fixed;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          height: auto;
+          max-height: 40vh;
+          z-index: 140;
+          border-left: none;
+          border-top: 2px solid var(--bg3);
+          display: none;
+          padding: 14px;
+        }
+        .sidebar.mobile-show {
+          display: block;
+          animation: fadeIn 0.3s;
+        }
+        .sidebar-toggle {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+        .main-content {
+          padding: 12px;
+          padding-bottom: 80px;
+        }
+        .stats-bar {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .page-header h1 {
+          font-size: 1.3rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="app">
+      <!-- SIDEBAR: CHEAT SHEET -->
+      <aside class="sidebar" id="sidebarEl">
+        <div class="cheat-title">📋 ملخص الخوارزمية</div>
+
+        <div class="cheat-section">
+          <h5>1️⃣ قواعد مطلقة</h5>
+          ✅ "All of the mentioned/above" → اختره<br />
+          ❌ "None..." → استبعده<br />
+          ❌ "Schedules..." → استبعده<br />
+          ❌ كلمات فخ:<br />
+          <span class="tag tag-trap">single</span>
+          <span class="tag tag-trap">allocates</span>
+          <span class="tag tag-trap">prevent*</span>
+          <span class="tag tag-trap">reduce*</span>
+          <span class="tag tag-trap">macOS</span>
+          <span class="tag tag-trap">segmentation</span>
+          <span class="tag tag-trap">deadlocks</span>
+          <span class="tag tag-trap">speed</span>
+          <span class="tag tag-trap">manager</span>
+        </div>
+
+        <div class="cheat-section">
+          <h5>2️⃣ الأطول (73.7%)</h5>
+          ⚠️ مع None → <b>28% بس!</b><br />
+          🔑 أقواس () → <b>90%</b><br />
+          📏 أطول بكلمتين+ → اختره
+        </div>
+
+        <div class="cheat-section">
+          <h5>3️⃣ 🥇 المستوى 1 (يفوز على كل شي)</h5>
+          <span class="tag tag-gold1">circular</span>
+          <span class="tag tag-gold1">unauthorized</span>
+          <span class="tag tag-gold1">wait</span>
+          <span class="tag tag-gold1">pages</span>
+          <span class="tag tag-gold1">switching</span>
+          <span class="tag tag-gold1">than</span>
+          <span class="tag tag-gold1">create</span>
+          <span class="tag tag-gold1">web</span>
+          <span class="tag tag-gold1">allows</span>
+          <span class="tag tag-gold1">among</span>
+          <span class="tag tag-gold1">highest</span>
+        </div>
+
+        <div class="cheat-section">
+          <h5>4️⃣ 🥈 المستوى 2 (❌ بأسئلة NOT)</h5>
+          <span class="tag tag-gold2">ready</span>
+          <span class="tag tag-gold2">each</span>
+          <span class="tag tag-gold2">compiling</span>
+          <span class="tag tag-gold2">part</span>
+          <span class="tag tag-gold2">executing</span>
+        </div>
+
+        <div class="cheat-section">
+          <h5>5️⃣ 📚 الصدى (69%)</h5>
+          الخيار اللي يردد كلمة السؤال<br />
+          يفوز على الأطول 5:3
+        </div>
+
+        <div class="cheat-section">
+          <h5>6️⃣ 🔄 كلمة مكررة بخيارين (100%)</h5>
+          <span
+            class="tag"
+            style="background: #34d39933; color: #34d399; border-color: #34d399"
+            >process</span
+          >
+          <span
+            class="tag"
+            style="background: #34d39933; color: #34d399; border-color: #34d399"
+            >cpu</span
+          >
+          <span
+            class="tag"
+            style="background: #34d39933; color: #34d399; border-color: #34d399"
+            >file</span
+          >
+          <span
+            class="tag"
+            style="background: #34d39933; color: #34d399; border-color: #34d399"
+            >threads</span
+          >
+          <br />⚠️ threads بـ 3 خيارات = 0%!
+        </div>
+
+        <div class="cheat-section">
+          <h5>⚡ أسئلة NOT</h5>
+          ❌ الأطول 75% غلط<br />
+          ✅ المستوى 1 فقط يشتغل<br />
+          🎯 دور على الغريب
+        </div>
+
+        <div class="cheat-section">
+          <h5>📊 True/False</h5>
+          نفي → FALSE<br />
+          إيجابي → TRUE
+        </div>
+      </aside>
+
+      <!-- MAIN CONTENT -->
+      <div class="main-content">
+        <a class="back-link" href="index.html">→ العودة لبنك الأسئلة</a>
+
+        <div class="page-header">
+          <h1>🎯 مدرّب الخوارزمية</h1>
+          <p>
+            تدرّب على تطبيق الخوارزمية — شوف الكلمات المفتاحية والأنماط بشكل
+            بصري
+          </p>
+        </div>
+
+        <div class="stats-bar">
+          <div class="stat-card total-stat">
+            <div class="num" id="totalNum">0</div>
+            <div class="label">أسئلة مُجابة</div>
+          </div>
+          <div class="stat-card correct-stat">
+            <div class="num" id="correctNum">0</div>
+            <div class="label">صحيحة ✅</div>
+          </div>
+          <div class="stat-card wrong-stat">
+            <div class="num" id="wrongNum">0</div>
+            <div class="label">خاطئة ❌</div>
+          </div>
+          <div class="stat-card algo-stat">
+            <div class="num" id="algoNum">0%</div>
+            <div class="label">دقة الخوارزمية</div>
+          </div>
+        </div>
+
+        <div class="progress-bar">
+          <div class="progress-fill" id="progressFill"></div>
+        </div>
+
+        <div class="btn-row">
+          <button class="btn btn-primary" onclick="newQuestion()">
+            ⏭️ سؤال جديد
+          </button>
+          <button class="btn" onclick="toggleTheme()" id="themeBtn">
+            🌙 الوضع
+          </button>
+          <button class="btn" onclick="resetStats()">🗑️ مسح الإحصائيات</button>
+          <button
+            class="btn"
+            id="showAlgoBtn"
+            onclick="revealAlgorithm()"
+            disabled
+          >
+            🔍 كشف الخوارزمية
+          </button>
+        </div>
+
+        <div class="legend">
+          <div class="legend-item">
+            <span class="tag tag-trap">فخ</span> كلمة فخ (استبعد)
+          </div>
+          <div class="legend-item">
+            <span class="tag tag-gold1">🥇</span> مستوى 1
+          </div>
+          <div class="legend-item">
+            <span class="tag tag-gold2">🥈</span> مستوى 2
+          </div>
+          <div class="legend-item">
+            <span style="border-bottom: 2px dashed var(--accent2)"
+              >&nbsp;الأطول&nbsp;</span
+            >
+          </div>
+          <div class="legend-item">
+            <span style="text-decoration: underline; color: #c4b5fd">صدى</span>
+          </div>
+          <div class="legend-item">
+            <span style="color: #34d399; font-weight: 700">🔄 مكررة</span>
+          </div>
+        </div>
+
+        <div id="questionArea"></div>
+
+        <div class="footer">Koros Sama</div>
+      </div>
+    </div>
+
+    <button class="sidebar-toggle" id="sidebarToggle" onclick="toggleSidebar()">
+      📋
+    </button>
+
+    <script src="questions_data.js"></script>
+    <script>
+      // ======================== DATA ========================
+      let questions = [];
+      let currentQ = null;
+      let answered = false;
+      let stats = { total: 0, correct: 0, algoCorrect: 0 };
+
+      const TIER1 = [
+        "circular",
+        "unauthorized",
+        "wait",
+        "pages",
+        "switching",
+        "than",
+        "create",
+        "web",
+        "allows",
+        "among",
+        "highest",
+      ];
+      const TIER2 = ["ready", "each", "compiling", "part", "executing"];
+      const TIER3 = [
+        "all",
+        "data",
+        "scheduler",
+        "more",
+        "about",
+        "stores",
+        "ntfs",
+        "collection",
+        "response",
+        "physical",
+        "hard",
+        "share",
+        "accounting",
+        "metadata",
+        "managing",
+      ];
+      const TRAP_WORDS = [
+        "single",
+        "allocates",
+        "prevention",
+        "prevent",
+        "prevents",
+        "preventing",
+        "prevented",
+        "reduce",
+        "reduces",
+        "reduced",
+        "reducing",
+        "reduction",
+        "macos",
+        "segmentation",
+        "deadlocks",
+        "speed",
+        "manager",
+      ];
+      const STOP_WORDS = new Set([
+        "the",
+        "a",
+        "an",
+        "is",
+        "are",
+        "of",
+        "in",
+        "to",
+        "for",
+        "and",
+        "or",
+        "which",
+        "what",
+        "following",
+        "not",
+        "does",
+        "that",
+        "this",
+        "it",
+        "by",
+        "on",
+        "from",
+        "with",
+        "be",
+        "how",
+        "do",
+        "was",
+        "has",
+        "have",
+        "can",
+        "will",
+        "one",
+        "its",
+        "used",
+        "called",
+        "type",
+        "system",
+        "operating",
+        "os",
+        "process",
+        "when",
+        "between",
+      ]);
+
+      function clean(text) {
+        return text.replace(/^[a-d]\)\s*/i, "").trim();
+      }
+      function getWords(text) {
+        return [...new Set(text.toLowerCase().match(/[a-zA-Z]+/g) || [])];
+      }
+
+      // Load questions - try QUESTIONS_DATA first (file://), then fetch (http)
+      function initApp(data) {
+        questions = data;
+        loadStats();
+        newQuestion();
+      }
+
+      if (typeof QUESTIONS_DATA !== "undefined") {
+        initApp(QUESTIONS_DATA);
+      } else {
+        fetch("questions.json")
+          .then((r) => r.json())
+          .then((data) => initApp(data))
+          .catch(() => {
+            document.getElementById("questionArea").innerHTML =
+              '<div class="q-card" style="text-align:center;color:var(--wrong)">⚠️ شغّل <code>python gen_data_js.py</code> أولاً لإنشاء ملف البيانات</div>';
+          });
+      }
+
+      // ======================== ALGORITHM ENGINE ========================
+      function analyzeQuestion(q) {
+        const opts = q.options.map((o) => ({
+          text: clean(o.text),
+          correct: o.correct,
+          raw: o.text,
+        }));
+        const qText = q.text;
+        const isNOT = /\bnot\b/i.test(qText);
+        const isTF = opts.length <= 2;
+        const hasNone = opts.some((o) => /\bnone\b/i.test(o.text));
+        const hasAll = opts.some((o) =>
+          /\ball\s+(of\s+)?(the\s+)?(mentioned|above)/i.test(o.text)
+        );
+
+        let steps = [];
+        let algoPick = -1;
+        let algoConf = "";
+
+        // Classify each option
+        opts.forEach((o, i) => {
+          o.index = i;
+          o.words = getWords(o.text);
+          o.wordCount = o.text.split(/\s+/).length;
+          o.traps = o.words.filter((w) => TRAP_WORDS.includes(w));
+          o.t1 = o.words.filter((w) => TIER1.includes(w));
+          o.t2 = o.words.filter((w) => TIER2.includes(w));
+          o.t3 = o.words.filter((w) => TIER3.includes(w));
+          o.hasParen = /\(.*\)/.test(o.text);
+          o.isNone = /\bnone\b/i.test(o.text);
+          o.isAll = /\ball\s+(of\s+)?(the\s+)?(mentioned|above)/i.test(o.text);
+          o.isSchedules = o.text.toLowerCase().startsWith("schedules");
+
+          // Echo
+          const qWords = getWords(qText).filter((w) => !STOP_WORDS.has(w));
+          const oWords = o.words.filter((w) => !STOP_WORDS.has(w));
+          o.echoWords = qWords.filter((w) => oWords.includes(w));
+        });
+
+        // T/F
+        if (isTF) {
+          const hasNeg = opts.some((o) =>
+            /\bnot\b|does not|cannot|can not/i.test(o.text)
+          );
+          steps.push({
+            text:
+              "True/False: " + (hasNeg ? "فيه نفي → FALSE" : "إيجابي → TRUE"),
+            active: true,
+          });
+          algoPick = hasNeg
+            ? opts.findIndex((o) => /false/i.test(o.text))
+            : opts.findIndex((o) => /true/i.test(o.text));
+          if (algoPick === -1) algoPick = 0;
+          return { opts, steps, algoPick, isNOT, isTF, hasNone, hasAll };
+        }
+
+        // All of mentioned
+        const allIdx = opts.findIndex((o) => o.isAll);
+        if (allIdx !== -1) {
+          steps.push({
+            text: '✅ "All of the mentioned" موجود — اختره',
+            active: true,
+          });
+          algoPick = allIdx;
+          return { opts, steps, algoPick, isNOT, isTF, hasNone, hasAll };
+        }
+        steps.push({
+          text: '"All of the mentioned" — غير موجود',
+          skipped: true,
+        });
+
+        // None
+        if (hasNone) {
+          steps.push({ text: '❌ خيار "None" موجود — استبعده', active: true });
+        }
+
+        // Schedules
+        const schedIdx = opts.filter((o) => o.isSchedules);
+        if (schedIdx.length > 0) {
+          steps.push({
+            text: '❌ خيار "Schedules..." — استبعده',
+            active: true,
+          });
+        }
+
+        // Trap words
+        const trappedOpts = opts.filter(
+          (o) =>
+            o.traps.length > 0 &&
+            o.t1.length === 0 &&
+            o.t2.length === 0 &&
+            !o.isNone
+        );
+        if (trappedOpts.length > 0) {
+          steps.push({
+            text: `❌ كلمات فخ: ${trappedOpts
+              .map((o) => o.traps.join(", "))
+              .join(" | ")}`,
+            active: true,
+          });
+        }
+
+        // Remaining after elimination
+        let remaining = opts.filter(
+          (o) =>
+            !o.isNone &&
+            !o.isSchedules &&
+            !(o.traps.length > 0 && o.t1.length === 0 && o.t2.length === 0)
+        );
+        if (remaining.length === 0) remaining = opts.filter((o) => !o.isNone);
+        if (remaining.length === 0) remaining = opts;
+
+        if (remaining.length === 1) {
+          steps.push({
+            text: "🎯 خيار وحيد متبقي بعد الاستبعاد",
+            active: true,
+          });
+          algoPick = remaining[0].index;
+          return { opts, steps, algoPick, isNOT, isTF, hasNone, hasAll };
+        }
+
+        // NOT questions
+        if (isNOT) {
+          steps.push({ text: "⚠️ سؤال NOT — الأطول 75% غلط!", active: true });
+
+          // Tier 1 in NOT
+          const t1inNot = remaining.filter((o) => o.t1.length > 0);
+          if (t1inNot.length === 1) {
+            steps.push({
+              text: `🥇 المستوى 1 بسؤال NOT: "${t1inNot[0].t1.join(", ")}"`,
+              active: true,
+            });
+            algoPick = t1inNot[0].index;
+          } else {
+            // Shortest (odd one out)
+            const shortest = remaining.reduce((a, b) =>
+              a.wordCount < b.wordCount ? a : b
+            );
+            steps.push({ text: "🔍 NOT: اختر الأقصر (الغريب)", active: true });
+            algoPick = shortest.index;
+          }
+          return { opts, steps, algoPick, isNOT, isTF, hasNone, hasAll };
+        }
+
+        // Tier 1
+        for (const kw of TIER1) {
+          const matching = remaining.filter((o) => o.words.includes(kw));
+          if (matching.length === 1) {
+            steps.push({
+              text: `🥇 مستوى 1: "${kw}" — بخيار واحد بس`,
+              active: true,
+            });
+            algoPick = matching[0].index;
+            return { opts, steps, algoPick, isNOT, isTF, hasNone, hasAll };
+          }
+        }
+        steps.push({
+          text: "🥇 المستوى 1 — لا يوجد كلمة فريدة",
+          skipped: true,
+        });
+
+        // Tier 2
+        for (const kw of TIER2) {
+          const matching = remaining.filter((o) => o.words.includes(kw));
+          if (matching.length === 1) {
+            if (kw === "each") {
+              const hasShareAmong = remaining.some(
+                (o) => o.words.includes("share") || o.words.includes("among")
+              );
+              if (hasShareAmong) {
+                steps.push({
+                  text: '🥈 "each" موجود لكن "share/among" أقوى',
+                  skipped: true,
+                });
+                continue;
+              }
+            }
+            steps.push({ text: `🥈 مستوى 2: "${kw}"`, active: true });
+            algoPick = matching[0].index;
+            return { opts, steps, algoPick, isNOT, isTF, hasNone, hasAll };
+          }
+        }
+        steps.push({ text: "🥈 المستوى 2 — لا يوجد", skipped: true });
+
+        // Parentheses
+        const parenOpts = remaining.filter((o) => o.hasParen);
+        const nonParen = remaining.filter((o) => !o.hasParen);
+        if (
+          parenOpts.length > 0 &&
+          nonParen.length > 0 &&
+          parenOpts.length < remaining.length
+        ) {
+          steps.push({
+            text: `🔑 أقواس (): "${parenOpts[0].text.substring(0, 40)}..."`,
+            active: true,
+          });
+          algoPick = parenOpts[0].index;
+          return { opts, steps, algoPick, isNOT, isTF, hasNone, hasAll };
+        }
+        steps.push({ text: "🔑 أقواس — لا يوجد تمييز", skipped: true });
+
+        // Echo
+        const qWords = getWords(qText).filter((w) => !STOP_WORDS.has(w));
+        const echoScores = remaining.map((o) => {
+          const shared = qWords.filter((w) => o.words.includes(w));
+          return { opt: o, score: shared.length, words: shared };
+        });
+        const maxEcho = Math.max(...echoScores.map((e) => e.score));
+        if (maxEcho > 0) {
+          const echoWinners = echoScores.filter((e) => e.score === maxEcho);
+          if (echoWinners.length === 1) {
+            steps.push({
+              text: `📚 صدى: "${echoWinners[0].words.join(", ")}" (${
+                echoWinners[0].score
+              } كلمة مشتركة)`,
+              active: true,
+            });
+            algoPick = echoWinners[0].opt.index;
+            return { opts, steps, algoPick, isNOT, isTF, hasNone, hasAll };
+          }
+        }
+        steps.push({ text: "📚 الصدى — لا يوجد فائز واحد", skipped: true });
+
+        // Golden Duplicate Keywords (process/cpu/file/threads in exactly 2 options)
+        const GOLDEN_DUP_ANY = ["process"]; // works at 2+ options
+        const GOLDEN_DUP_2ONLY = ["cpu", "file", "threads"]; // only at exactly 2
+
+        // Check "any count" golden words (process)
+        for (const gw of GOLDEN_DUP_ANY) {
+          const gwMatches = remaining.filter((o) => o.words.includes(gw));
+          if (gwMatches.length >= 2 && gwMatches.length < remaining.length) {
+            const longest = gwMatches.reduce((a, b) =>
+              a.wordCount >= b.wordCount ? a : b
+            );
+            steps.push({
+              text: `🔄 كلمة "${gw}" بـ ${gwMatches.length} خيارات → الأطول`,
+              active: true,
+            });
+            algoPick = longest.index;
+            return { opts, steps, algoPick, isNOT, isTF, hasNone, hasAll };
+          }
+        }
+
+        // Check "2 only" golden words (cpu, file, threads)
+        for (const gw of GOLDEN_DUP_2ONLY) {
+          const gwMatches = remaining.filter((o) => o.words.includes(gw));
+          if (gwMatches.length === 2) {
+            const longest = gwMatches.reduce((a, b) =>
+              a.wordCount >= b.wordCount ? a : b
+            );
+            steps.push({
+              text: `🔄 كلمة "${gw}" بخيارين بالضبط → الأطول (100%)`,
+              active: true,
+            });
+            algoPick = longest.index;
+            return { opts, steps, algoPick, isNOT, isTF, hasNone, hasAll };
+          }
+        }
+        steps.push({
+          text: "🔄 كلمة ذهبية مكررة — لا يوجد",
+          skipped: true,
+        });
+
+        // Longest
+        const maxLen = Math.max(...remaining.map((o) => o.wordCount));
+        const longestOpts = remaining.filter((o) => o.wordCount === maxLen);
+        if (longestOpts.length === 1) {
+          const conf = hasNone ? "(⚠️ 28% مع None!)" : "(73.7%)";
+          steps.push({
+            text: `📏 الأطول: "${longestOpts[0].text.substring(
+              0,
+              40
+            )}..." ${conf}`,
+            active: true,
+          });
+          algoPick = longestOpts[0].index;
+          return { opts, steps, algoPick, isNOT, isTF, hasNone, hasAll };
+        }
+
+        steps.push({ text: "📏 الأطول — تعادل", skipped: true });
+        // Fallback
+        algoPick = remaining[0].index;
+        steps.push({ text: "🎲 تخمين: أول خيار متبقي", active: true });
+
+        return { opts, steps, algoPick, isNOT, isTF, hasNone, hasAll };
+      }
+
+      // ======================== UI ========================
+      function newQuestion() {
+        answered = false;
+        document.getElementById("showAlgoBtn").disabled = false;
+        const idx = Math.floor(Math.random() * questions.length);
+        currentQ = questions[idx];
+        renderQuestion();
+      }
+
+      function renderQuestion() {
+        const q = currentQ;
+        const analysis = analyzeQuestion(q);
+        const area = document.getElementById("questionArea");
+
+        // Badges
+        let badges = "";
+        if (analysis.isNOT)
+          badges += '<span class="q-badge not-badge">⚠️ NOT</span> ';
+        if (analysis.isTF)
+          badges += '<span class="q-badge tf-badge">T/F</span> ';
+        if (analysis.hasNone)
+          badges += '<span class="q-badge none-badge">❌ None</span> ';
+        if (analysis.hasAll)
+          badges += '<span class="q-badge all-badge">✅ All</span> ';
+
+        let optionsHTML = analysis.opts
+          .map((o, i) => {
+            const letter = String.fromCharCode(65 + i);
+            return `<button class="opt-btn" data-idx="${i}" onclick="selectOption(${i})">
+      <span class="opt-letter">${letter}</span>
+      <span class="en">${o.raw}</span>
+      <span class="opt-icon"></span>
+    </button>`;
+          })
+          .join("");
+
+        area.innerHTML = `
+    <div class="q-card" id="qCard">
+      ${badges}
+      <div class="q-text"><span class="en">Q${q.id}: ${q.text}</span></div>
+      <div class="opts" id="optsContainer">${optionsHTML}</div>
+      <div class="analysis-box" id="analysisBox">
+        <h4>🔍 تحليل الخوارزمية</h4>
+        <div id="algoSteps"></div>
+      </div>
+    </div>
+  `;
+
+        // Store analysis for later reveal
+        area.dataset.analysis = JSON.stringify(analysis);
+        area.dataset.algoPick = analysis.algoPick;
+      }
+
+      function selectOption(idx) {
+        if (answered) return;
+        answered = true;
+
+        const q = currentQ;
+        const analysis = JSON.parse(
+          document.getElementById("questionArea").dataset.analysis
+        );
+        const isCorrect = q.options[idx].correct;
+        const correctIdx = q.options.findIndex((o) => o.correct);
+        const algoPick = parseInt(
+          document.getElementById("questionArea").dataset.algoPick
+        );
+        const algoIsCorrect =
+          q.options[algoPick] && q.options[algoPick].correct;
+
+        // Update stats
+        stats.total++;
+        if (isCorrect) stats.correct++;
+        if (algoIsCorrect) stats.algoCorrect++;
+        updateStats();
+        saveStats();
+
+        // Style options
+        document.querySelectorAll(".opt-btn").forEach((btn, i) => {
+          btn.classList.add("disabled");
+          if (i === correctIdx) {
+            btn.classList.add("correct");
+            btn.querySelector(".opt-icon").textContent = "✅";
+          }
+          if (i === idx && !isCorrect) {
+            btn.classList.add("wrong");
+            btn.querySelector(".opt-icon").textContent = "❌";
+          }
+          if (i === algoPick) {
+            btn.classList.add("algo-pick");
+            const icon = btn.querySelector(".opt-icon");
+            icon.textContent = (icon.textContent || "") + " 🤖";
+          }
+        });
+
+        // Highlight keywords in options
+        highlightKeywords(analysis);
+
+        // Show algorithm analysis
+        revealAlgorithm();
+      }
+
+      function highlightKeywords(analysis) {
+        document.querySelectorAll(".opt-btn").forEach((btn, i) => {
+          const opt = analysis.opts[i];
+          if (!opt) return;
+          const textEl = btn.querySelector(".en");
+          let text = opt.raw;
+
+          // Highlight trap words
+          opt.traps.forEach((t) => {
+            const regex = new RegExp(`\\b(${t})\\b`, "gi");
+            text = text.replace(regex, '<span class="kw-trap">$1</span>');
+          });
+
+          // Highlight Tier 1
+          opt.t1.forEach((t) => {
+            const regex = new RegExp(`\\b(${t})\\b`, "gi");
+            text = text.replace(regex, '<span class="kw-gold1">$1</span>');
+          });
+
+          // Highlight Tier 2
+          opt.t2.forEach((t) => {
+            const regex = new RegExp(`\\b(${t})\\b`, "gi");
+            text = text.replace(regex, '<span class="kw-gold2">$1</span>');
+          });
+
+          // Highlight echo words
+          opt.echoWords.forEach((w) => {
+            if (
+              !opt.traps.includes(w) &&
+              !opt.t1.includes(w) &&
+              !opt.t2.includes(w)
+            ) {
+              const regex = new RegExp(`\\b(${w})\\b`, "gi");
+              text = text.replace(regex, '<span class="kw-echo">$1</span>');
+            }
+          });
+
+          // None strikethrough
+          if (opt.isNone) {
+            text = `<span class="kw-none">${text}</span>`;
+          }
+
+          textEl.innerHTML = text;
+        });
+
+        // Mark longest
+        const maxLen = Math.max(
+          ...analysis.opts.filter((o) => !o.isNone).map((o) => o.wordCount)
+        );
+        document.querySelectorAll(".opt-btn").forEach((btn, i) => {
+          if (
+            analysis.opts[i] &&
+            analysis.opts[i].wordCount === maxLen &&
+            !analysis.opts[i].isNone
+          ) {
+            btn.querySelector(".en").classList.add("kw-longest");
+          }
+        });
+      }
+
+      function revealAlgorithm() {
+        if (!currentQ) return;
+        const analysis = JSON.parse(
+          document.getElementById("questionArea").dataset.analysis
+        );
+        const box = document.getElementById("analysisBox");
+        const stepsEl = document.getElementById("algoSteps");
+
+        let stepsHTML = analysis.steps
+          .map((s) => {
+            let cls = s.active ? "active" : s.failed ? "failed" : "skipped";
+            let icon = s.active ? "✅" : s.failed ? "❌" : "⏭️";
+            return `<div class="rule-step ${cls}"><span class="step-icon">${icon}</span><span class="step-text">${s.text}</span></div>`;
+          })
+          .join("");
+
+        stepsEl.innerHTML = stepsHTML;
+        box.classList.add("show");
+        document.getElementById("showAlgoBtn").disabled = true;
+
+        // Also highlight keywords if not already done
+        highlightKeywords(analysis);
+      }
+
+      function updateStats() {
+        document.getElementById("totalNum").textContent = stats.total;
+        document.getElementById("correctNum").textContent = stats.correct;
+        document.getElementById("wrongNum").textContent =
+          stats.total - stats.correct;
+        const pct =
+          stats.total > 0
+            ? Math.round((stats.algoCorrect / stats.total) * 100)
+            : 0;
+        document.getElementById("algoNum").textContent = pct + "%";
+        const fill =
+          stats.total > 0 ? Math.round((stats.correct / stats.total) * 100) : 0;
+        document.getElementById("progressFill").style.width = fill + "%";
+      }
+
+      function resetStats() {
+        if (!confirm("مسح كل الإحصائيات؟")) return;
+        stats = { total: 0, correct: 0, algoCorrect: 0 };
+        updateStats();
+        saveStats();
+      }
+
+      function saveStats() {
+        localStorage.setItem("algo_trainer_stats", JSON.stringify(stats));
+      }
+      function loadStats() {
+        const saved = localStorage.getItem("algo_trainer_stats");
+        if (saved) {
+          stats = JSON.parse(saved);
+          updateStats();
+        }
+      }
+
+      // Theme
+      function toggleTheme() {
+        const isDark = !document.body.hasAttribute("data-theme");
+        document.body.setAttribute("data-theme", isDark ? "light" : "");
+        document.getElementById("themeBtn").textContent = isDark
+          ? "🌙 داكن"
+          : "☀️ فاتح";
+        if (!isDark) document.body.removeAttribute("data-theme");
+      }
+
+      // Sidebar
+      function toggleSidebar() {
+        document.getElementById("sidebarEl").classList.toggle("mobile-show");
+      }
+    </script>
+  </body>
+</html>

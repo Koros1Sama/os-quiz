@@ -1,0 +1,135 @@
+======================================================================
+TRAP WORDS: Words in options that are almost always WRONG
+======================================================================
+
+Words that are WRONG >=80% of the time (appears in >=5 options):
+  'none': WRONG 10/10 = 100%
+  'single': WRONG 7/7 = 100%
+  'allocates': WRONG 6/6 = 100%
+  'prevention': WRONG 6/6 = 100%
+  'macos': WRONG 5/5 = 100%
+  'segmentation': WRONG 5/5 = 100%
+  'deadlocks': WRONG 5/5 = 100%
+  'speed': WRONG 5/5 = 100%
+  'manager': WRONG 5/5 = 100%
+  'processes': WRONG 21/22 = 95% EXCEPTIONS at Q[163]
+  'management': WRONG 53/58 = 91% EXCEPTIONS at Q[128, 144, 152, 154, 160]
+  'virtual': WRONG 10/11 = 91% EXCEPTIONS at Q[153]
+  'allocate': WRONG 8/9 = 89% EXCEPTIONS at Q[25]
+  'fragmentation': WRONG 8/9 = 89% EXCEPTIONS at Q[67]
+  'manage': WRONG 8/9 = 89% EXCEPTIONS at Q[173]
+  'scheduling': WRONG 37/42 = 88% EXCEPTIONS at Q[68, 124, 132, 157, 169]
+  'deadlock': WRONG 14/16 = 88% EXCEPTIONS at Q[80, 129]
+  'control': WRONG 7/8 = 88% EXCEPTIONS at Q[139]
+  'memory': WRONG 75/87 = 86% EXCEPTIONS at Q[14, 25, 60, 69, 93, 113, 119, 137, 143, 153, 160, 161]
+  'number': WRONG 6/7 = 86% EXCEPTIONS at Q[12]
+  'type': WRONG 6/7 = 86% EXCEPTIONS at Q[73]
+  'fcfs': WRONG 6/7 = 86% EXCEPTIONS at Q[105]
+  'storage': WRONG 6/7 = 86% EXCEPTIONS at Q[139]
+  'disk': WRONG 16/19 = 84% EXCEPTIONS at Q[81, 91, 113]
+  'allocation': WRONG 16/19 = 84% EXCEPTIONS at Q[7, 74, 142]
+  'for': WRONG 10/12 = 83% EXCEPTIONS at Q[121, 167]
+  'size': WRONG 5/6 = 83% EXCEPTIONS at Q[75]
+  'running': WRONG 5/6 = 83% EXCEPTIONS at Q[111]
+  'file': WRONG 46/56 = 82% EXCEPTIONS at Q[8, 16, 73, 75, 104, 128, 130, 139, 150, 154]
+  'thread': WRONG 9/11 = 82% EXCEPTIONS at Q[151, 167]
+  'device': WRONG 9/11 = 82% EXCEPTIONS at Q[138, 152]
+  'robin': WRONG 9/11 = 82% EXCEPTIONS at Q[64, 88]
+  'round': WRONG 9/11 = 82% EXCEPTIONS at Q[64, 88]
+  'priority': WRONG 9/11 = 82% EXCEPTIONS at Q[124, 169]
+  'interface': WRONG 8/10 = 80% EXCEPTIONS at Q[144, 155]
+  'swapping': WRONG 8/10 = 80% EXCEPTIONS at Q[110, 120]
+  'application': WRONG 4/5 = 80% EXCEPTIONS at Q[147]
+  'other': WRONG 4/5 = 80% EXCEPTIONS at Q[163]
+  'contiguous': WRONG 4/5 = 80% EXCEPTIONS at Q[7]
+  'between': WRONG 4/5 = 80% EXCEPTIONS at Q[171]
+  'increases': WRONG 4/5 = 80% EXCEPTIONS at Q[46]
+  'only': WRONG 4/5 = 80% EXCEPTIONS at Q[108]
+  'processors': WRONG 4/5 = 80% EXCEPTIONS at Q[168]
+  'run': WRONG 4/5 = 80% EXCEPTIONS at Q[179]
+
+======================================================================
+DETAILED: 'Scheduling' in option text
+======================================================================
+  Q25: 'Improve CPU scheduling' -> WRONG
+  Q27: 'FIFO scheduling' -> WRONG
+  Q35: 'Priority Scheduling' -> WRONG
+  Q39: 'Low priority scheduling' -> WRONG
+  Q49: 'Manages CPU scheduling' -> WRONG
+  Q63: 'Priority Scheduling' -> WRONG
+  Q64: 'Priority Scheduling' -> WRONG
+  Q68: 'CPU Scheduling' -> CORRECT [NOT question]
+  Q75: 'Manage disk scheduling' -> WRONG
+  Q76: 'Scheduling, Virtual Memory, Swapping, Page Faults' -> WRONG
+  Q77: 'Increasing CPU scheduling priority' -> WRONG
+  Q80: 'CPU Scheduling' -> WRONG
+  Q80: 'Disk Scheduling' -> WRONG
+  Q82: 'Manage CPU scheduling' -> WRONG
+  Q85: 'Improve CPU scheduling' -> WRONG
+  Q86: 'Increasing process scheduling efficiency' -> WRONG
+  Q88: 'Priority Scheduling' -> WRONG
+  Q93: 'When disk scheduling fails' -> WRONG
+  Q104: 'Process scheduling' -> WRONG
+  Q105: 'Multilevel Queue Scheduling' -> WRONG
+  Q106: 'Priority Scheduling' -> WRONG
+  Q120: 'CPU scheduling is inefficient' -> WRONG
+  Q121: 'A disk scheduling algorithm' -> WRONG
+  Q122: 'Controlling CPU scheduling' -> WRONG
+  Q124: 'CPU Scheduling Priority' -> CORRECT [NOT question]
+  Q127: 'Process Scheduling' -> WRONG
+  Q129: 'Process Scheduling' -> WRONG
+  Q130: 'Job Scheduling' -> WRONG
+  Q132: 'I/O Scheduling' -> WRONG
+  Q132: 'Process Scheduling' -> CORRECT
+  Q136: 'CPU Scheduling' -> WRONG
+  Q139: 'Process scheduling and memory allocation' -> WRONG
+  Q143: 'Process Scheduling' -> WRONG
+  Q145: 'Process Scheduling' -> WRONG
+  Q146: 'Scheduling the execution of user programs' -> WRONG
+  Q152: 'CPU Scheduling' -> WRONG
+  Q153: 'I/O Scheduling' -> WRONG
+  Q154: 'Process Scheduling' -> WRONG
+  Q157: 'Process Scheduling' -> CORRECT
+  Q164: 'Less complexity in process scheduling' -> WRONG
+  Q169: 'Priority Scheduling' -> CORRECT
+  Q178: 'Scheduling processes for execution' -> WRONG
+
+======================================================================
+PARENTHESES PATTERN: When options have (), is answer always one?
+======================================================================
+  EXCEPTION Q169: Correct answer WITHOUT parens: 'Priority Scheduling'
+    Options with parens: ['First Come First Serve (FCFS)', 'Shortest Job First (SJF)']
+
+  Questions with mixed parens: 10
+  Answer HAS parens: 9/10 = 90.0%
+  Answer NO parens: 1/10 = 10.0%
+
+======================================================================
+WORDS THAT ARE WRONG NORMALLY BUT CORRECT IN 'NOT' QUESTIONS
+======================================================================
+  'application': wrong 4x, correct ONLY in NOT questions (1x) -> Q[147]
+  'running': wrong 5x, correct ONLY in NOT questions (1x) -> Q[111]
+
+======================================================================
+CAPITALIZATION: Options that start with UPPERCASE proper noun
+======================================================================
+  Short capitalized options: correct=79, wrong=240
+  Accuracy: 24.8%
+
+======================================================================
+OPTIONS WITH NUMBERS/VERSIONS
+======================================================================
+  Q10: 'FAT32' -> WRONG
+  Q10: 'ext4' -> CORRECT
+  Q17: 'FAT32' -> WRONG
+  Q17: 'ext2' -> WRONG
+  Q33: 'Windows 10' -> WRONG
+  Q42: 'Windows 10' -> CORRECT
+  Q50: 'Windows 11' -> WRONG
+  Q71: 'ext4' -> WRONG
+  Q174: 'Windows 10' -> WRONG
+
+======================================================================
+ECHO PATTERN: Option that repeats the most words from the question
+======================================================================
+  Option with most question-word echoes (>=2): 5/8 = 62.5%

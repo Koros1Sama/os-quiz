@@ -1,0 +1,70 @@
+======================================================================
+ALL 'NONE' VARIANTS IN OPTIONS
+======================================================================
+  Q2: 'None of the mentioned' -> WRONG
+  Q3: 'none of the mentioned' -> WRONG
+  Q4: 'none of the mentioned' -> WRONG
+  Q5: 'None of these' -> WRONG
+  Q7: 'None of the above' -> WRONG
+  Q12: 'None of Above' -> WRONG
+  Q17: 'None of the above' -> WRONG
+  Q20: 'none of the mentioned' -> WRONG
+  Q21: 'None of the above.' -> WRONG
+  Q97: 'none of the mentioned' -> WRONG
+
+Total None: correct=0, wrong=10
+None ALWAYS wrong: 10/10 = 100%
+
+======================================================================
+NOT QUESTIONS: Is the LONGEST option correct?
+======================================================================
+  Q13: Longest WRONG. Correct='Multiprogramming'
+  Q38: Longest WRONG. Correct='Web Browsing'
+  Q44: Longest WRONG. Correct='Compiling Programs'
+  Q51: Longest WRONG. Correct='Compiler OS'
+  Q54: Longest WRONG. Correct='Windows'
+  Q62: Longest WRONG. Correct='Queued'
+  Q100: Longest WRONG. Correct='FALSE.'
+  Q147: Longest WRONG. Correct='Compiling application programs'
+  Q149: Longest WRONG. Correct='Network Browsing'
+
+In NOT questions: Longest correct=3/12
+  = 25%
+
+======================================================================
+NOT QUESTIONS: Is the SHORTEST option correct?
+======================================================================
+In NOT questions: Shortest correct=0/12
+  = 0%
+
+======================================================================
+LONGEST: When there ARE golden keywords vs when there AREN'T
+======================================================================
+Longest WITH golden keyword present: 44/74 = 59%
+Longest WITHOUT any golden keyword:  42/106 = 40%
+
+======================================================================
+LONGEST after removing 'None' options
+======================================================================
+Longest (after None removal): 87/180 = 48.3%
+
+======================================================================
+LONGEST after removing ALL traps (None + trap words + Scheduling)
+======================================================================
+Longest (after ALL trap removal): 89/180 = 49.4%
+
+======================================================================
+NOT questions breakdown with longest after trap removal
+======================================================================
+  Q13: Longest=❌ Shortest=❌ Correct='Multiprogramming'
+  Q38: Longest=❌ Shortest=❌ Correct='Web Browsing'
+  Q44: Longest=❌ Shortest=❌ Correct='Compiling Programs'
+  Q51: Longest=❌ Shortest=❌ Correct='Compiler OS'
+  Q54: Longest=❌ Shortest=❌ Correct='Windows'
+  Q62: Longest=❌ Shortest=❌ Correct='Queued'
+  Q68: Longest=✅ Shortest=❌ Correct='CPU Scheduling'
+  Q100: Longest=❌ Shortest=❌ Correct='FALSE.'
+  Q111: Longest=✅ Shortest=❌ Correct='kernel is made of various modules which can n'
+  Q124: Longest=✅ Shortest=❌ Correct='CPU Scheduling Priority'
+  Q147: Longest=❌ Shortest=❌ Correct='Compiling application programs'
+  Q149: Longest=❌ Shortest=❌ Correct='Network Browsing'
