@@ -1,0 +1,1204 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>📖 مرجع الخوارزمية — OS Quiz</title>
+    <style>
+      :root {
+        --bg1: #0f1117;
+        --bg2: #1a1d27;
+        --bg3: #252836;
+        --text1: #e8e8f0;
+        --text2: #9ca3af;
+        --text3: #6b7280;
+        --accent: #a78bfa;
+        --accent2: #7c5cfc;
+        --correct: #34d399;
+        --wrong: #f87171;
+        --gold1: #fbbf24;
+        --gold2: #f59e0b;
+      }
+      [data-theme="light"] {
+        --bg1: #f5f5f7;
+        --bg2: #ffffff;
+        --bg3: #e5e7eb;
+        --text1: #1f2937;
+        --text2: #4b5563;
+        --text3: #9ca3af;
+        --accent: #7c5cfc;
+        --accent2: #6d28d9;
+      }
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        font-family: "Segoe UI", Tahoma, sans-serif;
+        background: var(--bg1);
+        color: var(--text1);
+        line-height: 1.7;
+        padding: 0;
+      }
+      .top-bar {
+        background: linear-gradient(135deg, var(--bg2), var(--bg3));
+        padding: 16px 24px;
+        border-bottom: 1px solid var(--bg3);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        backdrop-filter: blur(12px);
+      }
+      .top-bar h1 {
+        font-size: 1.2rem;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .top-bar .btns {
+        display: flex;
+        gap: 6px;
+      }
+      .btn {
+        background: var(--bg3);
+        color: var(--text1);
+        border: 1px solid var(--bg3);
+        padding: 6px 14px;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 0.85rem;
+        transition: all 0.2s;
+        text-decoration: none;
+      }
+      .btn:hover {
+        background: var(--accent);
+        color: #000;
+      }
+      .container {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+
+      /* Tabs */
+      .tabs {
+        display: flex;
+        gap: 4px;
+        margin-bottom: 20px;
+        background: var(--bg2);
+        padding: 6px;
+        border-radius: 12px;
+      }
+      .tab {
+        flex: 1;
+        text-align: center;
+        padding: 10px;
+        border-radius: 8px;
+        cursor: pointer;
+        font-weight: 600;
+        font-size: 0.9rem;
+        transition: all 0.2s;
+        border: none;
+        background: none;
+        color: var(--text2);
+      }
+      .tab.active {
+        background: var(--accent);
+        color: #000;
+      }
+      .tab:hover:not(.active) {
+        background: var(--bg3);
+        color: var(--text1);
+      }
+      .tab-content {
+        display: none;
+      }
+      .tab-content.active {
+        display: block;
+        animation: fadeIn 0.3s;
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(-6px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Rules Section */
+      .rule-card {
+        background: var(--bg2);
+        border: 1px solid var(--bg3);
+        border-radius: 14px;
+        padding: 20px;
+        margin-bottom: 16px;
+      }
+      .rule-card h2 {
+        font-size: 1.1rem;
+        margin-bottom: 12px;
+        color: var(--accent);
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .rule-card h3 {
+        font-size: 0.95rem;
+        margin: 12px 0 6px;
+        color: var(--gold1);
+      }
+      .rule-card p,
+      .rule-card li {
+        font-size: 0.88rem;
+        color: var(--text2);
+        line-height: 1.8;
+      }
+      .rule-card ul {
+        padding-right: 20px;
+      }
+      .rule-card li {
+        margin-bottom: 4px;
+      }
+      .rule-tag {
+        display: inline-block;
+        padding: 2px 10px;
+        border-radius: 6px;
+        font-size: 0.82rem;
+        font-weight: 700;
+        margin: 2px;
+      }
+      .tag-trap {
+        background: rgba(239, 68, 68, 0.15);
+        color: #f87171;
+        border: 1px solid #f87171;
+      }
+      .tag-gold1 {
+        background: rgba(251, 191, 36, 0.15);
+        color: #fbbf24;
+        border: 1px solid #fbbf24;
+      }
+      .tag-gold2 {
+        background: rgba(245, 158, 11, 0.15);
+        color: #f59e0b;
+        border: 1px solid #f59e0b;
+      }
+      .tag-gold3 {
+        background: rgba(168, 162, 158, 0.15);
+        color: #a8a29e;
+        border: 1px solid #a8a29e;
+      }
+      .tag-dup {
+        background: rgba(52, 211, 153, 0.15);
+        color: #34d399;
+        border: 1px solid #34d399;
+      }
+      .tag-q {
+        display: inline-block;
+        background: var(--bg3);
+        color: var(--accent);
+        padding: 1px 7px;
+        border-radius: 5px;
+        font-size: 0.75rem;
+        margin: 1px;
+        cursor: pointer;
+        text-decoration: none;
+      }
+      .tag-q:hover {
+        background: var(--accent);
+        color: #000;
+      }
+      .rule-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 8px 0;
+        font-size: 0.85rem;
+      }
+      .rule-table th {
+        background: var(--bg3);
+        color: var(--accent);
+        padding: 8px 10px;
+        text-align: right;
+      }
+      .rule-table td {
+        padding: 6px 10px;
+        border-bottom: 1px solid var(--bg3);
+      }
+      .rule-table tr:hover td {
+        background: rgba(167, 139, 250, 0.05);
+      }
+      .note {
+        background: rgba(167, 139, 250, 0.08);
+        border-right: 3px solid var(--accent);
+        padding: 10px 14px;
+        border-radius: 6px;
+        margin: 8px 0;
+        font-size: 0.85rem;
+        color: var(--text2);
+      }
+      .warn {
+        background: rgba(245, 158, 11, 0.08);
+        border-right: 3px solid var(--gold2);
+        padding: 10px 14px;
+        border-radius: 6px;
+        margin: 8px 0;
+        font-size: 0.85rem;
+        color: var(--text2);
+      }
+      .priority-flow {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        align-items: center;
+        margin: 12px 0;
+      }
+      .priority-flow .step {
+        background: var(--bg3);
+        padding: 6px 12px;
+        border-radius: 8px;
+        font-size: 0.82rem;
+        font-weight: 600;
+      }
+      .priority-flow .arrow {
+        color: var(--accent);
+        font-size: 1.1rem;
+      }
+
+      /* Search Section */
+      .search-box {
+        background: var(--bg2);
+        border: 1px solid var(--bg3);
+        border-radius: 14px;
+        padding: 20px;
+        margin-bottom: 16px;
+      }
+      .search-input {
+        width: 100%;
+        padding: 12px 16px;
+        border-radius: 10px;
+        border: 2px solid var(--bg3);
+        background: var(--bg1);
+        color: var(--text1);
+        font-size: 1rem;
+        outline: none;
+        transition: border-color 0.2s;
+      }
+      .search-input:focus {
+        border-color: var(--accent);
+      }
+      .search-filters {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        margin: 12px 0;
+      }
+      .filter-btn {
+        padding: 5px 12px;
+        border-radius: 8px;
+        border: 1px solid var(--bg3);
+        background: none;
+        color: var(--text2);
+        cursor: pointer;
+        font-size: 0.82rem;
+        transition: all 0.2s;
+      }
+      .filter-btn.active {
+        background: var(--accent);
+        color: #000;
+        border-color: var(--accent);
+        font-weight: 700;
+      }
+      .search-stats {
+        display: flex;
+        gap: 16px;
+        flex-wrap: wrap;
+        margin: 12px 0;
+        padding: 12px;
+        background: var(--bg1);
+        border-radius: 10px;
+      }
+      .stat-item {
+        text-align: center;
+      }
+      .stat-num {
+        font-size: 1.5rem;
+        font-weight: 800;
+      }
+      .stat-label {
+        font-size: 0.75rem;
+        color: var(--text3);
+      }
+
+      .result-card {
+        background: var(--bg1);
+        border: 1px solid var(--bg3);
+        border-radius: 10px;
+        padding: 12px;
+        margin: 6px 0;
+        font-size: 0.85rem;
+        transition: all 0.2s;
+      }
+      .result-card:hover {
+        border-color: var(--accent);
+      }
+      .result-q {
+        font-weight: 700;
+        color: var(--text1);
+        margin-bottom: 6px;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+      .result-q .qnum {
+        background: var(--accent);
+        color: #000;
+        padding: 1px 8px;
+        border-radius: 5px;
+        font-size: 0.78rem;
+        font-weight: 800;
+      }
+      .result-opt {
+        padding: 4px 8px;
+        margin: 3px 0;
+        border-radius: 6px;
+        font-size: 0.83rem;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+      .result-opt.correct {
+        background: rgba(52, 211, 153, 0.1);
+        border-right: 3px solid var(--correct);
+      }
+      .result-opt.wrong {
+        background: rgba(248, 113, 113, 0.06);
+      }
+      .result-opt .highlight {
+        background: rgba(251, 191, 36, 0.3);
+        padding: 0 3px;
+        border-radius: 3px;
+        font-weight: 700;
+      }
+      .result-opt .icon {
+        font-size: 0.7rem;
+      }
+      .no-results {
+        text-align: center;
+        padding: 40px;
+        color: var(--text3);
+        font-size: 1.1rem;
+      }
+
+      .footer {
+        text-align: center;
+        padding: 20px;
+        color: var(--text3);
+        font-size: 0.75rem;
+      }
+
+      @media (max-width: 600px) {
+        .container {
+          padding: 10px;
+        }
+        .tabs {
+          flex-wrap: wrap;
+        }
+        .tab {
+          font-size: 0.8rem;
+          padding: 8px;
+        }
+        .search-filters {
+          gap: 4px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="top-bar">
+      <h1>📖 مرجع الخوارزمية</h1>
+      <div class="btns">
+        <button class="btn" onclick="toggleTheme()" id="themeBtn">🌙</button>
+        <a class="btn" href="algorithm_trainer.html">🧠 المدرب</a>
+        <a class="btn" href="index.html">📝 البنك</a>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="tabs">
+        <button class="tab active" onclick="switchTab('rules')">
+          📋 القواعد
+        </button>
+        <button class="tab" onclick="switchTab('search')">
+          🔍 بحث الكلمات
+        </button>
+      </div>
+
+      <!-- ============ TAB 1: RULES ============ -->
+      <div class="tab-content active" id="tab-rules">
+        <div class="rule-card">
+          <h2>⚡ الخطوة 1: قواعد مطلقة</h2>
+          <h3>✅ "All of the mentioned / above" → دائماً صح</h3>
+          <p>7 أسئلة — 100% صح. إذا شفت هالخيار اختره فوراً.</p>
+          <p>
+            الأسئلة: <a class="tag-q" onclick="searchQ(1)">Q1</a>
+            <a class="tag-q" onclick="searchQ(15)">Q15</a>
+            <a class="tag-q" onclick="searchQ(18)">Q18</a>
+            <a class="tag-q" onclick="searchQ(26)">Q26</a>
+            <a class="tag-q" onclick="searchQ(79)">Q79</a>
+            <a class="tag-q" onclick="searchQ(98)">Q98</a>
+            <a class="tag-q" onclick="searchQ(109)">Q109</a>
+          </p>
+
+          <h3>❌ "None..." → دائماً غلط (استبعد)</h3>
+          <p>
+            يشمل: None of the mentioned / above / these — كلها <b>0/10 غلط</b>
+          </p>
+
+          <h3>❌ "Schedules..." → دائماً غلط</h3>
+          <p>أي خيار يبدأ بـ Schedules → استبعده</p>
+
+          <h3>❌ كلمات فخ — استبعد الخيار:</h3>
+          <div style="display: flex; flex-wrap: wrap; gap: 4px; margin: 8px 0">
+            <span class="rule-tag tag-trap">single 7/7</span>
+            <span class="rule-tag tag-trap">allocates 6/6</span>
+            <span class="rule-tag tag-trap">prevent* 12/15</span>
+            <span class="rule-tag tag-trap">reduce* 9/10</span>
+            <span class="rule-tag tag-trap">macOS 5/5</span>
+            <span class="rule-tag tag-trap">segmentation 5/5</span>
+            <span class="rule-tag tag-trap">deadlocks 5/5</span>
+            <span class="rule-tag tag-trap">speed 5/5</span>
+            <span class="rule-tag tag-trap">manager 5/5</span>
+          </div>
+          <div class="warn">
+            <b>⚠️ استثناءات:</b><br />
+            prevent* صح بـ 3 أسئلة — كلها فيها كلمة ذهبية أقوى:
+            <a class="tag-q" onclick="searchQ(86)">Q86</a> (unauthorized),
+            <a class="tag-q" onclick="searchQ(163)">Q163</a> (each),
+            <a class="tag-q" onclick="searchQ(16)">Q16</a><br />
+            reduce* صح مرة بس:
+            <a class="tag-q" onclick="searchQ(117)">Q117</a> "Reduce page
+            faults"
+          </div>
+
+          <h3>❌ "Scheduling" بالخيار → غلط 88%</h3>
+          <p>
+            <b>إلا:</b> سؤال NOT → Scheduling يكون صح (<a
+              class="tag-q"
+              onclick="searchQ(68)"
+              >Q68</a
+            >, <a class="tag-q" onclick="searchQ(124)">Q124</a>)، أو السؤال عن
+            الجدولة نفسها (<a class="tag-q" onclick="searchQ(132)">Q132</a>,
+            <a class="tag-q" onclick="searchQ(157)">Q157</a>,
+            <a class="tag-q" onclick="searchQ(169)">Q169</a>)
+          </p>
+        </div>
+
+        <div class="rule-card">
+          <h2>📏 الخطوة 2: الأطول والأقواس</h2>
+          <p>~65% من الأسئلة الجواب هو <b>الأطول</b> أو الأكثر تفصيلاً.</p>
+          <div class="warn">
+            ⚠️ إذا فيه "None" بالسؤال ← الأطول تنزل من <b>58% → 28%!</b>
+          </div>
+          <ul>
+            <li>أطول بكلمتين+ → اختره (73.7%)</li>
+            <li>فيه فواصل تعدد "X, Y, and Z" → اختره (62.5%)</li>
+          </ul>
+          <h3>🔑 قاعدة الأقواس — 90% صح</h3>
+          <p>خيار فيه أقواس <code>()</code> وباقي الخيارات لا → اختره</p>
+          <p>
+            مثال: <code>Shortest Job Next (SJN)</code> vs
+            <code>Priority Scheduling</code>
+          </p>
+          <p>استثناء: <a class="tag-q" onclick="searchQ(169)">Q169</a></p>
+        </div>
+
+        <div class="rule-card">
+          <h2>⭐ الخطوة 3: الكلمات الذهبية</h2>
+          <p>إذا خيار <b>واحد بس</b> فيه كلمة ذهبية → اختره.</p>
+
+          <div class="priority-flow">
+            <span
+              class="step"
+              style="background: rgba(239, 68, 68, 0.2); color: #f87171"
+              >1. فخ ❌</span
+            >
+            <span class="arrow">→</span>
+            <span
+              class="step"
+              style="background: rgba(251, 191, 36, 0.2); color: #fbbf24"
+              >2. 🥇 المستوى 1</span
+            >
+            <span class="arrow">→</span>
+            <span
+              class="step"
+              style="background: rgba(245, 158, 11, 0.2); color: #f59e0b"
+              >3. 🥈 المستوى 2</span
+            >
+            <span class="arrow">→</span>
+            <span
+              class="step"
+              style="background: rgba(167, 139, 250, 0.2); color: #a78bfa"
+              >4. 🔑 أقواس</span
+            >
+            <span class="arrow">→</span>
+            <span class="step">5. 📏 الأطول</span>
+            <span class="arrow">→</span>
+            <span
+              class="step"
+              style="background: rgba(168, 162, 158, 0.2); color: #a8a29e"
+              >6. 🥉 المستوى 3</span
+            >
+          </div>
+
+          <h3>🥇 المستوى 1 — 100% صح (حتى بأسئلة NOT)</h3>
+          <table class="rule-table">
+            <tr>
+              <th>الكلمة</th>
+              <th>الأسئلة</th>
+              <th>ملاحظة</th>
+            </tr>
+            <tr>
+              <td><span class="rule-tag tag-gold1">circular</span></td>
+              <td>
+                <a class="tag-q" onclick="searchQ(76)">Q76</a>
+                <a class="tag-q" onclick="searchQ(77)">Q77</a>
+                <a class="tag-q" onclick="searchQ(78)">Q78</a>
+              </td>
+              <td>deadlock</td>
+            </tr>
+            <tr>
+              <td><span class="rule-tag tag-gold1">unauthorized</span></td>
+              <td>
+                <a class="tag-q" onclick="searchQ(86)">Q86</a>
+                <a class="tag-q" onclick="searchQ(87)">Q87</a>
+                <a class="tag-q" onclick="searchQ(146)">Q146</a>
+              </td>
+              <td>security</td>
+            </tr>
+            <tr>
+              <td><span class="rule-tag tag-gold1">wait</span></td>
+              <td>
+                <a class="tag-q" onclick="searchQ(19)">Q19</a>
+                <a class="tag-q" onclick="searchQ(76)">Q76</a>
+                <a class="tag-q" onclick="searchQ(77)">Q77</a>
+                <a class="tag-q" onclick="searchQ(167)">Q167</a>
+              </td>
+              <td>deadlock + threads</td>
+            </tr>
+            <tr>
+              <td><span class="rule-tag tag-gold1">pages</span></td>
+              <td>
+                <a class="tag-q" onclick="searchQ(108)">Q108</a>
+                <a class="tag-q" onclick="searchQ(119)">Q119</a>
+                <a class="tag-q" onclick="searchQ(120)">Q120</a>
+                <a class="tag-q" onclick="searchQ(180)">Q180</a>
+              </td>
+              <td>ذاكرة</td>
+            </tr>
+            <tr>
+              <td><span class="rule-tag tag-gold1">switching</span></td>
+              <td>
+                <a class="tag-q" onclick="searchQ(166)">Q166</a>
+                <a class="tag-q" onclick="searchQ(171)">Q171</a>
+                <a class="tag-q" onclick="searchQ(172)">Q172</a>
+              </td>
+              <td>threads</td>
+            </tr>
+            <tr>
+              <td><span class="rule-tag tag-gold1">than</span></td>
+              <td>
+                <a class="tag-q" onclick="searchQ(69)">Q69</a>
+                <a class="tag-q" onclick="searchQ(120)">Q120</a>
+                <a class="tag-q" onclick="searchQ(137)">Q137</a>
+              </td>
+              <td>ذاكرة</td>
+            </tr>
+            <tr>
+              <td><span class="rule-tag tag-gold1">create</span></td>
+              <td>
+                <a class="tag-q" onclick="searchQ(40)">Q40</a>
+                <a class="tag-q" onclick="searchQ(65)">Q65</a>
+              </td>
+              <td>fork/process</td>
+            </tr>
+            <tr>
+              <td><span class="rule-tag tag-gold1">web</span></td>
+              <td>
+                <a class="tag-q" onclick="searchQ(38)">Q38</a>
+                <a class="tag-q" onclick="searchQ(180)">Q180</a>
+              </td>
+              <td>أسئلة NOT كمان</td>
+            </tr>
+            <tr>
+              <td><span class="rule-tag tag-gold1">allows</span></td>
+              <td>
+                <a class="tag-q" onclick="searchQ(69)">Q69</a>
+                <a class="tag-q" onclick="searchQ(179)">Q179</a>
+              </td>
+              <td>ذاكرة + threads</td>
+            </tr>
+            <tr>
+              <td><span class="rule-tag tag-gold1">among</span></td>
+              <td>
+                <a class="tag-q" onclick="searchQ(20)">Q20</a>
+                <a class="tag-q" onclick="searchQ(164)">Q164</a>
+              </td>
+              <td>scheduling + threads</td>
+            </tr>
+            <tr>
+              <td><span class="rule-tag tag-gold1">highest</span></td>
+              <td><a class="tag-q" onclick="searchQ(20)">Q20</a></td>
+              <td>يميّز Q20</td>
+            </tr>
+          </table>
+
+          <h3>🥈 المستوى 2 — ❌ أوقفه بأسئلة NOT</h3>
+          <table class="rule-table">
+            <tr>
+              <th>الكلمة</th>
+              <th>صح</th>
+              <th>الأسئلة</th>
+              <th>⚠️ الاستثناء</th>
+            </tr>
+            <tr>
+              <td><span class="rule-tag tag-gold2">ready</span></td>
+              <td>4/5=80%</td>
+              <td>
+                <a class="tag-q" onclick="searchQ(5)">Q5</a>
+                <a class="tag-q" onclick="searchQ(89)">Q89</a>
+                <a class="tag-q" onclick="searchQ(94)">Q94</a>
+                <a class="tag-q" onclick="searchQ(165)">Q165</a>
+              </td>
+              <td>❌ NOT (<a class="tag-q" onclick="searchQ(62)">Q62</a>)</td>
+            </tr>
+            <tr>
+              <td><span class="rule-tag tag-gold2">each</span></td>
+              <td>2/2=100%</td>
+              <td>
+                <a class="tag-q" onclick="searchQ(12)">Q12</a>
+                <a class="tag-q" onclick="searchQ(163)">Q163</a>
+              </td>
+              <td>❌ تخسر لـ share/among</td>
+            </tr>
+            <tr>
+              <td><span class="rule-tag tag-gold2">compiling</span></td>
+              <td>2/3=67%</td>
+              <td>
+                <a class="tag-q" onclick="searchQ(44)">Q44</a>
+                <a class="tag-q" onclick="searchQ(147)">Q147</a>
+              </td>
+              <td>
+                ❌ managing (<a class="tag-q" onclick="searchQ(34)">Q34</a>)
+              </td>
+            </tr>
+            <tr>
+              <td><span class="rule-tag tag-gold2">part</span></td>
+              <td>2/3=67%</td>
+              <td>
+                <a class="tag-q" onclick="searchQ(91)">Q91</a>
+                <a class="tag-q" onclick="searchQ(175)">Q175</a>
+              </td>
+              <td>❌ NOT (<a class="tag-q" onclick="searchQ(111)">Q111</a>)</td>
+            </tr>
+            <tr>
+              <td><span class="rule-tag tag-gold2">executing</span></td>
+              <td>2/3=67%</td>
+              <td>
+                <a class="tag-q" onclick="searchQ(120)">Q120</a>
+                <a class="tag-q" onclick="searchQ(168)">Q168</a>
+              </td>
+              <td>❌ NOT (<a class="tag-q" onclick="searchQ(147)">Q147</a>)</td>
+            </tr>
+          </table>
+
+          <h3>🥉 المستوى 3 — للترجيح بين المتساويين</h3>
+          <div style="display: flex; flex-wrap: wrap; gap: 4px; margin: 8px 0">
+            <span class="rule-tag tag-gold3">all 8/10</span>
+            <span class="rule-tag tag-gold3">data 6/8</span>
+            <span class="rule-tag tag-gold3">scheduler 3/4</span>
+            <span class="rule-tag tag-gold3">more 3/4</span>
+            <span class="rule-tag tag-gold3">about 3/4</span>
+            <span class="rule-tag tag-gold3">stores 2/3</span>
+            <span class="rule-tag tag-gold3">ntfs 2/3</span>
+            <span class="rule-tag tag-gold3">collection 2/3</span>
+            <span class="rule-tag tag-gold3">response 2/3</span>
+            <span class="rule-tag tag-gold3">physical 2/3</span>
+            <span class="rule-tag tag-gold3">hard 2/3</span>
+            <span class="rule-tag tag-gold3">share 2/3</span>
+            <span class="rule-tag tag-gold3">accounting 2/3</span>
+            <span class="rule-tag tag-gold3">metadata 3/5</span>
+            <span class="rule-tag tag-gold3">managing 4/7</span>
+          </div>
+        </div>
+
+        <div class="rule-card">
+          <h2>⚡ الخطوة 4: أسئلة NOT</h2>
+          <div class="warn">
+            ❌ <b>الأطول</b> → 75% غلط!<br />
+            ❌ <b>المستوى 2+3</b> → أوقفهم (60-100% غلط)<br />
+            ✅ <b>المستوى 1 فقط</b> يشتغل (100%)<br />
+            ✅ دور على الخيار <b>الغريب</b> من مجال ثاني
+          </div>
+          <table class="rule-table">
+            <tr>
+              <th>نوع السؤال</th>
+              <th>الجواب</th>
+              <th>الأسئلة</th>
+            </tr>
+            <tr>
+              <td>NOT a function of OS</td>
+              <td><b>Compiling</b></td>
+              <td>
+                <a class="tag-q" onclick="searchQ(44)">Q44</a>
+                <a class="tag-q" onclick="searchQ(51)">Q51</a>
+                <a class="tag-q" onclick="searchQ(147)">Q147</a>
+              </td>
+            </tr>
+            <tr>
+              <td>NOT a type of OS</td>
+              <td><b>Compiler</b></td>
+              <td><a class="tag-q" onclick="searchQ(131)">Q131</a></td>
+            </tr>
+            <tr>
+              <td>NOT a system call/service</td>
+              <td><b>Browsing</b></td>
+              <td>
+                <a class="tag-q" onclick="searchQ(38)">Q38</a>
+                <a class="tag-q" onclick="searchQ(149)">Q149</a>
+              </td>
+            </tr>
+            <tr>
+              <td>NOT a memory technique</td>
+              <td><b>CPU Scheduling</b></td>
+              <td>
+                <a class="tag-q" onclick="searchQ(68)">Q68</a>
+                <a class="tag-q" onclick="searchQ(124)">Q124</a>
+              </td>
+            </tr>
+            <tr>
+              <td>NOT a process state</td>
+              <td><b>Queued</b></td>
+              <td><a class="tag-q" onclick="searchQ(62)">Q62</a></td>
+            </tr>
+            <tr>
+              <td>NOT true about kernel</td>
+              <td>الخيار فيه <b>can not</b></td>
+              <td><a class="tag-q" onclick="searchQ(111)">Q111</a></td>
+            </tr>
+          </table>
+        </div>
+
+        <div class="rule-card">
+          <h2>📊 الخطوة 5: True / False</h2>
+          <table class="rule-table">
+            <tr>
+              <th>النمط</th>
+              <th>الجواب</th>
+              <th>الأسئلة</th>
+            </tr>
+            <tr>
+              <td>جملة فيها نفي (not, does not)</td>
+              <td><b>FALSE</b></td>
+              <td>
+                <a class="tag-q" onclick="searchQ(22)">Q22</a>
+                <a class="tag-q" onclick="searchQ(99)">Q99</a>
+                <a class="tag-q" onclick="searchQ(100)">Q100</a>
+              </td>
+            </tr>
+            <tr>
+              <td>جملة تقرير إيجابي مباشر</td>
+              <td><b>TRUE</b></td>
+              <td>
+                <a class="tag-q" onclick="searchQ(23)">Q23</a>
+                <a class="tag-q" onclick="searchQ(114)">Q114</a>
+                <a class="tag-q" onclick="searchQ(115)">Q115</a>
+              </td>
+            </tr>
+          </table>
+        </div>
+
+        <div class="rule-card">
+          <h2>📚 الخطوة 6: الصدى (Echo) — 69%</h2>
+          <p>
+            اختر الخيار اللي يردد <b>كلمة مفتاحية من السؤال</b> وباقي الخيارات
+            لا.
+          </p>
+          <ul>
+            <li>الصدى والأطول <b>متفقين</b> → ثقة عالية</li>
+            <li>الصدى والأطول <b>مختلفين</b> → الصدى يفوز 5:3</li>
+          </ul>
+        </div>
+
+        <div class="rule-card">
+          <h2>🔄 الخطوة 7: كلمة ذهبية مكررة بخيارين — 100%</h2>
+          <p>
+            لما كلمة معينة تظهر بـ <b>2 خيارات بالضبط</b> → الجواب أكيد أحدهم.
+          </p>
+          <table class="rule-table">
+            <tr>
+              <th>الكلمة</th>
+              <th>بـ 2 خيارات</th>
+              <th>بـ 3+ خيارات</th>
+              <th>القاعدة</th>
+            </tr>
+            <tr>
+              <td><span class="rule-tag tag-dup">process</span></td>
+              <td>5/5 = 100% ✅</td>
+              <td>3/3 = 100% ✅</td>
+              <td>ذهبي دائماً!</td>
+            </tr>
+            <tr>
+              <td><span class="rule-tag tag-dup">cpu</span></td>
+              <td>4/4 = 100% ✅</td>
+              <td>—</td>
+              <td>ذهبي بـ 2 بس</td>
+            </tr>
+            <tr>
+              <td><span class="rule-tag tag-dup">file</span></td>
+              <td>2/2 = 100% ✅</td>
+              <td>2/3 = 66%</td>
+              <td>ذهبي بـ 2 بس</td>
+            </tr>
+            <tr>
+              <td><span class="rule-tag tag-dup">threads</span></td>
+              <td>2/2 = 100% ✅</td>
+              <td>0/2 = 0% ❌</td>
+              <td>ذهبي بـ 2، فخ بـ 3!</td>
+            </tr>
+          </table>
+          <div class="warn">
+            ⚠️ بـ 3 خيارات threads تصير <b>0%!</b> — لازم تكون بـ 2 بالضبط
+          </div>
+          <p>الترجيح بين الخيارين: <b>الأطول يفوز 86%</b></p>
+        </div>
+
+        <div class="rule-card">
+          <h2>🎲 الخطوة 8: إذا ما عرفت</h2>
+          <ul>
+            <li>اختر <b>الأطول والأكثر تفصيلاً</b></li>
+            <li>خيارين بنفس الطول → اللي فيه <b>كلمات تقنية أكثر</b></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- ============ TAB 2: KEYWORD SEARCH ============ -->
+      <div class="tab-content" id="tab-search">
+        <div class="search-box">
+          <input
+            class="search-input"
+            id="searchInput"
+            placeholder="ابحث عن أي كلمة... مثل: memory, cpu, scheduling"
+            oninput="doSearch()"
+          />
+          <div class="search-filters">
+            <button
+              class="filter-btn active"
+              data-filter="all"
+              onclick="setSearchFilter('all',this)"
+            >
+              📋 الكل
+            </button>
+            <button
+              class="filter-btn"
+              data-filter="correct"
+              onclick="setSearchFilter('correct',this)"
+            >
+              ✅ صح بس
+            </button>
+            <button
+              class="filter-btn"
+              data-filter="wrong"
+              onclick="setSearchFilter('wrong',this)"
+            >
+              ❌ غلط بس
+            </button>
+            <button
+              class="filter-btn"
+              data-filter="question"
+              onclick="setSearchFilter('question',this)"
+            >
+              ❓ بالسؤال
+            </button>
+            <button
+              class="filter-btn"
+              data-filter="option"
+              onclick="setSearchFilter('option',this)"
+            >
+              📝 بالخيارات
+            </button>
+          </div>
+          <div class="search-stats" id="searchStats" style="display: none">
+            <div class="stat-item">
+              <div class="stat-num" id="statTotal" style="color: var(--accent)">
+                0
+              </div>
+              <div class="stat-label">المجموع</div>
+            </div>
+            <div class="stat-item">
+              <div
+                class="stat-num"
+                id="statCorrect"
+                style="color: var(--correct)"
+              >
+                0
+              </div>
+              <div class="stat-label">✅ صح</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-num" id="statWrong" style="color: var(--wrong)">
+                0
+              </div>
+              <div class="stat-label">❌ غلط</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-num" id="statPct" style="color: var(--gold1)">
+                0%
+              </div>
+              <div class="stat-label">نسبة الغلط</div>
+            </div>
+            <div class="stat-item">
+              <div
+                class="stat-num"
+                id="statQuestions"
+                style="color: var(--text2)"
+              >
+                0
+              </div>
+              <div class="stat-label">سؤال</div>
+            </div>
+          </div>
+        </div>
+        <div id="searchResults">
+          <div class="no-results">🔍 اكتب أي كلمة لتبدأ البحث</div>
+        </div>
+      </div>
+
+      <div class="footer">Koros Sama</div>
+    </div>
+
+    <script src="questions_data.js"></script>
+    <script>
+      let questions = [];
+      let searchFilter = "all";
+      const letters = ["A", "B", "C", "D", "E", "F"];
+
+      // Load data
+      if (typeof QUESTIONS_DATA !== "undefined") {
+        questions = QUESTIONS_DATA;
+      } else {
+        fetch("questions.json")
+          .then((r) => r.json())
+          .then((d) => {
+            questions = d;
+          });
+      }
+
+      function toggleTheme() {
+        const c = document.documentElement.getAttribute("data-theme");
+        document.documentElement.setAttribute(
+          "data-theme",
+          c === "light" ? "" : "light"
+        );
+        document.getElementById("themeBtn").textContent =
+          c === "light" ? "🌙" : "☀️";
+      }
+
+      function switchTab(tab) {
+        document
+          .querySelectorAll(".tab")
+          .forEach((t) => t.classList.remove("active"));
+        document
+          .querySelectorAll(".tab-content")
+          .forEach((t) => t.classList.remove("active"));
+        document.getElementById("tab-" + tab).classList.add("active");
+        event.target.classList.add("active");
+        if (tab === "search")
+          setTimeout(() => document.getElementById("searchInput").focus(), 100);
+      }
+
+      function searchQ(qid) {
+        switchTabTo("search");
+        document.getElementById("searchInput").value = "Q" + qid;
+        searchFilter = "all";
+        document
+          .querySelectorAll(".filter-btn")
+          .forEach((b) => b.classList.remove("active"));
+        document.querySelector('[data-filter="all"]').classList.add("active");
+        doSearchById(qid);
+      }
+
+      function switchTabTo(tab) {
+        document
+          .querySelectorAll(".tab")
+          .forEach((t) => t.classList.remove("active"));
+        document
+          .querySelectorAll(".tab-content")
+          .forEach((t) => t.classList.remove("active"));
+        document.getElementById("tab-" + tab).classList.add("active");
+        document
+          .querySelectorAll(".tab")
+          [tab === "rules" ? 0 : 1].classList.add("active");
+      }
+
+      function setSearchFilter(f, btn) {
+        searchFilter = f;
+        document
+          .querySelectorAll(".filter-btn")
+          .forEach((b) => b.classList.remove("active"));
+        btn.classList.add("active");
+        doSearch();
+      }
+
+      function doSearchById(qid) {
+        const q = questions.find((x) => x.id === qid);
+        if (!q) return;
+        const container = document.getElementById("searchResults");
+        const statsEl = document.getElementById("searchStats");
+        statsEl.style.display = "none";
+        container.innerHTML = renderQuestionCard(q, "");
+      }
+
+      function doSearch() {
+        const term = document
+          .getElementById("searchInput")
+          .value.trim()
+          .toLowerCase();
+        const container = document.getElementById("searchResults");
+        const statsEl = document.getElementById("searchStats");
+
+        // Check if searching by Q number
+        const qMatch = term.match(/^q(\d+)$/i);
+        if (qMatch) {
+          doSearchById(parseInt(qMatch[1]));
+          return;
+        }
+
+        if (term.length < 2) {
+          container.innerHTML =
+            '<div class="no-results">🔍 اكتب كلمتين على الأقل</div>';
+          statsEl.style.display = "none";
+          return;
+        }
+
+        let results = [];
+        let totalCorrect = 0,
+          totalWrong = 0;
+        const questionsSet = new Set();
+
+        for (const q of questions) {
+          const qText = (q.text || q.q || "").toLowerCase();
+          const opts = q.options || q.opts || [];
+          let matched = false;
+          let matchedOpts = [];
+
+          // Check question text
+          const inQuestion = qText.includes(term);
+
+          // Check options
+          for (let i = 0; i < opts.length; i++) {
+            const optText = (opts[i].text || opts[i].t || "").toLowerCase();
+            const isCorrect = opts[i].correct || opts[i].c;
+            if (optText.includes(term)) {
+              matchedOpts.push({
+                index: i,
+                text: opts[i].text || opts[i].t,
+                correct: isCorrect,
+              });
+              if (isCorrect) totalCorrect++;
+              else totalWrong++;
+            }
+          }
+
+          // Apply filter
+          if (searchFilter === "question" && !inQuestion) continue;
+          if (searchFilter === "option" && matchedOpts.length === 0) continue;
+          if (searchFilter === "correct" && !matchedOpts.some((o) => o.correct))
+            continue;
+          if (searchFilter === "wrong" && !matchedOpts.some((o) => !o.correct))
+            continue;
+
+          if (inQuestion || matchedOpts.length > 0) {
+            results.push({ q, inQuestion, matchedOpts });
+            questionsSet.add(q.id);
+          }
+        }
+
+        // Stats
+        if (results.length > 0) {
+          statsEl.style.display = "flex";
+          document.getElementById("statTotal").textContent =
+            totalCorrect + totalWrong;
+          document.getElementById("statCorrect").textContent = totalCorrect;
+          document.getElementById("statWrong").textContent = totalWrong;
+          const total = totalCorrect + totalWrong;
+          document.getElementById("statPct").textContent =
+            total > 0 ? Math.round((totalWrong * 100) / total) + "%" : "—";
+          document.getElementById("statQuestions").textContent =
+            questionsSet.size;
+        } else {
+          statsEl.style.display = "none";
+        }
+
+        // Render
+        if (results.length === 0) {
+          container.innerHTML = `<div class="no-results">😕 ما لقينا "${term}" بأي سؤال</div>`;
+          return;
+        }
+
+        let html = "";
+        for (const r of results) {
+          html += renderQuestionCard(r.q, term, r.inQuestion, r.matchedOpts);
+        }
+        container.innerHTML = html;
+      }
+
+      function renderQuestionCard(q, term, inQuestion, matchedOpts) {
+        const qid = q.id;
+        const qText = q.text || q.q || "";
+        const opts = q.options || q.opts || [];
+        const highlightedQ = term
+          ? highlightText(qText, term)
+          : escapeHtml(qText);
+
+        let html = `<div class="result-card">`;
+        html += `<div class="result-q"><span class="qnum">Q${qid}</span> <span class="en">${highlightedQ}</span></div>`;
+
+        for (let i = 0; i < opts.length; i++) {
+          const optText = opts[i].text || opts[i].t || "";
+          const isCorrect = opts[i].correct || opts[i].c;
+          const optLower = optText.toLowerCase();
+          const hasMatch = term && optLower.includes(term.toLowerCase());
+          const cls = isCorrect ? "correct" : hasMatch ? "wrong" : "";
+          const icon = isCorrect ? "✅" : hasMatch ? "❌" : "•";
+          const highlighted = term
+            ? highlightText(optText, term)
+            : escapeHtml(optText);
+          html += `<div class="result-opt ${cls}"><span class="icon">${icon}</span> <b>${letters[i]})</b> <span class="en">${highlighted}</span></div>`;
+        }
+        html += "</div>";
+        return html;
+      }
+
+      function highlightText(text, term) {
+        const escaped = escapeHtml(text);
+        const regex = new RegExp("(" + escapeRegex(term) + ")", "gi");
+        return escaped.replace(regex, '<span class="highlight">$1</span>');
+      }
+
+      function escapeHtml(t) {
+        return t
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;");
+      }
+      function escapeRegex(s) {
+        return s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+      }
+    </script>
+  </body>
+</html>
