@@ -699,7 +699,23 @@
 
       <!-- MAIN CONTENT -->
       <div class="main-content">
-        <a class="back-link" href="index.html">→ العودة لبنك الأسئلة</a>
+        <div
+          style="
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 8px;
+          "
+        >
+          <a class="back-link" href="index.html" style="margin: 0"
+            >→ العودة لبنك الأسئلة</a
+          >
+          <a class="back-link" href="algorithm_reference.html" style="margin: 0"
+            >📖 المرجع</a
+          >
+        </div>
 
         <div class="page-header">
           <h1>🎯 مدرّب الخوارزمية</h1>
@@ -736,6 +752,27 @@
           <button class="btn btn-primary" onclick="newQuestion()">
             ⏭️ سؤال جديد
           </button>
+          <div style="display: flex; align-items: center; gap: 4px">
+            <input
+              type="number"
+              id="goToInput"
+              min="1"
+              max="180"
+              placeholder="رقم"
+              style="
+                width: 60px;
+                padding: 8px;
+                border-radius: 8px;
+                border: 1px solid var(--bg3);
+                background: var(--bg);
+                color: var(--text);
+                font-size: 0.85rem;
+                text-align: center;
+              "
+              onkeydown="if(event.key==='Enter')goToQuestion()"
+            />
+            <button class="btn" onclick="goToQuestion()">🔢 اذهب</button>
+          </div>
           <button class="btn" onclick="toggleTheme()" id="themeBtn">
             🌙 الوضع
           </button>
@@ -1206,6 +1243,23 @@
         const idx = Math.floor(Math.random() * questions.length);
         currentQ = questions[idx];
         renderQuestion();
+      }
+
+      function goToQuestion() {
+        const input = document.getElementById("goToInput");
+        const num = parseInt(input.value);
+        if (!num || num < 1 || num > questions.length) {
+          input.style.borderColor = "var(--wrong)";
+          setTimeout(() => (input.style.borderColor = "var(--bg3)"), 1000);
+          return;
+        }
+        const q = questions.find((x) => x.id === num);
+        if (!q) return;
+        answered = false;
+        document.getElementById("showAlgoBtn").disabled = false;
+        currentQ = q;
+        renderQuestion();
+        input.value = "";
       }
 
       function renderQuestion() {
