@@ -607,17 +607,6 @@
         font-size: 0.78rem;
       }
 
-      @keyframes fadeIn {
-        from {
-          opacity: 0;
-          transform: translateY(6px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-
       /* MOBILE TOGGLE BTN */
       .sidebar-toggle {
         display: none;
@@ -754,6 +743,126 @@
       .footer:hover {
         transform: scale(1.05);
       }
+      /* Algorithm Reveal Panel */
+      .algo-panel {
+        background: var(--bg2);
+        border: 1px solid var(--bg3);
+        border-radius: 12px;
+        padding: 16px;
+        margin-top: 12px;
+        display: none;
+      }
+      .algo-panel.show {
+        display: block;
+        animation: fadeIn 0.3s;
+      }
+      .algo-step {
+        padding: 6px 10px;
+        margin: 4px 0;
+        border-radius: 8px;
+        font-size: 0.85rem;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .algo-step.active {
+        background: var(--accent);
+        color: #000;
+        font-weight: 700;
+      }
+      .algo-step.skipped {
+        opacity: 0.4;
+        text-decoration: line-through;
+      }
+      .algo-step.eliminated {
+        background: rgba(239, 68, 68, 0.15);
+        color: #f87171;
+      }
+      .algo-btn {
+        background: linear-gradient(135deg, #7c5cfc33, #a78bfa33);
+        border: 1px solid #7c5cfc55;
+        color: #a78bfa;
+        font-weight: 700;
+        padding: 6px 14px;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 0.8rem;
+        margin-top: 8px;
+        transition: all 0.2s;
+      }
+      .algo-btn:hover {
+        background: linear-gradient(135deg, #7c5cfc55, #a78bfa55);
+        transform: scale(1.02);
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(-8px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      /* Shuffle Dropdown */
+      .shuffle-wrap {
+        position: relative;
+        display: inline-block;
+      }
+      .shuffle-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        right: 0;
+        margin-top: 4px;
+        background: var(--bg2);
+        border: 1px solid var(--bg3);
+        border-radius: 10px;
+        padding: 6px;
+        min-width: 160px;
+        z-index: 100;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+      }
+      .shuffle-menu.show {
+        display: block;
+        animation: fadeIn 0.2s;
+      }
+      .shuffle-menu button {
+        display: block;
+        width: 100%;
+        text-align: right;
+        padding: 8px 12px;
+        border: none;
+        background: none;
+        color: var(--text1);
+        cursor: pointer;
+        border-radius: 6px;
+        font-size: 0.85rem;
+        white-space: nowrap;
+      }
+      .shuffle-menu button:hover {
+        background: var(--bg3);
+      }
+      /* Dev Mode */
+      .dev-badge {
+        display: none;
+        background: #f59e0b;
+        color: #000;
+        font-size: 0.6rem;
+        padding: 2px 6px;
+        border-radius: 4px;
+        margin-right: 6px;
+        font-weight: 700;
+      }
+      .dev-badge.show {
+        display: inline-block;
+      }
+      .dev-only {
+        display: none !important;
+      }
+      .dev-mode .dev-only {
+        display: inline-block !important;
+      }
     </style>
   </head>
   <body>
@@ -767,12 +876,29 @@
     </button>
     <div class="header" id="headerEl">
       <div class="header-top">
-        <h1>📝 بنك أسئلة نظم التشغيل - 180 سؤال</h1>
+        <h1 onclick="devTap()" style="cursor: default; user-select: none">
+          📝 بنك أسئلة نظم التشغيل - 180 سؤال
+          <span class="dev-badge" id="devBadge">DEV</span>
+        </h1>
         <div class="header-btns">
           <button class="btn" onclick="toggleTheme()" id="themeBtn">
             🌙 الوضع
           </button>
-          <button class="btn" onclick="shuffleQuestions()">🔀 خلط</button>
+          <div class="shuffle-wrap">
+            <button class="btn" onclick="toggleShuffleMenu()">🔀 خلط</button>
+            <div class="shuffle-menu" id="shuffleMenu">
+              <button onclick="shuffleQuestions()">🔀 خلط الأسئلة</button>
+              <button onclick="shuffleOptions()">🔄 خلط الخيارات</button>
+              <button onclick="shuffleAll()">🎲 خلط الكل</button>
+              <button onclick="resetOrder()">📋 إعادة الترتيب</button>
+            </div>
+          </div>
+          <a
+            class="btn dev-only"
+            href="algorithm_trainer.html"
+            style="text-decoration: none"
+            >🧠 مدرب الخوارزمية</a
+          >
           <button class="btn" onclick="saveProgress()">💾 حفظ</button>
           <button class="btn" onclick="loadProgress()">📂 استعادة</button>
           <button class="btn" onclick="showResults()">📊 النتائج</button>
@@ -866,7 +992,7 @@
       </button>
       <span style="border-left: 1px solid var(--bg3); margin: 0 4px"></span>
       <button
-        class="btn"
+        class="btn dev-only"
         data-filter="needs-study"
         onclick="setFilter('needs-study',this)"
         style="
@@ -880,7 +1006,7 @@
       </button>
       <span style="border-left: 1px solid var(--bg3); margin: 0 4px"></span>
       <button class="btn btn-danger" onclick="undoBookmarkGroup()">
-        ↩️ تراجع علامة
+        ↩️ تراجع إجابات علامة
       </button>
     </div>
 
@@ -913,9 +1039,9 @@
 
     <div class="modal-overlay" id="undoBmModal">
       <div class="modal">
-        <h3>↩️ تراجع عن علامة</h3>
+        <h3>↩️ تراجع إجابات علامة</h3>
         <p style="margin-bottom: 12px; color: var(--text2)">
-          اختر لون العلامة لإزالتها من جميع الأسئلة:
+          اختر لون العلامة لإزالة إجاباتها (الأسئلة ترجع غير محلولة):
         </p>
         <div style="display: flex; gap: 8px; justify-content: center">
           <button
@@ -4463,6 +4589,375 @@
       };
 
       // ============ RENDER ============
+      // ================ ALGORITHM ENGINE ================
+      const ALGO_STOP = new Set([
+        "the",
+        "a",
+        "an",
+        "is",
+        "are",
+        "of",
+        "in",
+        "to",
+        "for",
+        "and",
+        "or",
+        "which",
+        "what",
+        "following",
+        "not",
+        "does",
+        "that",
+        "this",
+        "it",
+        "by",
+        "on",
+        "from",
+        "with",
+        "be",
+        "how",
+        "do",
+        "was",
+        "has",
+        "have",
+        "can",
+        "will",
+        "one",
+        "its",
+        "used",
+        "called",
+        "type",
+        "system",
+        "operating",
+        "os",
+        "process",
+        "when",
+        "between",
+        "if",
+        "all",
+        "none",
+        "true",
+        "false",
+        "above",
+        "mentioned",
+        "these",
+        "both",
+      ]);
+      const ALGO_TIER1 = [
+        "circular",
+        "unauthorized",
+        "wait",
+        "pages",
+        "switching",
+        "than",
+        "create",
+        "web",
+        "allows",
+        "among",
+        "highest",
+      ];
+      const ALGO_TIER2 = ["ready", "each", "compiling", "part", "executing"];
+      const ALGO_TRAPS = [
+        "single",
+        "allocates",
+        "prevention",
+        "prevent",
+        "prevents",
+        "preventing",
+        "prevented",
+        "reduce",
+        "reduces",
+        "reduced",
+        "reducing",
+        "reduction",
+        "macos",
+        "segmentation",
+        "deadlocks",
+        "speed",
+        "manager",
+      ];
+      const ALGO_GDUP_ANY = ["process"];
+      const ALGO_GDUP_2 = ["cpu", "file", "threads"];
+
+      function algoClean(t) {
+        return t.replace(/^[a-d]\)\s*/i, "").trim();
+      }
+      function algoWords(t) {
+        return [...new Set(t.toLowerCase().match(/[a-zA-Z]+/g) || [])];
+      }
+
+      function analyzeForIndex(q) {
+        const opts = q.opts.map((o, i) => ({
+          text: algoClean(o.t),
+          correct: o.c,
+          index: i,
+          words: algoWords(algoClean(o.t)),
+          wordCount: algoClean(o.t).split(/\s+/).length,
+          hasParen: /\(.*\)/.test(algoClean(o.t)),
+        }));
+        const qText = q.q,
+          isNOT = /\bnot\b/i.test(qText),
+          isTF = opts.length <= 2;
+        const hasNone = opts.some((o) => /\bnone\b/i.test(o.text));
+        const hasAll = opts.some((o) =>
+          /\ball\s+(of\s+)?(the\s+)?(mentioned|above)/i.test(o.text)
+        );
+        let steps = [],
+          algoPick = -1,
+          remaining = [...opts];
+
+        // T/F
+        if (isTF) {
+          const neg = opts.find((o) => /\bnot\b|does not|cannot/i.test(o.text));
+          if (neg) {
+            steps.push({ text: "📊 T/F: فيه نفي → FALSE", active: true });
+            algoPick = opts.find(
+              (o) => !/\bnot\b|does not|cannot/i.test(o.text)
+            ).index;
+          } else {
+            steps.push({ text: "📊 T/F: تقرير إيجابي → TRUE", active: true });
+            algoPick = 0;
+          }
+          return { steps, algoPick };
+        }
+
+        // All
+        if (hasAll) {
+          const a = opts.find((o) =>
+            /\ball\s+(of\s+)?(the\s+)?(mentioned|above)/i.test(o.text)
+          );
+          steps.push({
+            text: '✅ "All of the mentioned" → دائماً صح',
+            active: true,
+          });
+          algoPick = a.index;
+          return { steps, algoPick };
+        }
+
+        // Eliminate None
+        if (hasNone) {
+          remaining = remaining.filter((o) => !/\bnone\b/i.test(o.text));
+          steps.push({ text: '❌ استبعاد "None..."', eliminated: true });
+        }
+
+        // Eliminate Schedules
+        const preS = remaining.length;
+        remaining = remaining.filter(
+          (o) => !o.text.toLowerCase().startsWith("schedules")
+        );
+        if (remaining.length < preS)
+          steps.push({ text: '❌ استبعاد "Schedules..."', eliminated: true });
+
+        // Trap words
+        const preT = remaining.length;
+        const afterTraps = remaining.filter((o) => {
+          for (const tw of ALGO_TRAPS) {
+            if (o.words.includes(tw)) {
+              const hasStronger =
+                ALGO_TIER1.some((k) => o.words.includes(k)) ||
+                ALGO_TIER2.some((k) => o.words.includes(k));
+              if (!hasStronger) return false;
+            }
+          }
+          return true;
+        });
+        if (afterTraps.length > 0 && afterTraps.length < remaining.length) {
+          const removed = remaining.filter((o) => !afterTraps.includes(o));
+          steps.push({
+            text: `❌ فخ: استبعاد ${removed
+              .map((o) => '"' + o.text.substring(0, 25) + '..."')
+              .join(", ")}`,
+            eliminated: true,
+          });
+          remaining = afterTraps;
+        }
+
+        // Scheduling
+        if (!isNOT && !/schedul/i.test(qText)) {
+          const f2 = remaining.filter((o) => !o.words.includes("scheduling"));
+          if (f2.length > 0 && f2.length < remaining.length) {
+            steps.push({ text: '❌ "Scheduling" — 88% غلط', eliminated: true });
+            remaining = f2;
+          }
+        }
+
+        if (remaining.length === 1) {
+          steps.push({ text: "🎯 خيار واحد متبقي!", active: true });
+          algoPick = remaining[0].index;
+          return { steps, algoPick };
+        }
+
+        // NOT
+        if (isNOT) {
+          steps.push({ text: "⚡ سؤال NOT — قواعد خاصة", active: false });
+          const t1m = remaining.filter((o) =>
+            ALGO_TIER1.some((k) => o.words.includes(k))
+          );
+          if (t1m.length === 1) {
+            steps.push({
+              text: `🥇 NOT + مستوى 1: "${t1m[0].text.substring(0, 35)}"`,
+              active: true,
+            });
+            algoPick = t1m[0].index;
+            return { steps, algoPick };
+          }
+          const shortest = remaining.reduce((a, b) =>
+            a.wordCount < b.wordCount ? a : b
+          );
+          steps.push({ text: "🔍 NOT: اختر الأقصر (الغريب)", active: true });
+          algoPick = shortest.index;
+          return { steps, algoPick };
+        }
+
+        // Tier 1
+        for (const kw of ALGO_TIER1) {
+          const m = remaining.filter((o) => o.words.includes(kw));
+          if (m.length === 1) {
+            steps.push({ text: `🥇 مستوى 1: "${kw}"`, active: true });
+            algoPick = m[0].index;
+            return { steps, algoPick };
+          }
+        }
+        steps.push({ text: "🥇 المستوى 1 — لا يوجد", skipped: true });
+
+        // Tier 2
+        for (const kw of ALGO_TIER2) {
+          const m = remaining.filter((o) => o.words.includes(kw));
+          if (m.length === 1) {
+            if (
+              kw === "each" &&
+              remaining.some(
+                (o) => o.words.includes("share") || o.words.includes("among")
+              )
+            )
+              continue;
+            steps.push({ text: `🥈 مستوى 2: "${kw}"`, active: true });
+            algoPick = m[0].index;
+            return { steps, algoPick };
+          }
+        }
+        steps.push({ text: "🥈 المستوى 2 — لا يوجد", skipped: true });
+
+        // Parentheses
+        const par = remaining.filter((o) => o.hasParen),
+          noPar = remaining.filter((o) => !o.hasParen);
+        if (
+          par.length > 0 &&
+          noPar.length > 0 &&
+          par.length < remaining.length
+        ) {
+          steps.push({
+            text: `🔑 أقواس (): "${par[0].text.substring(0, 35)}..."`,
+            active: true,
+          });
+          algoPick = par[0].index;
+          return { steps, algoPick };
+        }
+        steps.push({ text: "🔑 أقواس — لا يوجد تمييز", skipped: true });
+
+        // Echo
+        const qW = algoWords(qText).filter((w) => !ALGO_STOP.has(w));
+        const echoS = remaining.map((o) => {
+          const sh = qW.filter((w) => o.words.includes(w));
+          return { opt: o, score: sh.length, words: sh };
+        });
+        const maxE = Math.max(...echoS.map((e) => e.score));
+        if (maxE > 0) {
+          const ew = echoS.filter((e) => e.score === maxE);
+          if (ew.length === 1) {
+            steps.push({
+              text: `📚 صدى: "${ew[0].words.join(", ")}" (${ew[0].score} كلمة)`,
+              active: true,
+            });
+            algoPick = ew[0].opt.index;
+            return { steps, algoPick };
+          }
+        }
+        steps.push({ text: "📚 الصدى — لا يوجد فائز واحد", skipped: true });
+
+        // Golden Dup Keywords
+        const wToOpts = {};
+        remaining.forEach((o, i) => {
+          o.words.forEach((w) => {
+            if (!wToOpts[w]) wToOpts[w] = [];
+            wToOpts[w].push(o);
+          });
+        });
+        for (const gw of ALGO_GDUP_ANY) {
+          if (
+            wToOpts[gw] &&
+            wToOpts[gw].length >= 2 &&
+            wToOpts[gw].length < remaining.length
+          ) {
+            const longest = wToOpts[gw].reduce((a, b) =>
+              a.wordCount >= b.wordCount ? a : b
+            );
+            steps.push({
+              text: `🔄 كلمة "${gw}" بـ ${wToOpts[gw].length} خيارات → الأطول`,
+              active: true,
+            });
+            algoPick = longest.index;
+            return { steps, algoPick };
+          }
+        }
+        for (const gw of ALGO_GDUP_2) {
+          if (wToOpts[gw] && wToOpts[gw].length === 2) {
+            const longest = wToOpts[gw].reduce((a, b) =>
+              a.wordCount >= b.wordCount ? a : b
+            );
+            steps.push({
+              text: `🔄 كلمة "${gw}" بخيارين → الأطول (100%)`,
+              active: true,
+            });
+            algoPick = longest.index;
+            return { steps, algoPick };
+          }
+        }
+        steps.push({ text: "🔄 كلمة ذهبية مكررة — لا يوجد", skipped: true });
+
+        // Longest
+        const maxL = Math.max(...remaining.map((o) => o.wordCount));
+        const lo = remaining.filter((o) => o.wordCount === maxL);
+        if (lo.length === 1) {
+          steps.push({
+            text: `📏 الأطول: "${lo[0].text.substring(0, 35)}..."`,
+            active: true,
+          });
+          algoPick = lo[0].index;
+          return { steps, algoPick };
+        }
+        steps.push({ text: "📏 تعادل بالطول", skipped: true });
+        algoPick = remaining[0].index;
+        steps.push({ text: "🎲 تخمين", active: true });
+        return { steps, algoPick };
+      }
+
+      function toggleAlgoPanel(qid) {
+        const panel = document.getElementById("algo-" + qid);
+        if (panel.classList.contains("show")) {
+          panel.classList.remove("show");
+          return;
+        }
+        const q = QUESTIONS.find((x) => x.id === qid);
+        const { steps, algoPick } = analyzeForIndex(q);
+        const correctIdx = q.opts.findIndex((o) => o.c);
+        const isRight = algoPick === correctIdx;
+        let html = `<div style="font-weight:700;margin-bottom:8px;color:${
+          isRight ? "var(--correct)" : "var(--wrong)"
+        }">${isRight ? "✅ الخوارزمية صح" : "❌ الخوارزمية غلط"} — اختارت: ${
+          letters[algoPick] || ""
+        }</div>`;
+        steps.forEach((s) => {
+          let cls = "algo-step";
+          if (s.active) cls += " active";
+          else if (s.skipped) cls += " skipped";
+          else if (s.eliminated) cls += " eliminated";
+          html += `<div class="${cls}">${s.text}</div>`;
+        });
+        panel.innerHTML = html;
+        panel.classList.add("show");
+      }
+
       function renderAll() {
         renderQuestions();
         renderSidebar();
@@ -4584,6 +5079,11 @@
       }</div>
       ${optsHTML}
       ${expHTML}
+      ${
+        answered && devMode
+          ? `<button class="algo-btn" onclick="toggleAlgoPanel(${q.id})">🔍 كشف الخوارزمية</button><div class="algo-panel" id="algo-${q.id}"></div>`
+          : ""
+      }
     `;
           container.appendChild(card);
         }
@@ -4821,15 +5321,51 @@
       }
 
       // ============ SHUFFLE ============
-      function shuffleQuestions() {
-        const arr = [...state.questionOrder];
+      function fisherYates(arr) {
         for (let i = arr.length - 1; i > 0; i--) {
           const j = Math.floor(Math.random() * (i + 1));
           [arr[i], arr[j]] = [arr[j], arr[i]];
         }
-        state.questionOrder = arr;
-        renderAll();
+        return arr;
       }
+      function shuffleQuestions() {
+        state.questionOrder = fisherYates([...state.questionOrder]);
+        closeShuffleMenu();
+        renderAll();
+        showToast("🔀 تم خلط الأسئلة");
+      }
+      function shuffleOptions() {
+        QUESTIONS.forEach((q) => {
+          q.opts = fisherYates([...q.opts]);
+        });
+        closeShuffleMenu();
+        renderAll();
+        showToast("🔄 تم خلط الخيارات");
+      }
+      function shuffleAll() {
+        state.questionOrder = fisherYates([...state.questionOrder]);
+        QUESTIONS.forEach((q) => {
+          q.opts = fisherYates([...q.opts]);
+        });
+        closeShuffleMenu();
+        renderAll();
+        showToast("🎲 تم خلط الكل");
+      }
+      function resetOrder() {
+        state.questionOrder = QUESTIONS.map((q) => q.id);
+        closeShuffleMenu();
+        renderAll();
+        showToast("📋 تم إعادة الترتيب");
+      }
+      function toggleShuffleMenu() {
+        document.getElementById("shuffleMenu").classList.toggle("show");
+      }
+      function closeShuffleMenu() {
+        document.getElementById("shuffleMenu").classList.remove("show");
+      }
+      document.addEventListener("click", (e) => {
+        if (!e.target.closest(".shuffle-wrap")) closeShuffleMenu();
+      });
 
       // ============ SAVE/LOAD ============
       function saveProgress() {
@@ -4884,13 +5420,19 @@
         document.getElementById("undoBmModal").classList.remove("show");
       }
       function removeAllBookmarks(color) {
+        let count = 0;
         for (const qid of Object.keys(state.bookmarks)) {
-          state.bookmarks[qid].delete(color);
-          if (state.bookmarks[qid].size === 0) delete state.bookmarks[qid];
+          if (state.bookmarks[qid].has(color)) {
+            const id = parseInt(qid);
+            if (state.answers[id] !== undefined) {
+              delete state.answers[id];
+              count++;
+            }
+          }
         }
         closeUndoBmModal();
         renderAll();
-        showToast("↩️ تم إزالة العلامات");
+        showToast(`↩️ تم التراجع عن ${count} إجابة`);
       }
 
       let currentBmColor = null;
@@ -4921,6 +5463,26 @@
         for (const c of colors) {
           const el = document.querySelector(`.bm-label-${c}`);
           if (el) el.textContent = state.bmLabels[c];
+        }
+      }
+
+      // ============ DEV MODE (5 taps on title) ============
+      let devTapCount = 0,
+        devTapTimer = null,
+        devMode = false;
+      function devTap() {
+        devTapCount++;
+        clearTimeout(devTapTimer);
+        devTapTimer = setTimeout(() => {
+          devTapCount = 0;
+        }, 2000);
+        if (devTapCount >= 5) {
+          devTapCount = 0;
+          devMode = !devMode;
+          document.body.classList.toggle("dev-mode", devMode);
+          document.getElementById("devBadge").classList.toggle("show", devMode);
+          renderAll();
+          showToast(devMode ? "🔓 وضع المطور مفعّل" : "🔒 وضع المطور معطّل");
         }
       }
 
