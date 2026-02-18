@@ -1310,6 +1310,20 @@
           </div>
           <div class="setting-row">
             <label
+              >إعادة المحاولة عند الخطأ<span class="desc"
+                >يخليك تجرب مرة ثانية لين تجاوب صح</span
+              ></label
+            >
+            <label class="toggle-switch">
+              <input
+                type="checkbox"
+                id="sRetry"
+                onchange="updateSetting('retryOnWrong',this.checked)"
+              /><span class="toggle-slider"></span>
+            </label>
+          </div>
+          <div class="setting-row">
+            <label
               >عرض الموضوع على البطاقة<span class="desc"
                 >يظهر اسم الموضوع تحت كل سؤال</span
               ></label
@@ -4873,10 +4887,13 @@
         confirmAnswer: false,
         showTopics: true,
         autoScroll: false,
+        retryOnWrong: false,
         fontSize: 100,
       };
       let settings = { ...SETTINGS_DEFAULTS };
       let expOpen = {}; // qid -> bool, tracks which explanations are open
+      let wrongAttempts = {}; // qid -> Set of wrong indices (for retry mode)
+      let retriedQuestions = new Set(); // qids that had wrong attempts (always count as wrong)
       let state = {
         answers: {}, // qid -> selected index
         bookmarks: {}, // qid -> Set of colors
@@ -5273,6 +5290,7 @@
         updateProgress();
         updateFilterCounts();
         updateBmLabels();
+        autoSave();
       }
 
       function renderQuestions() {
@@ -5292,7 +5310,11 @@
           const answered = state.answers[q.id] !== undefined;
           const selectedIdx = state.answers[q.id];
           const correctIdx = q.opts.findIndex((o) => o.c);
-          const isCorrect = answered && selectedIdx === correctIdx;
+          const isCorrect =
+            answered &&
+            selectedIdx === correctIdx &&
+            !retriedQuestions.has(q.id);
+          const inRetry = !answered && wrongAttempts[q.id]?.size > 0; // actively retrying
 
           // Bookmark indicators
           const bms = state.bookmarks[q.id] || new Set();
@@ -5314,25 +5336,41 @@
           bmMenuHTML += `<button class="btn" style="font-size:.7rem;margin-top:4px" onclick="renameBmPrompt(event)">✏️ تسمية</button>`;
           bmMenuHTML += "</div>";
 
+          const wrongSet = wrongAttempts[q.id] || new Set();
+
           let optsHTML = '<div class="opts">';
           q.opts.forEach((opt, idx) => {
             let cls = "opt-btn";
             let icon = "";
-            if (answered) {
+            let isDisabled = false;
+            if (inRetry) {
+              // Actively retrying: show wrong attempts, keep others enabled
+              if (wrongSet.has(idx)) {
+                cls += " disabled wrong";
+                icon = "\u274c";
+                isDisabled = true;
+              }
+            } else if (answered) {
+              // Finished answering (normal or retry completed)
               cls += " disabled";
+              isDisabled = true;
               if (idx === correctIdx) {
                 cls += " correct";
-                icon = "✅";
+                icon = "\u2705";
               }
-              if (idx === selectedIdx && !isCorrect) {
+              // Show wrong: either the selected wrong answer, or any wrong attempts from retry
+              if (wrongSet.has(idx)) {
                 cls += " wrong";
-                icon = "❌";
+                icon = "\u274c";
+              } else if (idx === selectedIdx && selectedIdx !== correctIdx) {
+                cls += " wrong";
+                icon = "\u274c";
               }
             }
             const letter = letters[idx] || idx + 1;
             optsHTML += `<button class="${cls}" onclick="selectAnswer(${
               q.id
-            },${idx})" ${answered ? "disabled" : ""}>
+            },${idx})" ${isDisabled ? "disabled" : ""}>
         <span class="opt-letter">${letter}</span>
         <span class="en">${escapeHtml(opt.t)}</span>
         ${icon ? '<span class="opt-icon">' + icon + "</span>" : ""}
@@ -5340,9 +5378,9 @@
           });
           optsHTML += "</div>";
 
-          // Explanation
+          // Explanation (not shown during active retry)
           let expHTML = "";
-          if (answered) {
+          if (answered && !inRetry) {
             const exp = getExplanations(q);
             if (exp) {
               const isOpen = !!expOpen[q.id];
@@ -5426,14 +5464,19 @@
           };
 
           const answered = state.answers[qid] !== undefined;
-          if (answered) {
+          const hasWrongAttempts = wrongAttempts[qid]?.size > 0;
+          if (answered || hasWrongAttempts) {
             const q = QUESTIONS.find((x) => x.id === qid);
             const correctIdx = q.opts.findIndex((o) => o.c);
-            btn.classList.add(
-              state.answers[qid] === correctIdx
-                ? "answered-correct"
-                : "answered-wrong"
-            );
+            if (retriedQuestions.has(qid) || hasWrongAttempts) {
+              btn.classList.add("answered-wrong");
+            } else if (answered) {
+              btn.classList.add(
+                state.answers[qid] === correctIdx
+                  ? "answered-correct"
+                  : "answered-wrong"
+              );
+            }
           }
 
           // Bookmark indicators on nav
@@ -5453,18 +5496,36 @@
 
       // ============ ACTIONS ============
       function selectAnswer(qid, idx) {
-        if (state.answers[qid] !== undefined) return;
+        if (state.answers[qid] !== undefined) return; // already final-answered
+        // If in active retry, check if this option was already tried
+        if (wrongAttempts[qid]?.has(idx)) return;
         if (settings.confirmAnswer) {
           const q = QUESTIONS.find((x) => x.id === qid);
           const optText = q ? q.opts[idx]?.t : "";
           if (!confirm(`هل أنت متأكد من اختيار:\n${letters[idx]}) ${optText}`))
             return;
         }
-        state.answers[qid] = idx;
-        // Determine auto-expand
         const q = QUESTIONS.find((x) => x.id === qid);
         const ci = q ? q.opts.findIndex((o) => o.c) : -1;
         const wasCorrect = idx === ci;
+
+        // Retry mode: wrong answer — DON'T store in state.answers
+        if (settings.retryOnWrong && !wasCorrect) {
+          if (!wrongAttempts[qid]) wrongAttempts[qid] = new Set();
+          wrongAttempts[qid].add(idx);
+          retriedQuestions.add(qid);
+          expOpen[qid] = false;
+          renderAll();
+          showToast("❌ حاول مرة ثانية!");
+          return;
+        }
+
+        state.answers[qid] = idx; // store final answer (correct idx)
+        // If this was a retried question, it stays marked as wrong
+        if (retriedQuestions.has(qid)) {
+          // keep retriedQuestions entry — always counts as wrong
+        }
+        // Determine auto-expand
         if (wasCorrect && settings.expAutoCorrect) expOpen[qid] = true;
         else if (!wasCorrect && settings.expAutoWrong) expOpen[qid] = true;
         else expOpen[qid] = false;
@@ -5480,7 +5541,6 @@
               ".q-card:not(.filtered-out):not([data-answered])"
             );
             if (!nextCard) {
-              // try finding by checking answers
               for (const id of state.questionOrder) {
                 if (state.answers[id] === undefined) {
                   scrollToQ(id);
@@ -5488,7 +5548,10 @@
                 }
               }
             } else {
-              nextCard.scrollIntoView({ behavior: "smooth", block: "center" });
+              nextCard.scrollIntoView({
+                behavior: "smooth",
+                block: "center",
+              });
             }
           }, 400);
         }
@@ -5496,6 +5559,9 @@
 
       function undoAnswer(qid) {
         delete state.answers[qid];
+        delete wrongAttempts[qid];
+        retriedQuestions.delete(qid);
+        delete expOpen[qid];
         renderAll();
       }
 
@@ -5560,16 +5626,25 @@
           if (show) {
             const answered = state.answers[qid] !== undefined;
             const f = state.filter;
-            if (f === "unanswered" && answered) show = false;
+            if (
+              f === "unanswered" &&
+              (answered || wrongAttempts[qid]?.size > 0)
+            )
+              show = false;
             if (f === "correct") {
               if (!answered) show = false;
+              else if (retriedQuestions.has(qid))
+                show = false; // retried = always wrong
               else {
                 const ci = q.opts.findIndex((o) => o.c);
                 if (state.answers[qid] !== ci) show = false;
               }
             }
             if (f === "wrong") {
-              if (!answered) show = false;
+              // Show: retried questions, actively retrying, or normal wrong
+              if (retriedQuestions.has(qid) || wrongAttempts[qid]?.size > 0) {
+                // Show these as wrong
+              } else if (!answered) show = false;
               else {
                 const ci = q.opts.findIndex((o) => o.c);
                 if (state.answers[qid] === ci) show = false;
@@ -5592,15 +5667,29 @@
 
       function updateFilterCounts() {
         const total = QUESTIONS.length;
-        const answered = Object.keys(state.answers).length;
+        let answeredCount = Object.keys(state.answers).length;
+        // Also count actively retrying questions as "answered" (wrong)
+        for (const qid of Object.keys(wrongAttempts)) {
+          if (
+            state.answers[parseInt(qid)] === undefined &&
+            wrongAttempts[qid]?.size > 0
+          )
+            answeredCount++;
+        }
         let correct = 0,
           wrong = 0;
         for (const [qid, idx] of Object.entries(state.answers)) {
           const q = QUESTIONS.find((x) => x.id === parseInt(qid));
-          if (q && q.opts.findIndex((o) => o.c) === idx) correct++;
+          if (retriedQuestions.has(parseInt(qid))) wrong++;
+          else if (q && q.opts.findIndex((o) => o.c) === idx) correct++;
           else wrong++;
         }
-        const unanswered = total - answered;
+        // Count active retries as wrong
+        for (const [qid, set] of Object.entries(wrongAttempts)) {
+          if (state.answers[parseInt(qid)] === undefined && set?.size > 0)
+            wrong++;
+        }
+        const unanswered = total - answeredCount;
 
         const bmCounts = {};
         for (const c of colors) {
@@ -5770,7 +5859,7 @@
       }
 
       // ============ SAVE/LOAD ============
-      function saveProgress() {
+      function autoSave() {
         const data = {
           answers: state.answers,
           bookmarks: {},
@@ -5783,6 +5872,9 @@
           data.bookmarks[k] = [...v];
         }
         localStorage.setItem("os_quiz_save", JSON.stringify(data));
+      }
+      function saveProgress() {
+        autoSave();
         showToast("✅ تم الحفظ");
       }
 
@@ -5932,6 +6024,7 @@
         document.getElementById("sConfirm").checked = settings.confirmAnswer;
         document.getElementById("sTopics").checked = settings.showTopics;
         document.getElementById("sAutoScroll").checked = settings.autoScroll;
+        document.getElementById("sRetry").checked = settings.retryOnWrong;
         document.getElementById("sFontSize").value = settings.fontSize;
         document.getElementById("fontSizeLabel").textContent =
           settings.fontSize + "%";
@@ -5957,7 +6050,10 @@
 
         for (const [qid, idx] of Object.entries(state.answers)) {
           const q = QUESTIONS.find((x) => x.id === parseInt(qid));
-          if (q && q.opts.findIndex((o) => o.c) === idx) correct++;
+          if (retriedQuestions.has(parseInt(qid))) {
+            wrong++;
+            wrongIds.push(parseInt(qid));
+          } else if (q && q.opts.findIndex((o) => o.c) === idx) correct++;
           else {
             wrong++;
             wrongIds.push(parseInt(qid));
@@ -6338,6 +6434,30 @@
       ]);
 
       // ============ INIT ============
+      // Auto-load saved progress
+      (function autoLoad() {
+        const raw = localStorage.getItem("os_quiz_save");
+        if (raw) {
+          try {
+            const data = JSON.parse(raw);
+            state.answers = data.answers || {};
+            state.bmLabels = data.bmLabels || state.bmLabels;
+            state.questionOrder =
+              data.questionOrder || QUESTIONS.map((q) => q.id);
+            state.theme = data.theme || "dark";
+            state.bookmarks = {};
+            for (const [k, v] of Object.entries(data.bookmarks || {})) {
+              state.bookmarks[k] = new Set(v);
+            }
+            if (data.settings) {
+              settings = { ...SETTINGS_DEFAULTS, ...data.settings };
+            }
+            if (state.theme === "light")
+              document.documentElement.setAttribute("data-theme", "light");
+          } catch (e) {}
+        }
+        applyFontSize();
+      })();
       renderAll();
     </script>
   </body>
