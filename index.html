@@ -486,6 +486,141 @@
         display: block;
         margin-bottom: 2px;
       }
+      /* Explanation toggle button */
+      .exp-toggle {
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+        margin-top: 10px;
+        padding: 6px 14px;
+        background: var(--bg);
+        border: 1px solid var(--bg3);
+        border-radius: var(--radius-sm);
+        color: var(--text2);
+        font-size: 0.8rem;
+        cursor: pointer;
+        font-family: var(--font-ar);
+        transition: all 0.2s;
+      }
+      .exp-toggle:hover {
+        background: var(--bg3);
+        color: var(--text);
+      }
+      .exp-toggle .arrow {
+        transition: transform 0.3s;
+        display: inline-block;
+      }
+      .exp-toggle.open .arrow {
+        transform: rotate(180deg);
+      }
+
+      /* Settings Modal */
+      .settings-modal {
+        display: none;
+        position: fixed;
+        inset: 0;
+        z-index: 1000;
+        background: rgba(0, 0, 0, 0.6);
+        backdrop-filter: blur(4px);
+        align-items: center;
+        justify-content: center;
+      }
+      .settings-modal.show {
+        display: flex;
+        animation: fadeIn 0.2s;
+      }
+      .settings-panel {
+        background: var(--card);
+        border: 1px solid var(--bg3);
+        border-radius: var(--radius);
+        padding: 24px;
+        width: 90%;
+        max-width: 480px;
+        max-height: 80vh;
+        overflow-y: auto;
+        box-shadow: var(--shadow);
+      }
+      .settings-panel h3 {
+        margin-bottom: 16px;
+        font-size: 1.1rem;
+      }
+      .setting-group {
+        margin-bottom: 16px;
+        padding-bottom: 16px;
+        border-bottom: 1px solid var(--bg3);
+      }
+      .setting-group:last-of-type {
+        border-bottom: none;
+      }
+      .setting-group h4 {
+        font-size: 0.85rem;
+        color: var(--accent2);
+        margin-bottom: 10px;
+      }
+      .setting-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 8px 0;
+        gap: 12px;
+      }
+      .setting-row label:not(.toggle-switch) {
+        flex: 1;
+        font-size: 0.85rem;
+        color: var(--text);
+        cursor: default;
+      }
+      .setting-row .desc {
+        font-size: 0.75rem;
+        color: var(--text3);
+        display: block;
+        margin-top: 2px;
+      }
+      /* Toggle switch */
+      .toggle-switch {
+        position: relative;
+        display: inline-block;
+        width: 44px;
+        height: 24px;
+        flex-shrink: 0;
+        cursor: pointer;
+      }
+      .toggle-switch input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+      }
+      .toggle-slider {
+        position: absolute;
+        inset: 0;
+        background: var(--bg3);
+        border-radius: 24px;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+      .toggle-slider::before {
+        content: "";
+        position: absolute;
+        width: 18px;
+        height: 18px;
+        left: 3px;
+        bottom: 3px;
+        background: var(--text3);
+        border-radius: 50%;
+        transition: 0.3s;
+      }
+      .toggle-switch input:checked + .toggle-slider {
+        background: var(--accent);
+      }
+      .toggle-switch input:checked + .toggle-slider::before {
+        transform: translateX(20px);
+        background: #fff;
+      }
+      /* Font size slider */
+      .font-slider {
+        width: 100px;
+        accent-color: var(--accent);
+      }
 
       /* TOOLTIP */
       [data-tooltip] {
@@ -908,7 +1043,7 @@
           <button class="btn" onclick="saveProgress()">💾 حفظ</button>
           <button class="btn" onclick="loadProgress()">📂 استعادة</button>
           <button class="btn" onclick="showResults()">📊 النتائج</button>
-          <button class="btn" onclick="toggleTopics()">📁 المواضيع</button>
+          <button class="btn" onclick="openSettings()">⚙️</button>
           <button class="btn btn-danger" onclick="resetAll()">
             🗑️ مسح الكل
           </button>
@@ -1112,6 +1247,129 @@
         >
           إلغاء
         </button>
+      </div>
+    </div>
+
+    <!-- SETTINGS MODAL -->
+    <div
+      class="settings-modal"
+      id="settingsModal"
+      onclick="if(event.target===this)closeSettings()"
+    >
+      <div class="settings-panel">
+        <h3>⚙️ الإعدادات</h3>
+
+        <div class="setting-group">
+          <h4>📖 الشرح</h4>
+          <div class="setting-row">
+            <label
+              >فتح الشرح تلقائياً عند الخطأ<span class="desc"
+                >يعرض الشرح مباشرة لما تجاوب غلط</span
+              ></label
+            >
+            <label class="toggle-switch">
+              <input
+                type="checkbox"
+                id="sExpWrong"
+                checked
+                onchange="updateSetting('expAutoWrong',this.checked)"
+              /><span class="toggle-slider"></span>
+            </label>
+          </div>
+          <div class="setting-row">
+            <label
+              >فتح الشرح تلقائياً عند الصح<span class="desc"
+                >يعرض الشرح حتى لو جاوبت صح</span
+              ></label
+            >
+            <label class="toggle-switch">
+              <input
+                type="checkbox"
+                id="sExpCorrect"
+                onchange="updateSetting('expAutoCorrect',this.checked)"
+              /><span class="toggle-slider"></span>
+            </label>
+          </div>
+        </div>
+
+        <div class="setting-group">
+          <h4>🎯 تجربة الاستخدام</h4>
+          <div class="setting-row">
+            <label
+              >تأكيد قبل الإجابة<span class="desc"
+                >يمنع الضغط بالغلط — يسألك قبل ما يحفظ</span
+              ></label
+            >
+            <label class="toggle-switch">
+              <input
+                type="checkbox"
+                id="sConfirm"
+                onchange="updateSetting('confirmAnswer',this.checked)"
+              /><span class="toggle-slider"></span>
+            </label>
+          </div>
+          <div class="setting-row">
+            <label
+              >عرض الموضوع على البطاقة<span class="desc"
+                >يظهر اسم الموضوع تحت كل سؤال</span
+              ></label
+            >
+            <label class="toggle-switch">
+              <input
+                type="checkbox"
+                id="sTopics"
+                checked
+                onchange="updateSetting('showTopics',this.checked)"
+              /><span class="toggle-slider"></span>
+            </label>
+          </div>
+          <div class="setting-row">
+            <label
+              >تمرير تلقائي بعد الإجابة<span class="desc"
+                >ينتقل للسؤال التالي بعد الرد</span
+              ></label
+            >
+            <label class="toggle-switch">
+              <input
+                type="checkbox"
+                id="sAutoScroll"
+                onchange="updateSetting('autoScroll',this.checked)"
+              /><span class="toggle-slider"></span>
+            </label>
+          </div>
+        </div>
+
+        <div class="setting-group">
+          <h4>🔤 حجم الخط</h4>
+          <div class="setting-row">
+            <label>صغير ← كبير</label>
+            <input
+              type="range"
+              class="font-slider"
+              id="sFontSize"
+              min="80"
+              max="130"
+              value="100"
+              oninput="updateFontSize(this.value)"
+            />
+            <span
+              id="fontSizeLabel"
+              style="min-width: 35px; text-align: center; font-size: 0.8rem"
+              >100%</span
+            >
+          </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 12px">
+          <button class="btn" onclick="closeSettings()">✅ تم</button>
+          <button
+            class="btn"
+            onclick="resetSettings()"
+            style="margin-right: 8px"
+          >
+            🔄 افتراضي
+          </button>
+        </div>
       </div>
     </div>
 
@@ -4609,6 +4867,16 @@
       }
 
       // ============ STATE ============
+      const SETTINGS_DEFAULTS = {
+        expAutoWrong: true,
+        expAutoCorrect: false,
+        confirmAnswer: false,
+        showTopics: true,
+        autoScroll: false,
+        fontSize: 100,
+      };
+      let settings = { ...SETTINGS_DEFAULTS };
+      let expOpen = {}; // qid -> bool, tracks which explanations are open
       let state = {
         answers: {}, // qid -> selected index
         bookmarks: {}, // qid -> Set of colors
@@ -5077,7 +5345,16 @@
           if (answered) {
             const exp = getExplanations(q);
             if (exp) {
-              expHTML = '<div class="explanation show"><h4>📖 الشرح:</h4>';
+              const isOpen = !!expOpen[q.id];
+              expHTML = `<button class="exp-toggle ${
+                isOpen ? "open" : ""
+              }" onclick="toggleExp(${q.id})">
+                📖 الشرح <span class="arrow">▼</span>
+              </button>`;
+              expHTML += `<div class="explanation ${
+                isOpen ? "show" : ""
+              }" id="exp-${q.id}">`;
+              expHTML += "<h4>📖 الشرح:</h4>";
               exp.forEach((e, idx) => {
                 const isC = q.opts[idx] && q.opts[idx].c;
                 expHTML += `<div class="exp-opt ${
@@ -5092,6 +5369,10 @@
               expHTML += "</div>";
             }
           }
+
+          const topicRow = settings.showTopics
+            ? `<div class="q-topic" style="font-size:.75rem;color:var(--text3);margin-bottom:10px">📁 ${q.topic}</div>`
+            : "";
 
           card.innerHTML = `
       <div class="q-header">
@@ -5114,9 +5395,7 @@
           }
         </div>
       </div>
-      <div class="q-topic" style="font-size:.75rem;color:var(--text3);margin-bottom:10px">📁 ${
-        q.topic
-      }</div>
+      ${topicRow}
       ${optsHTML}
       ${expHTML}
       ${
@@ -5175,12 +5454,44 @@
       // ============ ACTIONS ============
       function selectAnswer(qid, idx) {
         if (state.answers[qid] !== undefined) return;
+        if (settings.confirmAnswer) {
+          const q = QUESTIONS.find((x) => x.id === qid);
+          const optText = q ? q.opts[idx]?.t : "";
+          if (!confirm(`هل أنت متأكد من اختيار:\n${letters[idx]}) ${optText}`))
+            return;
+        }
         state.answers[qid] = idx;
+        // Determine auto-expand
+        const q = QUESTIONS.find((x) => x.id === qid);
+        const ci = q ? q.opts.findIndex((o) => o.c) : -1;
+        const wasCorrect = idx === ci;
+        if (wasCorrect && settings.expAutoCorrect) expOpen[qid] = true;
+        else if (!wasCorrect && settings.expAutoWrong) expOpen[qid] = true;
+        else expOpen[qid] = false;
         renderAll();
         // Scroll nav button into view
         const navBtns = document.querySelectorAll(".nav-btn");
         const targetBtn = [...navBtns].find((b) => b.textContent.trim() == qid);
         if (targetBtn) targetBtn.scrollIntoView({ block: "nearest" });
+        // Auto-scroll to next unanswered
+        if (settings.autoScroll) {
+          setTimeout(() => {
+            const nextCard = document.querySelector(
+              ".q-card:not(.filtered-out):not([data-answered])"
+            );
+            if (!nextCard) {
+              // try finding by checking answers
+              for (const id of state.questionOrder) {
+                if (state.answers[id] === undefined) {
+                  scrollToQ(id);
+                  return;
+                }
+              }
+            } else {
+              nextCard.scrollIntoView({ behavior: "smooth", block: "center" });
+            }
+          }, 400);
+        }
       }
 
       function undoAnswer(qid) {
@@ -5449,6 +5760,15 @@
         if (!e.target.closest(".shuffle-wrap")) closeAllDropdowns();
       });
 
+      // ============ EXPLANATION TOGGLE ============
+      function toggleExp(qid) {
+        expOpen[qid] = !expOpen[qid];
+        const panel = document.getElementById("exp-" + qid);
+        const btn = panel?.previousElementSibling;
+        if (panel) panel.classList.toggle("show", expOpen[qid]);
+        if (btn) btn.classList.toggle("open", expOpen[qid]);
+      }
+
       // ============ SAVE/LOAD ============
       function saveProgress() {
         const data = {
@@ -5457,6 +5777,7 @@
           bmLabels: state.bmLabels,
           questionOrder: state.questionOrder,
           theme: state.theme,
+          settings: settings,
         };
         for (const [k, v] of Object.entries(state.bookmarks)) {
           data.bookmarks[k] = [...v];
@@ -5479,6 +5800,11 @@
         state.bookmarks = {};
         for (const [k, v] of Object.entries(data.bookmarks || {})) {
           state.bookmarks[k] = new Set(v);
+        }
+        if (data.settings) {
+          settings = { ...SETTINGS_DEFAULTS, ...data.settings };
+          applyFontSize();
+          syncSettingsUI();
         }
         if (state.theme === "light")
           document.documentElement.setAttribute("data-theme", "light");
@@ -5567,6 +5893,59 @@
           showToast(devMode ? "🔓 وضع المطور مفعّل" : "🔒 وضع المطور معطّل");
         }
       }
+
+      // ============ SETTINGS ============
+      function openSettings() {
+        syncSettingsUI();
+        document.getElementById("settingsModal").classList.add("show");
+      }
+      function closeSettings() {
+        document.getElementById("settingsModal").classList.remove("show");
+      }
+      function updateSetting(key, value) {
+        settings[key] = value;
+        if (key === "showTopics") renderAll();
+        localStorage.setItem("os_quiz_settings", JSON.stringify(settings));
+      }
+      function updateFontSize(val) {
+        settings.fontSize = parseInt(val);
+        applyFontSize();
+        document.getElementById("fontSizeLabel").textContent = val + "%";
+        localStorage.setItem("os_quiz_settings", JSON.stringify(settings));
+      }
+      function applyFontSize() {
+        document.getElementById("main").style.fontSize =
+          settings.fontSize + "%";
+      }
+      function resetSettings() {
+        settings = { ...SETTINGS_DEFAULTS };
+        syncSettingsUI();
+        applyFontSize();
+        renderAll();
+        localStorage.setItem("os_quiz_settings", JSON.stringify(settings));
+        showToast("🔄 تم إعادة الإعدادات للافتراضي");
+      }
+      function syncSettingsUI() {
+        document.getElementById("sExpWrong").checked = settings.expAutoWrong;
+        document.getElementById("sExpCorrect").checked =
+          settings.expAutoCorrect;
+        document.getElementById("sConfirm").checked = settings.confirmAnswer;
+        document.getElementById("sTopics").checked = settings.showTopics;
+        document.getElementById("sAutoScroll").checked = settings.autoScroll;
+        document.getElementById("sFontSize").value = settings.fontSize;
+        document.getElementById("fontSizeLabel").textContent =
+          settings.fontSize + "%";
+      }
+      // Load saved settings on init
+      (function loadSavedSettings() {
+        const raw = localStorage.getItem("os_quiz_settings");
+        if (raw) {
+          try {
+            settings = { ...SETTINGS_DEFAULTS, ...JSON.parse(raw) };
+            applyFontSize();
+          } catch (e) {}
+        }
+      })();
 
       // ============ RESULTS ============
       function showResults() {
