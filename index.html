@@ -1014,6 +1014,40 @@
       <button class="btn btn-danger" onclick="undoBookmarkGroup()">
         ↩️ تراجع إجابات علامة
       </button>
+      <span style="border-left: 1px solid var(--bg3); margin: 0 4px"></span>
+      <div class="shuffle-wrap" style="display: inline-block">
+        <button class="btn" onclick="toggleTopicDropdown()">📂 الموضوع</button>
+        <div class="shuffle-menu" id="topicDropdown"></div>
+      </div>
+      <div class="shuffle-wrap" style="display: inline-block">
+        <button class="btn" onclick="toggleBulkBmMenu()">📌 علّم الكل</button>
+        <div class="shuffle-menu" id="bulkBmMenu" style="min-width: 130px">
+          <button
+            onclick="bulkBookmark('red')"
+            style="color: var(--bookmark-red)"
+          >
+            🔴 أحمر
+          </button>
+          <button
+            onclick="bulkBookmark('yellow')"
+            style="color: var(--bookmark-yellow)"
+          >
+            🟡 أصفر
+          </button>
+          <button
+            onclick="bulkBookmark('green')"
+            style="color: var(--bookmark-green)"
+          >
+            🟢 أخضر
+          </button>
+          <button
+            onclick="bulkBookmark('blue')"
+            style="color: var(--bookmark-blue)"
+          >
+            🔵 أزرق
+          </button>
+        </div>
+      </div>
     </div>
 
     <div class="sidebar" id="sidebar"></div>
@@ -4967,7 +5001,7 @@
       function renderAll() {
         renderQuestions();
         renderSidebar();
-        renderTopics();
+        renderTopicDropdown();
         updateProgress();
         updateFilterCounts();
         updateBmLabels();
@@ -5138,21 +5172,6 @@
         }
       }
 
-      function renderTopics() {
-        const panel = document.getElementById("topicPanel");
-        const topics = [...new Set(QUESTIONS.map((q) => q.topic))];
-        panel.innerHTML =
-          '<button class="btn topic-btn ' +
-          (state.topicFilter === null ? "active" : "") +
-          '" onclick="filterTopic(null,this)">الكل</button>';
-        for (const t of topics) {
-          const count = QUESTIONS.filter((q) => q.topic === t).length;
-          panel.innerHTML += `<button class="btn topic-btn ${
-            state.topicFilter === t ? "active" : ""
-          }" onclick="filterTopic('${t}',this)">${t} (${count})</button>`;
-        }
-      }
-
       // ============ ACTIONS ============
       function selectAnswer(qid, idx) {
         if (state.answers[qid] !== undefined) return;
@@ -5302,19 +5321,6 @@
         }
       }
 
-      function filterTopic(topic, btn) {
-        state.topicFilter = topic;
-        document
-          .querySelectorAll(".topic-btn")
-          .forEach((b) => b.classList.remove("active"));
-        if (btn) btn.classList.add("active");
-        applyFilter();
-      }
-
-      function toggleTopics() {
-        document.getElementById("topicPanel").classList.toggle("show");
-      }
-
       // ============ THEME ============
       function toggleTheme() {
         state.theme = state.theme === "dark" ? "light" : "dark";
@@ -5340,10 +5346,24 @@
         renderAll();
         showToast("🔀 تم خلط الأسئلة");
       }
+      function remapAnswersAfterShuffle() {
+        // After opts are shuffled, update state.answers to point to new indices
+        for (const [qid, oldIdx] of Object.entries(state.answers)) {
+          const q = QUESTIONS.find((x) => x.id === parseInt(qid));
+          if (!q || !q._preShuffleOpts) continue;
+          const answeredOpt = q._preShuffleOpts[oldIdx];
+          if (!answeredOpt) continue;
+          const newIdx = q.opts.indexOf(answeredOpt);
+          if (newIdx !== -1) state.answers[qid] = newIdx;
+        }
+        QUESTIONS.forEach((q) => delete q._preShuffleOpts);
+      }
       function shuffleOptions() {
         QUESTIONS.forEach((q) => {
+          q._preShuffleOpts = [...q.opts];
           q.opts = fisherYates([...q.opts]);
         });
+        remapAnswersAfterShuffle();
         closeShuffleMenu();
         renderAll();
         showToast("🔄 تم خلط الخيارات");
@@ -5351,8 +5371,10 @@
       function shuffleAll() {
         state.questionOrder = fisherYates([...state.questionOrder]);
         QUESTIONS.forEach((q) => {
+          q._preShuffleOpts = [...q.opts];
           q.opts = fisherYates([...q.opts]);
         });
+        remapAnswersAfterShuffle();
         closeShuffleMenu();
         renderAll();
         showToast("🎲 تم خلط الكل");
@@ -5369,8 +5391,62 @@
       function closeShuffleMenu() {
         document.getElementById("shuffleMenu").classList.remove("show");
       }
+
+      // ============ TOPIC DROPDOWN ============
+      function toggleTopicDropdown() {
+        const dd = document.getElementById("topicDropdown");
+        if (!dd.innerHTML) renderTopicDropdown();
+        dd.classList.toggle("show");
+      }
+      function renderTopicDropdown() {
+        const dd = document.getElementById("topicDropdown");
+        const topics = [...new Set(QUESTIONS.map((q) => q.topic))];
+        let html = `<button onclick="filterTopic(null);closeAllDropdowns()" style="font-weight:${
+          state.topicFilter === null ? "700" : "400"
+        }">📋 الكل (${QUESTIONS.length})</button>`;
+        for (const t of topics) {
+          const count = QUESTIONS.filter((q) => q.topic === t).length;
+          html += `<button onclick="filterTopic('${t}');closeAllDropdowns()" style="font-weight:${
+            state.topicFilter === t ? "700" : "400"
+          }">${t} (${count})</button>`;
+        }
+        dd.innerHTML = html;
+      }
+      function filterTopic(topic) {
+        state.topicFilter = topic;
+        renderTopicDropdown();
+        applyFilter();
+        const label = topic || "الكل";
+        showToast("📂 الموضوع: " + label);
+      }
+
+      // ============ BULK BOOKMARK ============
+      function toggleBulkBmMenu() {
+        document.getElementById("bulkBmMenu").classList.toggle("show");
+      }
+      function bulkBookmark(color) {
+        const cards = document.querySelectorAll(".q-card:not(.filtered-out)");
+        let count = 0;
+        cards.forEach((card) => {
+          const qid = parseInt(card.dataset.qid);
+          if (!state.bookmarks[qid]) state.bookmarks[qid] = new Set();
+          if (!state.bookmarks[qid].has(color)) {
+            state.bookmarks[qid].add(color);
+            count++;
+          }
+        });
+        closeAllDropdowns();
+        renderAll();
+        showToast(`📌 تم تعليم ${count} سؤال باللون ${state.bmLabels[color]}`);
+      }
+
+      function closeAllDropdowns() {
+        document.getElementById("shuffleMenu").classList.remove("show");
+        document.getElementById("topicDropdown").classList.remove("show");
+        document.getElementById("bulkBmMenu").classList.remove("show");
+      }
       document.addEventListener("click", (e) => {
-        if (!e.target.closest(".shuffle-wrap")) closeShuffleMenu();
+        if (!e.target.closest(".shuffle-wrap")) closeAllDropdowns();
       });
 
       // ============ SAVE/LOAD ============
