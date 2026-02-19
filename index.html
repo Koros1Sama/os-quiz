@@ -998,9 +998,110 @@
       .dev-mode .dev-only {
         display: inline-block !important;
       }
+
+      /* Custom Confirm Dialog */
+      .confirm-overlay {
+        display: none;
+        position: fixed;
+        inset: 0;
+        z-index: 2000;
+        background: rgba(0, 0, 0, 0.7);
+        backdrop-filter: blur(6px);
+        align-items: center;
+        justify-content: center;
+      }
+      .confirm-overlay.show {
+        display: flex;
+        animation: fadeIn 0.2s;
+      }
+      .confirm-box {
+        background: var(--card);
+        border: 1px solid var(--bg3);
+        border-radius: var(--radius);
+        padding: 28px 24px;
+        width: 90%;
+        max-width: 380px;
+        text-align: center;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        animation: slideUp 0.25s ease;
+      }
+      @keyframes slideUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .confirm-icon {
+        font-size: 2.5rem;
+        margin-bottom: 12px;
+        animation: pulse 1.5s infinite;
+      }
+      @keyframes pulse {
+        0%,
+        100% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.1);
+        }
+      }
+      .confirm-msg {
+        font-size: 0.95rem;
+        color: var(--text);
+        margin-bottom: 20px;
+        line-height: 1.7;
+        white-space: pre-line;
+      }
+      .confirm-btns {
+        display: flex;
+        gap: 10px;
+        justify-content: center;
+      }
+      .confirm-btns button {
+        padding: 10px 28px;
+        border-radius: var(--radius-sm);
+        font-family: var(--font-ar);
+        font-size: 0.9rem;
+        font-weight: 600;
+        cursor: pointer;
+        border: none;
+        transition: all 0.2s;
+      }
+      .confirm-yes {
+        background: linear-gradient(135deg, #ef4444, #dc2626);
+        color: #fff;
+      }
+      .confirm-yes:hover {
+        background: linear-gradient(135deg, #dc2626, #b91c1c);
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(239, 68, 68, 0.4);
+      }
+      .confirm-no {
+        background: var(--bg3);
+        color: var(--text);
+      }
+      .confirm-no:hover {
+        background: var(--bg2);
+        transform: translateY(-1px);
+      }
     </style>
   </head>
   <body>
+    <!-- Custom Confirm Dialog -->
+    <div class="confirm-overlay" id="confirmOverlay">
+      <div class="confirm-box">
+        <div class="confirm-icon">⚠️</div>
+        <div class="confirm-msg" id="confirmMsg"></div>
+        <div class="confirm-btns">
+          <button class="confirm-yes" id="confirmYes">نعم</button>
+          <button class="confirm-no" id="confirmNo">إلغاء</button>
+        </div>
+      </div>
+    </div>
     <button
       class="header-mode-toggle"
       id="headerModeBtn"
@@ -1146,8 +1247,8 @@
         📚 ذاكر هذي (68)
       </button>
       <span style="border-left: 1px solid var(--bg3); margin: 0 4px"></span>
-      <button class="btn btn-danger" onclick="undoBookmarkGroup()">
-        ↩️ تراجع إجابات علامة
+      <button class="btn btn-danger" onclick="undoVisibleAnswers()">
+        ↩️ تراجع إجابات الصفحة
       </button>
       <span style="border-left: 1px solid var(--bg3); margin: 0 4px"></span>
       <div class="shuffle-wrap" style="display: inline-block">
@@ -4894,6 +4995,7 @@
       let expOpen = {}; // qid -> bool, tracks which explanations are open
       let wrongAttempts = {}; // qid -> Set of wrong indices (for retry mode)
       let retriedQuestions = new Set(); // qids that had wrong attempts (always count as wrong)
+      let justChangedQid = null; // exempt from filter after any action
       let state = {
         answers: {}, // qid -> selected index
         bookmarks: {}, // qid -> Set of colors
@@ -5425,7 +5527,7 @@
           <button class="btn" onclick="openBmMenu(${q.id})">🔖</button>
           ${bmMenuHTML}
           ${
-            answered
+            answered || inRetry
               ? '<button class="btn" onclick="undoAnswer(' +
                 q.id +
                 ')">↩️</button>'
@@ -5494,15 +5596,45 @@
         }
       }
 
+      // ============ CUSTOM CONFIRM ============
+      function customConfirm(msg) {
+        return new Promise((resolve) => {
+          document.getElementById("confirmMsg").textContent = msg;
+          const overlay = document.getElementById("confirmOverlay");
+          overlay.classList.add("show");
+          const yes = document.getElementById("confirmYes");
+          const no = document.getElementById("confirmNo");
+          function cleanup() {
+            overlay.classList.remove("show");
+            yes.removeEventListener("click", onYes);
+            no.removeEventListener("click", onNo);
+          }
+          function onYes() {
+            cleanup();
+            resolve(true);
+          }
+          function onNo() {
+            cleanup();
+            resolve(false);
+          }
+          yes.addEventListener("click", onYes);
+          no.addEventListener("click", onNo);
+        });
+      }
+
       // ============ ACTIONS ============
-      function selectAnswer(qid, idx) {
+      async function selectAnswer(qid, idx) {
         if (state.answers[qid] !== undefined) return; // already final-answered
         // If in active retry, check if this option was already tried
         if (wrongAttempts[qid]?.has(idx)) return;
         if (settings.confirmAnswer) {
           const q = QUESTIONS.find((x) => x.id === qid);
           const optText = q ? q.opts[idx]?.t : "";
-          if (!confirm(`هل أنت متأكد من اختيار:\n${letters[idx]}) ${optText}`))
+          if (
+            !(await customConfirm(
+              `هل أنت متأكد من اختيار:\n${letters[idx]}) ${optText}`
+            ))
+          )
             return;
         }
         const q = QUESTIONS.find((x) => x.id === qid);
@@ -5515,6 +5647,7 @@
           wrongAttempts[qid].add(idx);
           retriedQuestions.add(qid);
           expOpen[qid] = false;
+          justChangedQid = qid;
           renderAll();
           showToast("❌ حاول مرة ثانية!");
           return;
@@ -5529,6 +5662,7 @@
         if (wasCorrect && settings.expAutoCorrect) expOpen[qid] = true;
         else if (!wasCorrect && settings.expAutoWrong) expOpen[qid] = true;
         else expOpen[qid] = false;
+        justChangedQid = qid;
         renderAll();
         // Scroll nav button into view
         const navBtns = document.querySelectorAll(".nav-btn");
@@ -5537,22 +5671,33 @@
         // Auto-scroll to next unanswered
         if (settings.autoScroll) {
           setTimeout(() => {
-            const nextCard = document.querySelector(
-              ".q-card:not(.filtered-out):not([data-answered])"
-            );
-            if (!nextCard) {
-              for (const id of state.questionOrder) {
-                if (state.answers[id] === undefined) {
-                  scrollToQ(id);
-                  return;
+            // Find next unanswered after current qid in the order
+            const order = state.questionOrder;
+            const curPos = order.indexOf(qid);
+            let nextQid = null;
+            // Search forward from current position
+            for (let i = curPos + 1; i < order.length; i++) {
+              if (
+                state.answers[order[i]] === undefined &&
+                !wrongAttempts[order[i]]?.size
+              ) {
+                nextQid = order[i];
+                break;
+              }
+            }
+            // If nothing found, wrap around
+            if (!nextQid) {
+              for (let i = 0; i < curPos; i++) {
+                if (
+                  state.answers[order[i]] === undefined &&
+                  !wrongAttempts[order[i]]?.size
+                ) {
+                  nextQid = order[i];
+                  break;
                 }
               }
-            } else {
-              nextCard.scrollIntoView({
-                behavior: "smooth",
-                block: "center",
-              });
             }
+            if (nextQid) scrollToQ(nextQid);
           }, 400);
         }
       }
@@ -5562,6 +5707,7 @@
         delete wrongAttempts[qid];
         retriedQuestions.delete(qid);
         delete expOpen[qid];
+        justChangedQid = qid;
         renderAll();
       }
 
@@ -5573,6 +5719,7 @@
         } else {
           state.bookmarks[qid].add(color);
         }
+        justChangedQid = qid;
         renderAll();
       }
 
@@ -5604,6 +5751,7 @@
       // ============ FILTERS ============
       function setFilter(f, btn) {
         state.filter = f;
+        justChangedQid = null; // clear exemption on manual filter change
         document
           .querySelectorAll(".filter-bar .btn")
           .forEach((b) => b.classList.remove("active"));
@@ -5618,6 +5766,13 @@
           const qid = parseInt(card.dataset.qid);
           const q = QUESTIONS.find((x) => x.id === qid);
           let show = true;
+
+          // Exempt just-answered card from filter
+          if (justChangedQid === qid) {
+            card.classList.remove("filtered-out");
+            visibleCount++;
+            return;
+          }
 
           // Topic filter
           if (state.topicFilter && q.topic !== state.topicFilter) show = false;
@@ -5905,34 +6060,45 @@
       }
 
       // ============ RESET ============
-      function resetAll() {
-        if (!confirm("هل أنت متأكد من مسح جميع الإجابات؟")) return;
+      async function resetAll() {
+        if (!(await customConfirm("هل أنت متأكد من مسح جميع الإجابات؟")))
+          return;
         state.answers = {};
         renderAll();
         showToast("🗑️ تم مسح الإجابات");
       }
 
-      // ============ BOOKMARK MANAGEMENT ============
-      function undoBookmarkGroup() {
-        document.getElementById("undoBmModal").classList.add("show");
-      }
-      function closeUndoBmModal() {
-        document.getElementById("undoBmModal").classList.remove("show");
-      }
-      function removeAllBookmarks(color) {
-        let count = 0;
-        for (const qid of Object.keys(state.bookmarks)) {
-          if (state.bookmarks[qid].has(color)) {
-            const id = parseInt(qid);
-            if (state.answers[id] !== undefined) {
-              delete state.answers[id];
-              count++;
-            }
+      // ============ BULK UNDO VISIBLE ============
+      async function undoVisibleAnswers() {
+        const cards = document.querySelectorAll(".q-card:not(.filtered-out)");
+        const qids = [];
+        cards.forEach((card) => {
+          const qid = parseInt(card.dataset.qid);
+          if (
+            state.answers[qid] !== undefined ||
+            wrongAttempts[qid]?.size > 0
+          ) {
+            qids.push(qid);
           }
+        });
+        if (qids.length === 0) {
+          showToast("⚠️ لا توجد إجابات للتراجع عنها");
+          return;
         }
-        closeUndoBmModal();
+        if (
+          !(await customConfirm(
+            `هل تريد التراجع عن ${qids.length} إجابة في الصفحة الحالية؟`
+          ))
+        )
+          return;
+        for (const qid of qids) {
+          delete state.answers[qid];
+          delete wrongAttempts[qid];
+          retriedQuestions.delete(qid);
+          delete expOpen[qid];
+        }
         renderAll();
-        showToast(`↩️ تم التراجع عن ${count} إجابة`);
+        showToast(`↩️ تم التراجع عن ${qids.length} إجابة`);
       }
 
       let currentBmColor = null;
